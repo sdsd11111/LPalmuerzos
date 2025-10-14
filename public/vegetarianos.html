@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disfruta de los mejores platos vegetarianos en Loja. Ofrecemos opciones frescas y saludables como ceviche de champiñón, espagueti al funghi y más. Cocina casera con ingredientes frescos.">
+    <meta name="keywords" content="comida vegetariana Loja, restaurante vegetariano, menú vegetariano, platos vegetarianos, comida saludable Loja">
+    <meta name="author" content="Los Sartenes">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Platos Vegetarianos en Loja | Los Sartenes">
+    <meta property="og:description" content="Descubre nuestra selección de platos vegetarianos preparados con ingredientes frescos y naturales. Disfruta de una experiencia culinaria única en Loja.">
+    <meta property="og:image" content="/images/vegetariano/vegetariano-hero.jpg">
+    <meta property="og:url" content="https://lossartenes.com/vegetarianos.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Platos Vegetarianos en Loja | Los Sartenes">
+    <meta name="twitter:description" content="Descubre nuestra selección de platos vegetarianos preparados con ingredientes frescos y naturales.">
+    <meta name="twitter:image" content="/images/vegetariano/vegetariano-hero.jpg">
+    <title>Platos Vegetarianos en Loja | Comida Vegana y Vegetariana | Los Sartenes</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/favicon.ico">
+    
+    <!-- CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    
+    <style>
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .dish-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .dish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .menu-subcategory {
+            background-color: #1A531A;
+        }
+        .menu-subcategory a {
+            color: white;
+            padding-left: 2rem;
+            transition: all 0.3s ease;
+        }
+        .menu-subcategory a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FF8C42;
+            padding-left: 2.5rem;
+        }
+    </style>
+</head>
+<body class="bg-white flex flex-col min-h-screen" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] md:min-h-[90vh] flex items-center justify-center bg-cover bg-center bg-fixed" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/vegetariano/vegetariano-hero.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="container mx-auto px-4 text-center relative z-10 py-24 md:py-32">
+            <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Menú Vegetariano en Loja
+            </h1>
+            <div class="w-24 h-1 bg-[#FF8C00] mx-auto my-6"></div>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                Descubre nuestros platos vegetarianos preparados con ingredientes frescos y naturales
+            </p>
+            <div class="mt-8">
+                <a href="#nuestros-platos" class="inline-block bg-[#FF8C00] hover:bg-[#E67E00] text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                    Ver Menú Completo
+                </a>
+            </div>
+        </div>
+        
+        <!-- Flecha de desplazamiento -->
+        <a href="#nuestros-platos" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white hover:text-[#FF8C00] transition-colors">
+            <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
+        </a>
+    </section>
+
+    <!-- Sección de Introducción -->
+    <section class="py-16 md:py-20 bg-[#f9f8f6] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDAsMCwuMDIpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+')]"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-6">
+                    Opciones Frescas y Saludables para Comer Vegetariano en Loja
+                </h2>
+                <div class="w-24 h-1 bg-[#FF8C00] mx-auto mb-8"></div>
+                <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                    En Los Sartenes, creemos que la comida vegetariana puede ser igual de deliciosa y satisfactoria que cualquier otro tipo de cocina. Nuestros platos están elaborados con ingredientes frescos, locales y de la más alta calidad, cuidadosamente seleccionados para ofrecerte una experiencia culinaria excepcional.
+                </p>
+                <div class="rounded-xl overflow-hidden shadow-xl max-w-4xl mx-auto">
+                    <img src="/images/vegetariano/ensalada-fresca.jpg" alt="Ensalada fresca con vegetales de temporada" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Platos -->
+    <section id="nuestros-platos" class="py-16 md:py-20 bg-white relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-4">
+                    Nuestros Platos Vegetarianos
+                </h2>
+                <div class="w-24 h-1 bg-[#FF8C00] mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Descubre nuestra selección de platos vegetarianos, preparados con los ingredientes más frescos y sabrosos.
+                </p>
+            </div>
+
+            <!-- Grid de Platos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Ceviche de Champiñón -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-56">
+                        <img src="/images/vegetariano/ceviche-champinon.jpg" alt="Ceviche de Champiñón" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-[#2E8B57] mb-2">CEVICHE DE CHAMPIÑÓN</h3>
+                        <p class="text-gray-600 mb-4">Champiñones frescos, marinados con cebolla, tomate y pimiento.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#FF8C00] font-bold text-xl">$8.00</span>
+                            <button class="bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-semibold py-2 px-4 rounded-full text-sm transition-all duration-300">
+                                Ordenar Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Espagueti al Funghi -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-56">
+                        <img src="/images/vegetariano/espagueti-funghi.jpg" alt="Espagueti al Funghi" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-[#2E8B57] mb-2">ESPAGUETI AL FUNGHI</h3>
+                        <p class="text-gray-600 mb-4">Pasta fresca con champiñones en salsa blanca y queso parmesano.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#FF8C00] font-bold text-xl">$7.75</span>
+                            <button class="bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-semibold py-2 px-4 rounded-full text-sm transition-all duration-300">
+                                Ordenar Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sartén de Portobellos -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-56">
+                        <img src="/images/vegetariano/portobellos.jpg" alt="Sartén de Portobellos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-[#2E8B57] mb-2">SARTÉN DE PORTOBELLOS</h3>
+                        <p class="text-gray-600 mb-4">Champiñones portobellos, salteados con verduras.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#FF8C00] font-bold text-xl">$8.25</span>
+                            <button class="bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-semibold py-2 px-4 rounded-full text-sm transition-all duration-300">
+                                Ordenar Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Risotto al Funghi -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-56">
+                        <img src="/images/vegetariano/risotto-funghi.jpg" alt="Risotto al Funghi" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-[#2E8B57] mb-2">RISOTTO AL FUNGHI</h3>
+                        <p class="text-gray-600 mb-4">Arroz italiano con champiñones frescos y queso parmesano.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#FF8C00] font-bold text-xl">$10.00</span>
+                            <button class="bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-semibold py-2 px-4 rounded-full text-sm transition-all duration-300">
+                                Ordenar Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sartén de Champiñones al Ajillo -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-56">
+                        <img src="/images/vegetariano/champinones-ajillo.jpg" alt="Sartén de Champiñones al Ajillo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-[#2E8B57] mb-2">SARTÉN DE CHAMPIÑONES AL AJILLO</h3>
+                        <p class="text-gray-600 mb-4">Champiñones frescos en base de salsa ajillo acompañado con papas.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#FF8C00] font-bold text-xl">$8.00</span>
+                            <button class="bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-semibold py-2 px-4 rounded-full text-sm transition-all duration-300">
+                                Ordenar Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Espagueti al Pesto -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-56">
+                        <img src="/images/vegetariano/espagueti-pesto.jpg" alt="Espagueti al Pesto" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-playfair text-xl font-bold text-[#2E8B57] mb-2">ESPAGUETI AL PESTO</h3>
+                        <p class="text-gray-600 mb-4">Espagueti cocido al dente con nueces y albahaca, flameado al vino blanco con queso parmesano y orégano.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#FF8C00] font-bold text-xl">$8.00</span>
+                            <button class="bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-semibold py-2 px-4 rounded-full text-sm transition-all duration-300">
+                                Ordenar Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Llamado a la Acción -->
+    <section class="py-16 md:py-20 bg-[#2E8B57] bg-opacity-95 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwuMDUpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+')]"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-white mb-6">
+                    ¿Listo para probar nuestra cocina vegetariana?
+                </h2>
+                <div class="w-24 h-1 bg-[#FF8C00] mx-auto mb-8"></div>
+                <p class="text-lg text-gray-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    Visítanos y descubre por qué somos el lugar favorito para los amantes de la comida vegetariana en Loja. 
+                    Nuestro equipo está listo para ofrecerte una experiencia culinaria inolvidable.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/contacto.html" class="inline-block bg-[#FF8C00] hover:bg-[#E67E00] text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                        Reserva una Mesa
+                    </a>
+                    <a href="tel:+593987654321" class="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-[#2E8B57] font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-phone-alt mr-2"></i> Llamar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+    
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+
+    <!-- Script para animaciones -->
+    <script>
+        // Animación de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animación de aparición de elementos al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos con la clase 'observe-me'
+        document.querySelectorAll('.observe-me').forEach(el => {
+            el.classList.add('opacity-0', 'transform', 'translate-y-8', 'transition-all', 'duration-500', 'ease-out');
+            observer.observe(el);
+        });
+
+        // Agregar clase cuando el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

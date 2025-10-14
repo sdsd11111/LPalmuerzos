@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parrilladas y Carnes en Loja | Filet Mignon y Costillas BBQ | Los Sartenes</title>
+    <meta name="description" content="¿Buscas dónde comer las mejores Parrilladas en Loja? Prueba nuestras Costillas BBQ y Filet Mignon, sellados al Grill con el sabor único de Los Sartenes.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Open Sans', sans-serif; }
+        .menu-item { transition: all 0.3s ease; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+    <link rel="stylesheet" href="../css/header-fix.css">
+</head>
+<body class="bg-white menu-page">
+    <!-- Header Sticky -->
+        <!-- Header Component -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Contenido principal -->
+    <main class="hero-section">
+        <div class="container mx-auto px-4 py-8">
+    
+    <script>
+        // Script para el menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const menuDropdownBtn = document.getElementById('menuDropdownBtn');
+            const menuDropdown = document.getElementById('menuDropdown');
+            
+            // Abrir menú
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Cerrar menú
+            function closeSidebar() {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            
+            closeMenu.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+            
+            // Toggle submenú
+            menuDropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const icon = this.querySelector('i');
+                menuDropdown.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Cerrar otros menús desplegables si están abiertos
+                document.querySelectorAll('.menu-dropdown').forEach(dropdown => {
+                    if (dropdown !== menuDropdown && !dropdown.classList.contains('hidden')) {
+                        dropdown.classList.add('hidden');
+                        const otherIcon = dropdown.previousElementSibling.querySelector('i');
+                        if (otherIcon) otherIcon.classList.remove('rotate-180');
+                    }
+                });
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('#sidebar a').forEach(link => {
+                link.addEventListener('click', closeSidebar);
+            });
+            
+            // Cerrar menú con tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1558030006-450675393462?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1331&q=80" 
+                alt="Res, Cerdo y Aves al Grill" 
+                class="w-full h-full object-cover"
+                loading="eager"
+            >
+            <div class="absolute inset-0 bg-[#1A531A] opacity-70"></div>
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-playfair font-bold text-white mb-4">Res, Cerdo y Aves al Grill</h1>
+            <div class="h-1.5 w-24 bg-[#FF8C42] mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- Menu Items Grid -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <!-- Category Description -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <p class="text-gray-600 text-lg">Nuestra parrilla es el corazón de la cocina americana de Los Sartenes. Desde el jugoso Filet Mignon hasta nuestras aclamadas Costillas BBQ, cada corte es sellado a la perfección para garantizar un sabor ahumado y una textura incomparable. ¡Disfruta la experiencia del Grill!</p>
+            </div>
+            
+            <!-- Menu Items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" 
+                            alt="Filet Mignon" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $11.50
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Filet Mignon</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.9
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Lomo fino al grill en salsa de vino tinto con un toque de pimienta, acompañado con papa y vegetales.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1071&q=80" 
+                            alt="Pechuga Rellena" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Pechuga Rellena</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.7
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pechuga de pollo rellena de jamón, queso y champiñones, bañada en una salsa bechamel, acompañada con papa y vegetales.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1601050691231-dfc3d1f3f120?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                            alt="Pollo con Champiñones" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Pollo con Champiñones</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.6
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pechuga de pollo a la plancha cubierta con salsa bechamel y champiñones, acompañado con papa y vegetales.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" 
+                            alt="Costillas BBQ" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $11.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Costillas BBQ</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.8
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Costillas de cerdo asadas a la parrilla, bañadas en salsa BBQ de la casa, acompañado con papas fritas.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 5 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1601050691231-dfc3d1f3f120?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                            alt="Churrasco" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $11.50
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Churrasco</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.7
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Carne de res sellada al fuego, acompañado de huevo frito, papas fritas y arroz.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Button Fixed -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/59372587432?text=¡Hola%20Los%20Sartenes!%20Me%20gustaría%20reservar%20o%20preguntar%20por%20las%20Parrilladas%20y%20Carnes." 
+           target="_blank" 
+           class="bg-[#FF8C42] hover:bg-[#E67E37] text-white font-bold py-4 px-6 rounded-full shadow-lg flex items-center transition-all transform hover:scale-105">
+            <i class="fab fa-whatsapp text-2xl mr-2"></i>
+            <span>¡Llámanos para Ordenar o Reservar tu Mesa!</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+                </div>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

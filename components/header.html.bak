@@ -1,0 +1,55 @@
+<!-- Header Fixed -->
+<header class="fixed top-0 left-0 right-0 z-50 w-full bg-white shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center h-16">
+        <!-- Logo y Nombre -->
+        <a href="/" class="flex items-center">
+            <img src="/images/Logo.jpg" alt="Logo Los Sartenes" class="h-10 w-10 mr-2 rounded-full object-cover">
+            <h1 class="text-xl md:text-2xl font-bold text-green-800">LOS SARTENES</h1>
+        </a>
+        
+        <!-- Botón Menú Hamburguesa -->
+        <button id="menuToggle" class="text-orange-500 hover:text-orange-600 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </div>
+</header>
+
+<!-- Sidebar -->
+<div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-green-800 text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+    <div class="flex justify-between items-center p-4 border-b border-green-700">
+        <h2 class="text-xl font-bold">Menú</h2>
+        <button id="closeMenu" class="text-white hover:text-orange-400 focus:outline-none">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+    </div>
+    
+    <nav class="py-4">
+        <ul class="space-y-1">
+            <li><a href="/" class="block px-6 py-3 hover:bg-green-700 hover:text-orange-300 transition-colors">Inicio</a></li>
+            <li><a href="/sobre-nosotros.html" class="block px-6 py-3 hover:bg-green-700 hover:text-orange-300 transition-colors">Sobre Nosotros</a></li>
+            
+            <!-- Menú desplegable -->
+            <li class="relative">
+                <button id="menuDropdownBtn" class="w-full text-left px-6 py-3 flex justify-between items-center hover:bg-green-700 hover:text-orange-300 transition-colors">
+                    <span>Menú</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+                </button>
+                <ul id="menuDropdown" class="hidden bg-green-900">
+                    <li><a href="/menu/especialidades.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Especialidades de la Casa</a></li>
+                    <li><a href="/menu/pescados-mariscos.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Pescados y Mariscos</a></li>
+                    <li><a href="/menu/pastas.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Pastas</a></li>
+                    <li><a href="/menu/carnes.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Res, Cerdo y Aves</a></li>
+                    <li><a href="/menu/vegetariano.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Opciones Vegetarianas</a></li>
+                    <li><a href="/menu/parrilladas.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Festival y Parrilladas</a></li>
+                    <li><a href="/menu/ensaladas-sopas.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Ensaladas y Sopas</a></li>
+                    <li><a href="/menu/postres.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Postres e Infantil</a></li>
+                    <li><a href="/menu/bebidas.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Bebidas y Cocteles</a></li>
+                </ul>
+            </li>
+            
+            <li><a href="/galeria.html" class="block px-6 py-3 hover:bg-green-700 hover:text-orange-300 transition-colors">Galería</a></li>
+            <li><a href="/contacto.html" class="block px-6 py-3 hover:bg-green-700 hover:text-orange-300 transition-colors">Contacto</a></li>
+        </ul>
+    </nav>
+</aside>

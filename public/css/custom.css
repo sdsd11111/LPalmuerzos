@@ -1,0 +1,82 @@
+/* Sobrescritura de estilos para la nueva paleta de colores */
+
+/* Colores base */
+.bg-\[\#2E8B57\],
+.bg-\[\#1A531A\] {
+    background-color: var(--primary) !important;
+}
+
+.text-\[\#2E8B57\] {
+    color: var(--primary) !important;
+}
+
+/* Bordes y texto acentuado */
+.border-\[\#FF8C00\],
+.border-\[\#FF8C42\] {
+    border-color: var(--accent) !important;
+}
+
+.text-\[\#FF8C00\],
+.text-\[\#FF8C42\] {
+    color: var(--accent) !important;
+}
+
+/* Botones y fondos */
+.bg-\[\#FF8C42\] {
+    background-color: var(--accent) !important;
+}
+
+.hover\:bg-orange-600:hover {
+    background-color: var(--secondary) !important;
+}
+
+/* Sección hero - Permitir imágenes dinámicas */
+/* #hero-plato-del-dia {
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    background-size: auto !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-attachment: scroll !important;
+} */
+
+/* Tarjetas de menú */
+.bg-\[\#f9f8f6\] {
+    background-color: var(--secondary) !important;
+    opacity: 0.1;
+}
+
+/* Botones de acción */
+.btn-action {
+    background-color: var(--accent) !important;
+    color: white !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-action:hover {
+    background-color: var(--secondary) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Enlaces */
+a {
+    color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary);
+}
+
+/* Texto blanco para mejor contraste */
+.text-white {
+    color: white !important;
+}
+
+/* Fondo oscuro para secciones */
+.bg-dark {
+    background-color: var(--primary) !important;
+    color: white !important;
+}

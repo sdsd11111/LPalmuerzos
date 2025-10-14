@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Los Sartenes - Restaurante en Loja</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Contáctanos en Los Sartenes, el mejor restaurante en el centro de Loja. Haz tu reserva, consulta nuestros horarios o envíanos un mensaje.">
+    <meta name="keywords" content="contacto restaurante Loja, reservas restaurante, ubicación Los Sartenes, horario atención, restaurante en el centro de Loja">
+    <meta name="author" content="Restaurante Los Sartenes">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tudominio.com/contacto">
+    <meta property="og:title" content="Contacto | Los Sartenes - Restaurante en Loja">
+    <meta property="og:description" content="Contáctanos en Los Sartenes, el mejor restaurante en el centro de Loja. Haz tu reserva, consulta nuestros horarios o envíanos un mensaje.">
+    <meta property="og:image" content="https://tudominio.com/images/contacto-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tudominio.com/contacto">
+    <meta property="twitter:title" content="Contacto | Los Sartenes - Restaurante en Loja">
+    <meta property="twitter:description" content="Contáctanos en Los Sartenes, el mejor restaurante en el centro de Loja. Haz tu reserva, consulta nuestros horarios o envíanos un mensaje.">
+    <meta property="twitter:image" content="https://tudominio.com/images/contacto-preview.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        body { 
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover .contact-icon {
+            transform: translateY(-5px);
+        }
+    </style>
+    <style type="text/tailwindcss">
+        .form-input {
+            @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent transition duration-200;
+        }
+        .btn-primary {
+            @apply bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+        }
+        .btn-whatsapp {
+            @apply bg-[#25D366] hover:bg-[#128C7E] text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] w-full bg-cover bg-center flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6 leading-tight">
+                Contáctanos
+            </h1>
+            <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+                Estamos aquí para atenderte. Reserva tu mesa o envíanos un mensaje.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="contacto" class="py-20 bg-white relative overflow-hidden">
+        <!-- Fondo texturizado sutil -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDAsMCwuMDIpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+')]"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="inline-block text-[#FF8C00] text-lg font-semibold mb-3">Contáctanos</span>
+                    <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-4">Estamos para Atenderte</h2>
+                    <div class="w-24 h-1 bg-[#FF8C00] mx-auto mb-6"></div>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                        Envíanos un mensaje, llámanos o visítanos. Nuestro equipo está listo para brindarte la mejor experiencia gastronómica.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Columna 1: Información de Contacto -->
+                    <div class="space-y-8">
+                        <!-- Tarjeta de Dirección -->
+                        <div class="bg-white p-8 rounded-2xl shadow-lg contact-card transition-all duration-300 hover:shadow-xl">
+                            <div class="flex items-start">
+                                <div class="contact-icon bg-[#F0F7F0] text-[#2E8B57] mr-6">
+                                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Dirección</h3>
+                                    <p class="text-gray-600 mb-4">Av. Gran Colombia 15-45 y Bernardo Valdivieso, Loja, Ecuador</p>
+                                    <a href="https://maps.google.com/?q=Los+Sartenes+Loja" target="_blank" class="text-[#2E8B57] hover:text-[#1E6B47] font-medium inline-flex items-center">
+                                        <i class="fas fa-map-marker-alt mr-2"></i> Ver en el mapa
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tarjeta de Teléfono -->
+                        <div class="bg-white p-8 rounded-2xl shadow-lg contact-card transition-all duration-300 hover:shadow-xl">
+                            <div class="flex items-start">
+                                <div class="contact-icon bg-[#F0F7F0] text-[#2E8B57] mr-6">
+                                    <i class="fas fa-phone-alt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Teléfono</h3>
+                                    <p class="text-gray-600 mb-4">+593 7-258-7432</p>
+                                    <a href="tel:+59372587432" class="text-[#2E8B57] hover:text-[#1E6B47] font-medium inline-flex items-center">
+                                        <i class="fas fa-phone-alt mr-2"></i> Llamar ahora
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tarjeta de Horarios -->
+                        <div class="bg-white p-8 rounded-2xl shadow-lg contact-card transition-all duration-300 hover:shadow-xl">
+                            <div class="flex items-start">
+                                <div class="contact-icon bg-[#F0F7F0] text-[#2E8B57] mr-6">
+                                    <i class="far fa-clock text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Horario de Atención</h3>
+                                    <ul class="space-y-2 text-gray-600">
+                                        <li class="flex justify-between">
+                                            <span class="font-medium">Lunes a Sábado:</span>
+                                            <span>11:00 AM - 4:00 PM</span>
+                                        </li>
+                                        <li class="flex justify-between">
+                                            <span class="font-medium"></span>
+                                            <span>6:00 PM - 11:00 PM</span>
+                                        </li>
+                                        <li class="flex justify-between">
+                                            <span class="font-medium">Domingos:</span>
+                                            <span>10:00 AM - 5:00 PM</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- WhatsApp CTA -->
+                        <div class="bg-gradient-to-r from-[#2E8B57] to-[#1E6B47] p-8 rounded-2xl shadow-lg text-center">
+                            <div class="text-white mb-4">
+                                <i class="fab fa-whatsapp text-4xl mb-3"></i>
+                                <h3 class="text-xl font-semibold mb-2">¿Prefieres WhatsApp?</h3>
+                                <p class="text-gray-100 mb-4">Chatea con nosotros para reservas o consultas</p>
+                            </div>
+                            <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20me%20gustaría%20hacer%20una%20reserva" 
+                               class="btn-whatsapp inline-flex items-center justify-center w-full py-3 px-6 rounded-full font-semibold"
+                               target="_blank">
+                                <i class="fab fa-whatsapp text-xl mr-2"></i>
+                                Chatear por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Columna 2: Mapa y Formulario -->
+                    <div class="space-y-8">
+                        <!-- Mapa -->
+                        <div class="bg-white p-6 rounded-2xl shadow-lg">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Nuestra Ubicación</h3>
+                            <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.1300000000006!2d-78.6164!3d-4.0069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMDAnMjQuOCJTIDc4wrAzNnU1OS4wIlc!5e0!3m2!1sen!2sec!4v1620000000000!5m2!1sen!2sec" 
+                                    width="100%" 
+                                    height="300" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy"
+                                    class="rounded-lg">
+                                </iframe>
+                            </div>
+                        </div>
+                        
+                        <!-- Formulario de Contacto -->
+                        <div class="bg-white p-8 rounded-2xl shadow-lg">
+                            <h3 class="text-2xl font-playfair font-bold text-[#2E8B57] mb-6">Envíanos un Mensaje</h3>
+                            <form id="contactForm" class="space-y-5">
+                                <div>
+                                    <label for="name" class="block text-gray-700 mb-2 font-medium">Nombre Completo *</label>
+                                    <input type="text" id="name" name="name" required 
+                                           class="form-input"
+                                           placeholder="Tu nombre completo">
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label for="email" class="block text-gray-700 mb-2 font-medium">Correo Electrónico *</label>
+                                        <input type="email" id="email" name="email" required 
+                                               class="form-input"
+                                               placeholder="tu@email.com">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-gray-700 mb-2 font-medium">Teléfono</label>
+                                        <input type="tel" id="phone" name="phone" 
+                                               class="form-input"
+                                               placeholder="+593 XX XXX XXXX">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="subject" class="block text-gray-700 mb-2 font-medium">Asunto</label>
+                                    <select id="subject" name="subject" class="form-input">
+                                        <option value="">Selecciona un asunto</option>
+                                        <option value="reserva">Reserva de mesa</option>
+                                        <option value="consulta">Consulta general</option>
+                                        <option value="eventos">Eventos privados</option>
+                                        <option value="trabajo">Trabaja con nosotros</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-gray-700 mb-2 font-medium">Mensaje *</label>
+                                    <textarea id="message" name="message" rows="4" required 
+                                              class="form-input"
+                                              placeholder="¿En qué podemos ayudarte?"></textarea>
+                                </div>
+                                <div class="pt-2">
+                                    <button type="submit" class="btn-primary w-full py-4 text-lg flex items-center justify-center">
+                                        <i class="far fa-paper-plane mr-2"></i> Enviar Mensaje
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20me%20gustaría%20hacer%20una%20reserva" 
+       class="fixed bottom-8 right-8 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-[#128C7E] transition-all duration-300 z-40"
+       target="_blank"
+       aria-label="Chatea con nosotros por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof loadComponents === "function") { 
+                loadComponents(); 
+            }
+            
+            // Inicialización del formulario de contacto
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Aquí iría la lógica para enviar el formulario
+                    alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pescados y Mariscos en Loja | Sartén Frutos del Mar | Los Sartenes</title>
+    <meta name="description" content="¿Buscas dónde comer los mejores mariscos en Loja? Prueba nuestro Risotto Marinero y Ceviche Peruano, frescos y deliciosos en el centro de Loja.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Open Sans', sans-serif; }
+        .menu-item { transition: all 0.3s ease; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        .fullscreen-hero { 
+            height: 100vh;
+            max-height: -webkit-fill-available; /* Para navegadores móviles */
+        }
+    </style>
+    <link rel="stylesheet" href="../css/header-fix.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Header Sticky -->
+        <!-- Header Component -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Contenido principal -->
+    <main class="hero-section">
+        <div class="container mx-auto px-4 py-8">
+
+    <!-- Hero Section Fullscreen -->
+    <section class="relative fullscreen-hero flex items-center justify-center bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                alt="Pescados y Mariscos Frescos" 
+                class="w-full h-full object-cover"
+                loading="eager"
+            >
+            <div class="absolute inset-0 bg-[#1A531A] opacity-70"></div>
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6">Pescados y Mariscos Frescos</h1>
+            <div class="h-1.5 w-32 bg-[#FF8C42] mx-auto"></div>
+        </div>
+        
+        <!-- Flecha indicadora de scroll -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Menu Items Grid -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <!-- Category Description -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#1A531A] mb-6">Delicias del Mar</h2>
+                <p class="text-gray-600 text-lg">Desde el mar a tu mesa, nuestra selección de pescados y mariscos es preparada al momento para garantizar la máxima frescura y sabor. No te pierdas nuestro aclamado Sartén Frutos del Mar, una especialidad que define la calidad de la cocina marina en Loja.</p>
+            </div>
+            
+            <!-- Menu Items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Menu Item 1 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-64 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1551504739-3-bb1ece6a802?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                            alt="Sartén Frutos del Mar" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Sartén Frutos del Mar</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.8
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Variedad de mariscos frescos, salteados con una selección de verduras frescas y especias, creando una mezcla de sabores del mar que deleitará tu paladar.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-64 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1612874742237-6526221588e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" 
+                            alt="Camarón a Los Sartenes" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Camarón a Los Sartenes</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.7
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Camarones frescos salteados al fuego vivo para mantener su textura y sabor, acompañados de papas doradas crujientes y una selección de vegetales frescos de la estación.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-64 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1601050691231-dfc3d1f3f120?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                            alt="Sartén de Langostinos al Grill" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $14.00
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Sartén de Langostinos al Grill</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.9
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Langostinos jumbo marinados en una exclusiva vinagreta hindú y sellados al grill para realzar su sabor natural. Acompañados de papas doradas y una selección de vegetales frescos.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-64 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                            alt="Ceviche Peruano" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Ceviche Peruano</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 5.0
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Porción generosa de pescado blanco fresco y camarones marinados en jugo de limón, con un toque de ají y cilantro. Acompañado de tostado de maíz, choclo tierno y una refrescante ensalada de cebolla morada y camote.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Button Fixed -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/59372587432?text=¡Hola%20Los%20Sartenes!%20Me%20gustaría%20ordenar%20o%20reservar%20una%20mesa%20para%20disfrutar%20de%20sus%20deliciosos%20platos%20de%20mariscos." 
+           target="_blank" 
+           class="bg-[#FF8C42] hover:bg-[#E67E37] text-white font-bold py-4 px-6 rounded-full shadow-lg flex items-center transition-all transform hover:scale-105">
+            <i class="fab fa-whatsapp text-2xl mr-2"></i>
+            <span>¡Llámanos para Ordenar o Reservar tu Mesa!</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+                </div>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

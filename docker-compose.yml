@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  # Aplicación principal
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: los-sartenes-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/public/uploads
+    networks:
+      - app-network
+    depends_on:
+      - redis
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis para caché y sesiones
+  redis:
+    image: redis:6-alpine
+    container_name: los-sartenes-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Base de datos PostgreSQL (opcional, si no se usa Supabase)
+  # db:
+  #   image: postgres:13-alpine
+  #   container_name: los-sartenes-db
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_USER: ${DB_USER:-postgres}
+  #     POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+  #     POSTGRES_DB: ${DB_NAME:-los_sartenes}
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - app-network
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-los_sartenes}"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+  # pgAdmin (interfaz web para PostgreSQL)
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: los-sartenes-pgadmin
+  #   restart: unless-stopped
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@example.com}
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+  #   ports:
+  #     - "5050:80"
+  #   volumes:
+  #     - pgadmin_data:/var/lib/pgadmin
+  #   networks:
+  #     - app-network
+  #   depends_on:
+  #     - db
+
+  # Redis Commander (interfaz web para Redis)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: los-sartenes-redis-commander
+    restart: unless-stopped
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+    depends_on:
+      - redis
+
+# Volúmenes para persistencia de datos
+volumes:
+  postgres_data:
+  redis_data:
+  pgadmin_data:
+
+# Redes
+networks:
+  app-network:
+    driver: bridge

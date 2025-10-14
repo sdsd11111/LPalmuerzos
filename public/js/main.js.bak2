@@ -1,0 +1,424 @@
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    // Elementos del menú
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const menuDropdownBtn = document.getElementById('menuDropdownBtn');
+    const menuDropdown = document.getElementById('menuDropdown');
+    const videoThumbnail = document.getElementById('videoThumbnail');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoIframe = videoPlayer ? videoPlayer.querySelector('iframe') : null;
+    
+    // Función para abrir el menú lateral
+    if (menuToggle && sidebar && sidebarOverlay) {
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Función para cerrar el menú lateral
+    function closeSidebar() {
+        if (sidebar && sidebarOverlay) {
+            sidebar.classList.add('-translate-x-full');
+            sidebarOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Cerrar menú al hacer clic en el overlay
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+
+    // Cerrar menú al hacer clic en el botón de cerrar
+    if (closeMenu) {
+        closeMenu.addEventListener('click', closeSidebar);
+    }
+
+    // Función para manejar los menús desplegables
+    function setupMenuDropdown(buttonClass, submenuClass) {
+        const buttons = document.querySelectorAll(buttonClass);
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const submenu = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                const isHidden = submenu.classList.contains('hidden');
+                
+                // Cerrar otros menús del mismo nivel
+                if (this.closest('li').parentElement.classList.contains('menu-subcategory') || 
+                    this.closest('li').parentElement.id === 'menuDropdown') {
+                    const parentMenu = this.closest('ul');
+                    const allButtons = parentMenu.querySelectorAll(buttonClass);
+                    
+                    allButtons.forEach(btn => {
+                        if (btn !== this) {
+                            const otherSubmenu = btn.nextElementSibling;
+                            const otherIcon = btn.querySelector('i');
+                            
+                            if (otherSubmenu && otherSubmenu.classList.contains(submenuClass.replace('.', ''))) {
+                                otherSubmenu.classList.add('hidden');
+                                if (otherIcon) {
+                                    otherIcon.classList.remove('rotate-180');
+                                }
+                                btn.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    });
+                }
+                
+                // Alternar el menú actual
+                if (isHidden) {
+                    submenu.classList.remove('hidden');
+                    if (icon) {
+                        icon.classList.add('rotate-180');
+                    }
+                    this.setAttribute('aria-expanded', 'true');
+                } else {
+                    submenu.classList.add('hidden');
+                    if (icon) {
+                        icon.classList.remove('rotate-180');
+                    }
+                    this.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
+
+    // Inicializar menús desplegables
+    setupMenuDropdown('.menu-category-btn', '.menu-subcategory');
+
+    // Configurar el menú desplegable principal
+    if (menuDropdownBtn && menuDropdown) {
+        menuDropdownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            menuDropdown.classList.toggle('hidden');
+            const icon = menuDropdownBtn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('rotate-180');
+            }
+        });
+
+        // Cerrar el menú al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (!menuDropdown.contains(e.target) && !menuDropdownBtn.contains(e.target)) {
+                menuDropdown.classList.add('hidden');
+                const icon = menuDropdownBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        });
+    }
+
+    // Cerrar menús al hacer clic fuera
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.menu-category-btn') && !e.target.closest('.menu-subcategory')) {
+            const openMenus = document.querySelectorAll('.menu-subcategory:not(.hidden)');
+            openMenus.forEach(menu => {
+                menu.classList.add('hidden');
+                const btn = menu.previousElementSibling;
+                if (btn && btn.classList.contains('menu-category-btn')) {
+                    const icon = btn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('rotate-180');
+                    }
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    });
+});
+                icon.classList.add('rotate-45');
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 12H6"/>';
+                question.setAttribute('aria-expanded', 'true');
+                
+                // Desplazamiento suave para mantener la pregunta visible
+                question.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+        
+        // Soporte para teclado
+        question.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                question.click();
+            }
+        });
+    });
+    
+    // Abrir menú lateral
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.remove('-translate-x-full');
+            sidebarOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    // Cerrar menú lateral
+    function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        sidebarOverlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+    
+    // Función para manejar los menús desplegables
+    function setupMenuDropdown(buttonClass, submenuClass) {
+        const buttons = document.querySelectorAll(buttonClass);
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const submenu = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                const isHidden = submenu.classList.contains('hidden');
+                
+                // Cerrar otros menús del mismo nivel
+                if (this.closest('li').parentElement.classList.contains('menu-subcategory') || this.closest('li').parentElement.id === 'menuDropdown') {
+                    const parentMenu = this.closest('ul');
+                    const allButtons = parentMenu.querySelectorAll(buttonClass);
+                    
+                    allButtons.forEach(btn => {
+                        if (btn !== this) {
+                            const otherSubmenu = btn.nextElementSibling;
+                            const otherIcon = btn.querySelector('i');
+                            if (otherSubmenu && otherSubmenu.classList.contains(submenuClass.replace('.', ''))) {
+                                otherSubmenu.classList.add('hidden');
+                                otherSubmenu.classList.remove('block');
+                                if (otherIcon) otherIcon.classList.remove('rotate-180');
+                                btn.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    });
+                }
+                
+                // Alternar el menú actual
+                if (isHidden) {
+                    submenu.classList.remove('hidden');
+                    submenu.classList.add('block');
+                    if (icon) icon.classList.add('rotate-180');
+                    this.setAttribute('aria-expanded', 'true');
+                } else {
+                    submenu.classList.add('hidden');
+                    submenu.classList.remove('block');
+                    if (icon) icon.classList.remove('rotate-180');
+                    this.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+        
+        // Cerrar al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest(buttonClass) && !e.target.closest(submenuClass)) {
+                document.querySelectorAll(buttonClass).forEach(btn => {
+                    const submenu = btn.nextElementSibling;
+                    const icon = btn.querySelector('i');
+                    if (submenu && submenu.classList.contains(submenuClass.replace('.', ''))) {
+                        submenu.classList.add('hidden');
+                        submenu.classList.remove('block');
+                        if (icon) icon.classList.remove('rotate-180');
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    }
+    
+    // Inicializar menús desplegables
+    setupMenuDropdown('.menu-category-btn', '.menu-subcategory');
+    
+    // Agregar evento de cierre al overlay
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+    
+    // Agregar evento de cierre al botón de cerrar
+    if (closeMenu) {
+        closeMenu.addEventListener('click', closeSidebar);
+    }
+    
+    // Configurar el menú desplegable principal
+    if (menuDropdownBtn && menuDropdown) {
+        menuDropdownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            menuDropdown.classList.toggle('hidden');
+            const icon = menuDropdownBtn.querySelector('i');
+            icon.classList.toggle('rotate-180');
+        });
+    }
+        
+        // Forzar la inicialización de los botones del menú después de que el DOM esté completamente cargado
+        const menuButtons = document.querySelectorAll('.menu-category-btn');
+        menuButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                const submenu = this.nextElementSibling;
+                if (submenu && submenu.classList.contains('menu-subcategory')) {
+                    const isHidden = submenu.classList.contains('hidden');
+                    const icon = this.querySelector('i');
+                    
+                    if (isHidden) {
+                        submenu.classList.remove('hidden');
+                        submenu.classList.add('block');
+                        if (icon) icon.classList.add('rotate-180');
+                        this.setAttribute('aria-expanded', 'true');
+                    } else {
+                        submenu.classList.add('hidden');
+                        submenu.classList.remove('block');
+                        if (icon) icon.classList.remove('rotate-180');
+                        this.setAttribute('aria-expanded', 'false');
+                    }
+                    
+                    // Prevenir que el evento se propague a otros manejadores
+                    e.stopPropagation();
+                }
+            });
+        });
+    });
+    
+    // Menú principal
+    if (menuDropdownBtn) {
+        menuDropdownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isHidden = menuDropdown.classList.contains('hidden');
+            const icon = this.querySelector('i');
+            
+            if (isHidden) {
+                menuDropdown.classList.remove('hidden');
+                menuDropdown.classList.add('block');
+                if (icon) icon.classList.add('rotate-180');
+                this.setAttribute('aria-expanded', 'true');
+            } else {
+                menuDropdown.classList.add('hidden');
+                menuDropdown.classList.remove('block');
+                if (icon) icon.classList.remove('rotate-180');
+                this.setAttribute('aria-expanded', 'false');
+                
+                // Cerrar todos los submenús
+                document.querySelectorAll('.menu-subcategory').forEach(submenu => {
+                    submenu.classList.add('hidden');
+                    submenu.classList.remove('block');
+                });
+                document.querySelectorAll('.menu-category-btn').forEach(btn => {
+                    const icon = btn.querySelector('i');
+                    if (icon) icon.classList.remove('rotate-180');
+                    btn.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+        
+        // Cerrar menú principal al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            if (!menuDropdownBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+                menuDropdown.classList.add('hidden');
+                menuDropdown.classList.remove('block');
+                const icon = menuDropdownBtn.querySelector('i');
+                if (icon) icon.classList.remove('rotate-180');
+                menuDropdownBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+    
+    // Eventos para cerrar el menú
+    if (closeMenu) closeMenu.addEventListener('click', closeSidebar);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+    
+    // Toggle del menú desplegable
+    if (menuDropdownBtn) {
+        menuDropdownBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const icon = this.querySelector('i');
+            menuDropdown.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        });
+    }
+    
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('#sidebar a').forEach(link => {
+        link.addEventListener('click', closeSidebar);
+    });
+    
+    // Cerrar menú con tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+            closeSidebar();
+        }
+    });
+    
+    // Funcionalidad del reproductor de video
+    if (videoThumbnail && videoPlayer && videoIframe) {
+        // Agregar clase de transición para suavizar los cambios
+        videoPlayer.classList.add('transition-opacity', 'duration-300');
+        
+        videoThumbnail.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Obtener la URL del iframe desde el atributo data-src
+            const videoSrc = videoIframe.getAttribute('data-src');
+            
+            // Configurar la URL del iframe con parámetros mejorados
+            videoIframe.src = videoSrc;
+            
+            // Mostrar el reproductor y ocultar el thumbnail con transición
+            videoThumbnail.style.opacity = '0';
+            videoThumbnail.style.pointerEvents = 'none';
+            
+            // Pequeño retraso para permitir la transición
+            setTimeout(() => {
+                videoThumbnail.style.display = 'none';
+                videoPlayer.classList.remove('hidden');
+                videoPlayer.style.opacity = '1';
+                
+                // Enfocar el reproductor para controles de teclado
+                videoIframe.focus();
+            }, 200);
+        });
+    }
+    
+    // Cerrar el reproductor cuando se hace clic fuera de él
+    document.addEventListener('click', function(e) {
+        if (videoPlayer && !videoPlayer.contains(e.target) && 
+            videoThumbnail && !videoThumbnail.contains(e.target)) {
+            
+            if (!videoPlayer.classList.contains('hidden')) {
+                // Suavizar la transición al cerrar
+                videoPlayer.style.opacity = '0';
+                
+                // Pequeño retraso para permitir la transición
+                setTimeout(() => {
+                    videoPlayer.classList.add('hidden');
+                    
+                    // Restaurar el thumbnail
+                    videoThumbnail.style.display = 'block';
+                    videoThumbnail.style.opacity = '1';
+                    videoThumbnail.style.pointerEvents = 'auto';
+                    
+                    // Limpiar el src para detener el video
+                    if (videoIframe) {
+                        videoIframe.src = '';
+                    }
+                }, 300);
+            }
+        }
+    });
+    
+    // Prevenir que los clics dentro del reproductor cierren el modal
+    if (videoPlayer) {
+        videoPlayer.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+});

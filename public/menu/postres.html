@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Termina tu comida con nuestro Tiramisú o elige del Menú Infantil. Las mejores opciones para postres y niños en el Restaurante Loja.">
+    <title>Postres y Menú Infantil en Loja | Tiramisú y Platos para Niños | Los Sartenes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .menu-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .menu-card .content {
+            position: relative;
+            z-index: 2;
+            background: white;
+            margin-top: -2rem;
+            border-radius: 1.5rem 1.5rem 0 0;
+            padding: 2rem 1.5rem 1.5rem;
+        }
+        .menu-card .image-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .menu-card .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .menu-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+        .wave-divider {
+            margin-top: -1px;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-divider svg {
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+        .wave-divider .shape-fill {
+            fill: #1A531A;
+        }
+        .pattern-dots {
+            background-image: radial-gradient(#10B981 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dish-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #f3f4f6;
+            color: #1A531A;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .menu-card:hover .dish-icon {
+            background-color: #1A531A;
+            color: white;
+        }
+        .kid-card {
+            border: 2px dashed #F59E0B;
+            position: relative;
+        }
+        .kid-card::before {
+            content: "PARA NIÑOS";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #F59E0B;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-white font-['Open_Sans']" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component" class="fixed top-0 left-0 right-0 z-50">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="h-screen w-full bg-cover bg-center relative" style="background-image: url('../img/menu/postres-bg.jpg');">
+        <div class="absolute inset-0 bg-[#1A531A] opacity-70"></div>
+        <div class="h-full flex items-center justify-center relative z-10">
+            <div class="text-center text-white px-4">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-['Playfair_Display']">Postres Deliciosos y Menú Infantil</h1>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">El final perfecto de tu experiencia. Nuestra selección de postres y opciones para los más pequeños.</p>
+                <a href="#menu" class="bg-[#FF8C42] hover:bg-[#e67e38] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">Ver Especialidades</a>
+            </div>
+        </div>
+        
+        <!-- Wave divider -->
+        <div class="wave-divider absolute bottom-0 left-0 w-full">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,86c57.52-8.15,108.87-41.9,128.38-97.05,1.56-4.48,3.04-9.01,4.42-13.57C1015.31,10.9,1010.93,3.31,1008.66,0H0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="bg-gray-50 py-12 md:py-16 relative overflow-hidden">
+        <!-- Patrón decorativo sutil -->
+        <div class="absolute inset-0 pattern-dots opacity-10"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#1A531A] mb-4 font-['Playfair_Display']">Dulces Momentos</h2>
+                <div class="w-24 h-1 bg-[#FF8C42] mx-auto mb-6"></div>
+                <p class="text-gray-600 text-lg">Disfruta de nuestros postres caseros o descubre las opciones especiales para los más pequeños.</p>
+            </div>
+            
+            <!-- Sección de Postres -->
+            <div class="max-w-6xl mx-auto mb-16">
+                <h3 class="text-2xl font-bold text-[#1A531A] mb-8 flex items-center justify-center">
+                    <i class="fas fa-ice-cream mr-3"></i>
+                    Postres Caseros
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Postre 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md menu-card">
+                        <div class="image-container">
+                            <img src="../img/menu/tiramisu.jpg" alt="Tiramisú">
+                        </div>
+                        <div class="content">
+                            <div class="flex items-start mb-4">
+                                <div class="dish-icon">
+                                    <i class="fas fa-cookie-bite"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#1A531A]">Tiramisú</h3>
+                                    <p class="text-gray-600 mt-1">Capas de bizcocho mojadas en café y licor, con crema de mascarpone y cacao en polvo.</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                                <span class="text-2xl font-bold text-[#FF8C42]">$5.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Postre 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md menu-card">
+                        <div class="image-container">
+                            <img src="../img/menu/helado-casa.jpg" alt="Helado de la Casa">
+                        </div>
+                        <div class="content">
+                            <div class="flex items-start mb-4">
+                                <div class="dish-icon">
+                                    <i class="fas fa-ice-cream"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#1A531A]">Helado de la Casa</h3>
+                                    <p class="text-gray-600 mt-1">Tres deliciosas bolas de helado de vainilla, chocolate y fresa, acompañadas de salsa de chocolate casera.</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                                <span class="text-2xl font-bold text-[#FF8C42]">$4.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Menú Infantil -->
+            <div class="max-w-6xl mx-auto">
+                <h3 class="text-2xl font-bold text-[#1A531A] mb-8 flex items-center justify-center">
+                    <i class="fas fa-child mr-3"></i>
+                    Menú Infantil
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Plato Infantil 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md menu-card kid-card">
+                        <div class="image-container">
+                            <img src="../img/menu/nuggets-pollo.jpg" alt="Nuggets de Pollo">
+                        </div>
+                        <div class="content">
+                            <div class="flex items-start mb-4">
+                                <div class="dish-icon">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#1A531A]">Nuggets de Pollo</h3>
+                                    <p class="text-gray-600 mt-1">Crujientes nuggets de pechuga de pollo, acompañados de papas fritas doradas y salsa de su elección.</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                                <span class="text-2xl font-bold text-[#FF8C42]">$5.50</span>
+                                <span class="text-sm text-gray-500">Incluye bebida pequeña</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plato Infantil 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md menu-card kid-card">
+                        <div class="image-container">
+                            <img src="../img/menu/mini-hamburguesa.jpg" alt="Mini Hamburguesa">
+                        </div>
+                        <div class="content">
+                            <div class="flex items-start mb-4">
+                                <div class="dish-icon">
+                                    <i class="fas fa-hamburger"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-[#1A531A]">Mini Hamburguesa</h3>
+                                    <p class="text-gray-600 mt-1">Pequeña hamburguesa de carne 100% res con queso derretido, lechuga, tomate y papas fritas.</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-100">
+                                <span class="text-2xl font-bold text-[#FF8C42]">$6.00</span>
+                                <span class="text-sm text-gray-500">Incluye bebida pequeña</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección de promoción -->
+            <div class="mt-16 bg-gradient-to-r from-[#1A531A] to-[#2E7D32] rounded-xl p-8 text-white text-center max-w-4xl mx-auto relative overflow-hidden">
+                <!-- Elemento decorativo -->
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-[#FF8C42] rounded-full opacity-10"></div>
+                <div class="absolute -left-10 -top-10 w-32 h-32 bg-[#FF8C42] rounded-full opacity-10"></div>
+                
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 font-['Playfair_Display'] relative z-10">¿Quieres sorprender a los más pequeños?</h3>
+                <p class="text-lg mb-6 relative z-10">Pregunta por nuestros postres del día o nuestras opciones especiales para fiestas infantiles.</p>
+                <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20saber%20más%20sobre%20los%20postres%20y%20el%20menú%20infantil" 
+                   class="bg-[#FF8C42] hover:bg-[#e67e38] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block relative z-10"
+                   target="_blank">
+                    <i class="fas fa-concierge-bell mr-2"></i> Consultar Especiales
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20saber%20más%20sobre%20los%20postres%20y%20el%20menú%20infantil" 
+       class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg z-40 transition-all duration-300 transform hover:scale-110 flex items-center"
+       target="_blank"
+       aria-label="Consultar por WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="ml-2 font-semibold hidden md:inline">¡Pregunta por Nuestros Postres!</span>
+    </a>
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>document.addEventListener("DOMContentLoaded", function() { if (typeof loadComponents === "function") { loadComponents(); } });</script>
+</body>
+</html>

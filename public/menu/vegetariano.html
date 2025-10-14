@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre el menú vegetariano más creativo de Loja. Desde nuestro refrescante Ceviche de Champiñón hasta el clásico Risotto al Funghi. Calidad y sabor garantizados.">
+    <title>Opciones Vegetarianas Loja | Ceviche de Champiñón y Risotto | Los Sartenes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .menu-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dish-icon {
+            background-color: #f3f4f6;
+            transition: all 0.3s ease;
+        }
+        .menu-card:hover .dish-icon {
+            background-color: #10B981;
+            color: white;
+        }
+        .wave-divider {
+            margin-top: -1px;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-divider svg {
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+        .wave-divider .shape-fill {
+            fill: #1A531A;
+        }
+        .leaf-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310B981' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-white font-['Open_Sans']" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component" class="fixed top-0 left-0 right-0 z-50">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="h-screen w-full bg-cover bg-center relative" style="background-image: url('../img/menu/vegetariano-bg.jpg');">
+        <div class="absolute inset-0 bg-[#1A531A] opacity-70"></div>
+        <div class="h-full flex items-center justify-center relative z-10">
+            <div class="text-center text-white px-4">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-['Playfair_Display']">Opciones Vegetarianas & Frescas</h1>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">En Los Sartenes, creemos que la cocina vegetariana debe ser tan rica y emocionante como cualquier otra. Nuestra selección ofrece platos innovadores y ligeros, utilizando ingredientes frescos para crear experiencias memorables.</p>
+                <a href="#menu" class="bg-[#10B981] hover:bg-[#0D9F6E] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">Descubre Nuestro Menú</a>
+            </div>
+        </div>
+        
+        <!-- Wave divider -->
+        <div class="wave-divider absolute bottom-0 left-0 w-full">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,86c57.52-8.15,108.87-41.9,128.38-97.05,1.56-4.48,3.04-9.01,4.42-13.57C1015.31,10.9,1010.93,3.31,1008.66,0H0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="bg-gray-50 py-12 md:py-16 relative overflow-hidden">
+        <!-- Patrón decorativo sutil -->
+        <div class="absolute inset-0 leaf-pattern opacity-20"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#1A531A] mb-4 font-['Playfair_Display']">Sabores Naturales en Cada Bocado</h2>
+                <div class="w-24 h-1 bg-[#10B981] mx-auto mb-6"></div>
+                <p class="text-gray-600 text-lg">Disfruta de nuestra selección de platos vegetarianos, preparados con ingredientes frescos y locales para ofrecerte una experiencia culinaria única y saludable.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Plato 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Ceviche de Champiñón</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Refrescantes champiñones marinados en una base cítrica de limón, acompañado con tostado y chifles.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#10B981]">$8.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Risotto al Funghi</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Arroz italiano cremoso, aromatizado con vino blanco y champiñones, con un toque de queso parmesano.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#10B981]">$10.75</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Espagueti al Pesto</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Espagueti cocido al dente en salsa pesto casera con albahaca fresca.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#10B981]">$9.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Pescado Frito (Vegetariano)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Alternativa de pescado tierno frito, rebozado en harina, acompañado de ensalada fresca.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#10B981]">$9.75</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección de promoción -->
+            <div class="mt-16 bg-gradient-to-r from-[#1A531A] to-[#2E7D32] rounded-xl p-8 text-white text-center max-w-4xl mx-auto relative overflow-hidden">
+                <!-- Elemento decorativo -->
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-[#10B981] rounded-full opacity-10"></div>
+                <div class="absolute -left-10 -top-10 w-32 h-32 bg-[#10B981] rounded-full opacity-10"></div>
+                
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 font-['Playfair_Display'] relative z-10">¿Tienes alguna restricción alimenticia?</h3>
+                <p class="text-lg mb-6 relative z-10">En Los Sartenes nos adaptamos a tus necesidades. Consulta por nuestras opciones veganas y personalizadas.</p>
+                <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20consultar%20sobre%20opciones%20veganas%20y%20hacer%20un%20pedido" 
+                   class="bg-[#10B981] hover:bg-[#0D9F6E] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block relative z-10"
+                   target="_blank">
+            </div>
+        </div>
+    </main>
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+{{ ... }}
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>document.addEventListener("DOMContentLoaded", function() { if (typeof loadComponents === "function") { loadComponents(); } });</script>
+</body>
+</html>

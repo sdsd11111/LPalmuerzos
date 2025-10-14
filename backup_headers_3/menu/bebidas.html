@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebidas, Cocteles y Vino Hervido en Loja | Los Sartenes</title>
+    <meta name="description" content="La mejor selección de cocteles en Loja y el tradicional Vino Hervido. Acompaña tu plato con la bebida perfecta en Los Sartenes.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Open Sans', sans-serif; }
+        .menu-item { transition: all 0.3s ease; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15); }
+        .drink-special { border-left: 4px solid #FF8C42; }
+        .wine-glass {
+            position: relative;
+            overflow: hidden;
+        }
+        .wine-glass::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.7);
+            height: 30%;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/header-fix.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Header Sticky -->
+        <!-- Header Component -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Contenido principal -->
+    <main class="hero-section">
+        <div class="container mx-auto px-4 py-8">
+    
+    <script>
+        // Script para el menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const menuDropdownBtn = document.getElementById('menuDropdownBtn');
+            const menuDropdown = document.getElementById('menuDropdown');
+            
+            // Abrir menú
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Cerrar menú
+            function closeSidebar() {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            
+            closeMenu.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+            
+            // Toggle submenú
+            menuDropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const icon = this.querySelector('i');
+                menuDropdown.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Cerrar otros menús desplegables si están abiertos
+                document.querySelectorAll('.menu-dropdown').forEach(dropdown => {
+                    if (dropdown !== menuDropdown && !dropdown.classList.contains('hidden')) {
+                        dropdown.classList.add('hidden');
+                        const otherIcon = dropdown.previousElementSibling.querySelector('i');
+                        if (otherIcon) otherIcon.classList.remove('rotate-180');
+                    }
+                });
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('#sidebar a').forEach(link => {
+                link.addEventListener('click', closeSidebar);
+            });
+            
+            // Cerrar menú con tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                alt="Bebidas, Cocteles y Vino Hervido" 
+                class="w-full h-full object-cover"
+                loading="eager"
+            >
+            <div class="absolute inset-0 bg-[#1A531A] opacity-70"></div>
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-playfair font-bold text-white mb-4">Bebidas, Cocteles y Vino Hervido</h1>
+            <div class="h-1.5 w-24 bg-[#FF8C42] mx-auto"></div>
+            <p class="text-xl text-white mt-8 max-w-2xl mx-auto">La combinación perfecta para tu experiencia culinaria</p>
+        </div>
+    </section>
+
+    <!-- Drinks Menu -->
+    <section class="py-16 md:py-24 bg-gray-500 bg-opacity-10">
+        <div class="container mx-auto px-4">
+            <!-- Category Description -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <p class="text-gray-700 text-lg">Complementa tu experiencia culinaria con nuestra selecta carta de bebidas. Desde refrescos y jugos naturales, hasta cocteles de autor y nuestro famoso Vino Hervido, la bebida artesanal ideal para el clima de Loja.</p>
+            </div>
+            
+            <!-- Drinks Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Jugo Natural -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100 flex items-center justify-center">
+                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
+                            <i class="fas fa-glass-whiskey text-5xl text-orange-400"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 text-[#1A531A] font-bold py-1 px-3 rounded-full text-sm flex items-center">
+                            <i class="fas fa-leaf mr-1"></i> Refrescante
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-[#1A531A]">Jugo Natural</h3>
+                            <span class="text-[#FF8C42] font-bold text-xl">$3.00</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Jugos de fruta fresca de temporada. Opciones: Naranja, Fresa, Mora, Piña.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Pedir Ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Vino Hervido -->
+                <div class="menu-item drink-special bg-white rounded-xl shadow-lg overflow-hidden relative">
+                    <div class="absolute top-4 left-4 bg-[#FF8C42] text-white text-xs font-bold px-3 py-1 rounded-full z-10">
+                        ESPECIALIDAD DE LA CASA
+                    </div>
+                    <div class="relative h-48 bg-gray-100 overflow-hidden">
+                        <img 
+                            src="https://images.unsplash.com/photo-1601057289235-8a0a1c0d8e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                            alt="Vino Hervido" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        <div class="absolute top-4 right-4 bg-white/90 text-[#1A531A] font-bold py-1 px-3 rounded-full text-sm flex items-center">
+                            <i class="fas fa-fire mr-1"></i> Caliente
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-[#1A531A]">Vino Hervido</h3>
+                            <span class="text-[#FF8C42] font-bold text-xl">$4.50</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Bebida caliente tradicional de vino tinto, canela, clavo de olor, frutas y especias. Perfecta para el clima lojano.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Probar Especialidad
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mojito Cubano -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1514362327155-ef0a0ccfb72f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                            alt="Mojito Cubano" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-white/90 text-[#1A531A] font-bold py-1 px-3 rounded-full text-sm flex items-center">
+                            <i class="fas fa-cocktail mr-1"></i> Coctel
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-[#1A531A]">Mojito Cubano</h3>
+                            <span class="text-[#FF8C42] font-bold text-xl">$7.00</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Coctel clásico con ron blanco, hierbabuena fresca, azúcar moreno, jugo de limón y agua con gas. Refrescante y cítrico.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Ordenar Coctel
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cervezas Artesanales -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative h-48 bg-gray-100">
+                        <div class="wine-glass w-full h-full flex items-center justify-center bg-gradient-to-br from-amber-100 to-amber-200">
+                            <i class="fas fa-beer text-6xl text-amber-500 relative z-10"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-white/90 text-[#1A531A] font-bold py-1 px-3 rounded-full text-sm flex items-center">
+                            <i class="fas fa-beer mr-1"></i> Variedades
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-[#1A531A]">Cervezas Artesanales</h3>
+                            <span class="text-[#FF8C42] font-bold text-xl">$4.00 - $6.00</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Selección de cervezas artesanales locales e internacionales. Pregunta por nuestras variedades disponibles del día.</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">IPA</span>
+                            <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Lager</span>
+                            <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Stout</span>
+                            <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">Trigo</span>
+                        </div>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Ver Opciones
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Drinks Section -->
+            <div class="mt-16 max-w-4xl mx-auto bg-white bg-opacity-90 rounded-xl p-8 shadow-lg">
+                <h3 class="text-2xl font-playfair font-bold text-center text-[#1A531A] mb-6">Otras Bebidas Disponibles</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Gaseosas</h4>
+                            <p class="text-sm text-gray-500">Coca-Cola, Sprite, Fanta, etc.</p>
+                        </div>
+                        <span class="text-[#FF8C42] font-bold">$2.50</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Agua Mineral</h4>
+                            <p class="text-sm text-gray-500">Con o sin gas</p>
+                        </div>
+                        <span class="text-[#FF8C42] font-bold">$1.50</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Limonada Natural</h4>
+                            <p class="text-sm text-gray-500">Hecha al momento</p>
+                        </div>
+                        <span class="text-[#FF8C42] font-bold">$3.50</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Café</h4>
+                            <p class="text-sm text-gray-500">De grano tostado localmente</p>
+                        </div>
+                        <span class="text-[#FF8C42] font-bold">$2.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Button Fixed -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/59372587432?text=¡Hola%20Los%20Sartenes!%20Me%20gustaría%20consultar%20la%20carta%20de%20vinos%20o%20pedir%20un%20coctel." 
+           target="_blank" 
+           class="bg-[#FF8C42] hover:bg-[#E67E37] text-white font-bold py-4 px-6 rounded-full shadow-lg flex items-center transition-all transform hover:scale-105">
+            <i class="fas fa-wine-glass-alt text-xl mr-2"></i>
+            <span>¡Consulta nuestra Carta de Vinos o Pide tu Coctel!</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+                </div>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

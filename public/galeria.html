@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería | Los Sartenes - Restaurante en Loja</title>
+    <meta name="description" content="Explora nuestra galería y descubre los sabores, ambiente y tradición que hacen de Los Sartenes el mejor restaurante en el centro de Loja.">
+    <meta name="keywords" content="galería restaurante Loja, fotos de comida, ambiente restaurante, vajillas tradicionales, restaurante en el centro de Loja">
+    <meta name="author" content="Restaurante Los Sartenes">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tudominio.com/galeria">
+    <meta property="og:title" content="Galería | Los Sartenes - Restaurante en Loja">
+    <meta property="og:description" content="Descubre a través de imágenes la experiencia gastronómica única que te espera en Los Sartenes, el mejor restaurante en el centro de Loja.">
+    <meta property="og:image" content="https://tudominio.com/images/galeria-preview.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tudominio.com/galeria">
+    <meta property="twitter:title" content="Galería | Los Sartenes - Restaurante en Loja">
+    <meta property="twitter:description" content="Descubre a través de imágenes la experiencia gastronómica única que te espera en Los Sartenes, el mejor restaurante en el centro de Loja.">
+    <meta property="twitter:image" content="https://tudominio.com/images/galeria-preview.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        body { 
+            font-family: 'Open Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .filter-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: #2E8B57;
+            transition: width 0.3s ease;
+        }
+        .filter-btn:hover::after {
+            width: 100%;
+        }
+        .filter-btn.active {
+            background-color: #2E8B57;
+            color: white;
+        }
+        .filter-btn.active::after {
+            width: 100%;
+            background-color: #FF8C00;
+        }
+        .lightbox-overlay {
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative h-[70vh] w-full bg-cover bg-center flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6 leading-tight">
+                Nuestra Galería
+            </h1>
+            <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+                Un vistazo a los sabores, momentos y ambiente que nos definen
+            </p>
+            <div class="mt-8">
+                <a href="#gallery-grid" class="inline-block bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-medium py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+                    Ver Galería
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros de Galería -->
+    <section class="py-16 bg-white relative overflow-hidden">
+        <!-- Fondo texturizado sutil -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDAsMCwuMDIpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+')]"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-12">
+                <span class="inline-block text-[#FF8C00] text-lg font-semibold mb-3">Explora</span>
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-4">Nuestro Mundo</h2>
+                <div class="w-24 h-1 bg-[#FF8C00] mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    Descubre la esencia de Los Sartenes a través de nuestras imágenes más representativas
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-3 rounded-full bg-[#2E8B57] text-white font-medium hover:bg-[#1E6B47] transition-all duration-300" data-filter="all">
+                    <i class="fas fa-th-large mr-2"></i> Todo
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-700 font-medium hover:bg-gray-50 border border-gray-200 transition-all duration-300" data-filter="platos">
+                    <i class="fas fa-utensils mr-2"></i> Platos Estrella
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-700 font-medium hover:bg-gray-50 border border-gray-200 transition-all duration-300" data-filter="ambiente">
+                    <i class="fas fa-store-alt mr-2"></i> Ambiente
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-full bg-white text-gray-700 font-medium hover:bg-gray-50 border border-gray-200 transition-all duration-300" data-filter="vajillas">
+                    <i class="fas fa-mug-hot mr-2"></i> Herencia Lojana
+                </button>
+            </div>
+
+                <!-- Grid de Imágenes -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+                    <!-- Platos Estrella (6 items) -->
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="platos">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81111?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" 
+                                 alt="Plato Especial" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Plato Especial</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="platos">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" 
+                                 alt="Especialidad de la Casa" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Especialidad de la Casa</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="platos">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1504674900247-087703934569?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Mariscos Frescos" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Mariscos Frescos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="platos">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                                 alt="Corte Premium" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Corte Premium</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="platos">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Postre Casero" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Postre Casero</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="platos">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Especialidad del Chef" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Especialidad del Chef</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ambiente Único (6 items) -->
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="ambiente">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Terraza Panorámica" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Terraza Panorámica</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="ambiente">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Sala Principal" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Sala Principal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="ambiente">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo 1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Barra de Tragos" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Barra de Tragos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="ambiente">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Vista Nocturna" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Vista Nocturna</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="ambiente">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Área Privada" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Área Privada</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="ambiente">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Jardín Interior" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Jardín Interior</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Herencia Lojana (6 items) -->
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="vajillas">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1595475203873-7f5d793ac944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                                 alt="Vajilla Tradicional" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Vajilla Tradicional</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="vajillas">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1392&q=80" 
+                                 alt="Detalle de Vajilla" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Detalle de Vajilla</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="vajillas">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1392&q=80" 
+                                 alt="Juego de Platos" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Juego de Platos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="vajillas">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1392&q=80" 
+                                 alt="Arte en Barro" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Arte en Barro</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="vajillas">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1392&q=80" 
+                                 alt="Diseño Tradicional" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Diseño Tradicional</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item overflow-hidden rounded-xl shadow-lg transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2" data-category="vajillas">
+                        <div class="relative overflow-hidden h-80">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1392&q=80" 
+                                 alt="Colección Exclusiva" 
+                                 class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium opacity-0 hover:opacity-100 transition-opacity duration-300">Colección Exclusiva</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lightbox Modal (Placeholder) -->
+                    <div id="lightbox-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
+                        <div class="relative w-full max-w-4xl max-h-[90vh]">
+                            <button id="close-lightbox" class="absolute -top-12 right-0 text-white text-3xl hover:text-[#FF8C42] transition-colors">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="overflow-hidden rounded-lg">
+                                <img id="lightbox-image" src="" alt="" class="w-full h-auto max-h-[80vh] object-contain">
+                                <div class="bg-white p-4">
+                                    <h3 id="lightbox-title" class="text-xl font-bold text-gray-800"></h3>
+                                    <p id="lightbox-description" class="text-gray-600"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    
+                </div>
+                
+                <!-- CTA Section -->
+                <div class="text-center mt-16">
+                    <h3 class="text-2xl md:text-3xl font-playfair font-bold text-[#1A531A] mb-6">¿Listo para vivir la experiencia Los Sartenes?</h3>
+                    <a href="reservas.html" class="inline-block bg-[#FF8C42] hover:bg-[#E67E37] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                        Reserva tu Mesa
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        // Función para inicializar el lightbox
+        function initLightbox() {
+            const lightboxModal = document.getElementById('lightbox-modal');
+            const closeLightbox = document.getElementById('close-lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            // Abrir lightbox al hacer clic en una imagen
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    lightboxImage.src = img.src;
+                    lightboxTitle.textContent = img.alt;
+                    lightboxModal.classList.remove('hidden');
+                    lightboxModal.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Cerrar lightbox
+            closeLightbox.addEventListener('click', closeLightboxHandler);
+
+            // Cerrar al hacer clic fuera de la imagen
+            lightboxModal.addEventListener('click', (e) => {
+                if (e.target === lightboxModal) {
+                    closeLightboxHandler();
+                }
+            });
+
+            // Manejar la tecla Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !lightboxModal.classList.contains('hidden')) {
+                    closeLightboxHandler();
+                }
+            });
+
+            function closeLightboxHandler() {
+                lightboxModal.classList.add('hidden');
+                lightboxModal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Función para filtrar la galería
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Inicializar todo cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializar lightbox
+            initLightbox();
+            
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Inicializar filtros
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remover clase activa de todos los botones
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-[#1A531A]', 'text-white');
+                        btn.classList.add('bg-gray-100', 'text-gray-800');
+                    });
+                    
+                    // Agregar clase activa al botón clickeado
+                    button.classList.add('active', 'bg-[#1A531A]', 'text-white');
+                    button.classList.remove('bg-gray-100', 'text-gray-800');
+                    
+                    // Filtrar la galería
+                    const filter = button.dataset.filter;
+                    filterGallery(filter);
+                });
+            });
+
+            // Activar el primer filtro por defecto
+            if (filterButtons.length > 0) {
+                filterButtons[0].click();
+            }
+        });
+    </script>
+    </main>
+
+    <!-- Componente Footer -->
+    
+    
+    <!-- Scripts -->
+    </main>
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>
+        // Cargar el header
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-component').innerHTML = html;
+                    
+                    // Inicializar funcionalidad del menú móvil
+                    const menuToggle = document.getElementById('menuToggle');
+                    const closeMenu = document.getElementById('closeMenu');
+                    const sidebar = document.getElementById('sidebar');
+                    const sidebarOverlay = document.getElementById('sidebarOverlay');
+                    const menuDropdownBtn = document.getElementById('menuDropdownBtn');
+                    const menuDropdown = document.getElementById('menuDropdown');
+                    
+                    // Función para abrir el menú
+                    function openSidebar() {
+                        sidebar.classList.remove('-translate-x-full');
+                        sidebarOverlay.classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    }
+                    
+                    // Función para cerrar el menú
+                    function closeSidebar() {
+                        sidebar.classList.add('-translate-x-full');
+                        sidebarOverlay.classList.add('hidden');
+                        document.body.style.overflow = '';
+                    }
+                    
+                    // Event Listeners
+                    if (menuToggle) menuToggle.addEventListener('click', openSidebar);
+                    if (closeMenu) closeMenu.addEventListener('click', closeSidebar);
+                    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+                    
+                    // Menú desplegable
+                    if (menuDropdownBtn && menuDropdown) {
+                        menuDropdownBtn.addEventListener('click', () => {
+                            const isExpanded = menuDropdownBtn.getAttribute('aria-expanded') === 'true';
+                            menuDropdownBtn.setAttribute('aria-expanded', !isExpanded);
+                            menuDropdown.classList.toggle('hidden');
+                            menuDropdownBtn.querySelector('i').classList.toggle('transform', 'rotate-180');
+                        });
+                    }
+                    
+                    // Cerrar menú al hacer clic en un enlace
+                    const navLinks = document.querySelectorAll('#sidebar a');
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', () => {
+                            closeSidebar();
+                        });
+                    });
+                });
+        });
+    </script>
+    <script>document.addEventListener("DOMContentLoaded", function() { if (typeof loadComponents === "function") { loadComponents(); } });</script>
+</body>
+</html>

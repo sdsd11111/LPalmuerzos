@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filet Mignon | Los Sartenes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; padding-top: 0; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        main { min-height: calc(100vh - 16rem); padding: 2rem 0; }
+    </style>
+</head>
+<body class="bg-white flex flex-col min-h-screen">
+    <!-- Componente Header -->
+    <div id="header-component" class="fixed top-0 left-0 right-0 z-50 w-full bg-white shadow-md">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Espaciador para el header fijo -->
+    <div class="h-16"></div>
+
+    <!-- Contenido principal -->
+    <main class="container mx-auto px-4 py-16">
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 font-playfair text-center text-4xl md:text-5xl tracking-tight">Filet Mignon</h1>
+            <div class="w-24 h-1 bg-orange-500 mb-6"></div>
+            
+            <!-- Imagen del plato -->
+            <div class="bg-gray-100 rounded-lg overflow-hidden mb-8 max-w-3xl mx-auto">
+                    <img 
+                    src="/images/platos/filet_mignon.jpg" 
+                    alt="Filet_mignon - Los Sartenes Loja" 
+                    class="w-full h-auto w-full h-auto max-h-[400px] object-cover"
+                    onerror="this.onerror=null; this.src='/images/platos/sample.jpg'; this.alt='Imagen no disponible'"
+                >
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <i class="fas fa-clock text-orange-500 text-xl mb-2"></i>
+                            <p class="text-sm text-gray-600">Tiempo</p>
+                            <p class="font-semibold">30 minutos</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <i class="fas fa-utensils text-orange-500 text-xl mb-2"></i>
+                            <p class="text-sm text-gray-600">Porciones</p>
+                            <p class="font-semibold">2 personas</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow text-center">
+                            <i class="fas fa-fire text-orange-500 text-xl mb-2"></i>
+                            <p class="text-sm text-gray-600">Dificultad</p>
+                            <p class="font-semibold">Media</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4 font-playfair">Descripción</h2>
+                        <p class="text-gray-700 mb-4">Delicioso plato de filet_mignon preparado con los mejores ingredientes y sazón tradicional.</p>
+                        <div class="flex items-center text-orange-500">
+                            <span class="font-bold mr-2">Precio:</span>
+                            <span class="text-2xl">$12.99</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4 font-playfair">Ingredientes</h2>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Ingrediente principal</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Especias seleccionadas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Verduras frescas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Salsa especial de la casa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Guarnición al gusto</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 font-playfair">Preparación</h2>
+                <ol class="space-y-4">
+                    <li class="flex">
+                        <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-bold mr-3">1</span>
+                        <p class="text-gray-700">Preparar todos los ingredientes frescos.</p>
+                    </li>
+                    <li class="flex">
+                        <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-bold mr-3">2</span>
+                        <p class="text-gray-700">Cocinar los ingredientes principales a fuego medio.</p>
+                    </li>
+                    <li class="flex">
+                        <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-bold mr-3">3</span>
+                        <p class="text-gray-700">Agregar las especias y salsas según la receta.</p>
+                    </li>
+                    <li class="flex">
+                        <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-bold mr-3">4</span>
+                        <p class="text-gray-700">Cocinar hasta que todos los sabores se integren.</p>
+                    </li>
+                    <li class="flex">
+                        <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-orange-500 text-white font-bold mr-3">5</span>
+                        <p class="text-gray-700">Servir caliente y disfrutar.</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-component"></div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js"></script>
+    <script>
+        // Cargar componentes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar header
+            fetch('/components/header.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('header-component').innerHTML = html;
+                });
+            
+            // Cargar footer
+            fetch('/components/footer.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('footer-component').innerHTML = html;
+                });
+        });
+    </script>
+    
+    
+
+    <!-- Cargar componentes del header -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cargar header
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(html => {
+                const headerContainer = document.getElementById('header-component');
+                if (headerContainer) {
+                    headerContainer.innerHTML = html;
+                    // Initialize header functionality
+                    const menuToggle = document.getElementById('menuToggle');
+                    const closeMenuBtn = document.getElementById('closeMenu');
+                    const sidebar = document.getElementById('sidebar');
+                    const sidebarOverlay = document.getElementById('sidebarOverlay');
+                    const menuDropdownBtn = document.getElementById('menuDropdownBtn');
+                    const menuDropdown = document.getElementById('menuDropdown');
+                    
+                    // Toggle sidebar
+                    if (menuToggle && sidebar && sidebarOverlay) {
+                        menuToggle.addEventListener('click', () => {
+                            sidebar.classList.toggle('-translate-x-full');
+                            sidebarOverlay.classList.toggle('hidden');
+                            document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+                        });
+                        
+                        closeMenuBtn.addEventListener('click', () => {
+                            sidebar.classList.add('-translate-x-full');
+                            sidebarOverlay.classList.add('hidden');
+                            document.body.style.overflow = '';
+                        });
+                        
+                        sidebarOverlay.addEventListener('click', () => {
+                            sidebar.classList.add('-translate-x-full');
+                            sidebarOverlay.classList.add('hidden');
+                            document.body.style.overflow = '';
+                        });
+                    }
+                    
+                    // Toggle menu dropdown
+                    if (menuDropdownBtn && menuDropdown) {
+                        menuDropdownBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            menuDropdown.classList.toggle('hidden');
+                            const icon = menuDropdownBtn.querySelector('i');
+                            if (icon) {
+                                icon.classList.toggle('fa-chevron-down');
+                                icon.classList.toggle('fa-chevron-up');
+                            }
+                        });
+                    }
+                    
+                    // Close dropdown when clicking outside
+                    document.addEventListener('click', () => {
+                        if (menuDropdown && !menuDropdown.classList.contains('hidden')) {
+                            menuDropdown.classList.add('hidden');
+                            const icon = menuDropdownBtn.querySelector('i');
+                            if (icon) {
+                                icon.classList.remove('fa-chevron-up');
+                                icon.classList.add('fa-chevron-down');
+                            }
+                        }
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+    });
+    </script>
+
+    <!-- Cargar componentes del header -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Cargar header
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(html => {
+                const headerContainer = document.getElementById('header-component');
+                if (headerContainer) {
+                    headerContainer.innerHTML = html;
+                    
+                    // Get all menu elements
+                    const menuToggle = document.getElementById('menuToggle');
+                    const closeMenuBtn = document.getElementById('closeMenu');
+                    const sidebar = document.getElementById('sidebar');
+                    const sidebarOverlay = document.getElementById('sidebarOverlay');
+                    const menuDropdownBtn = document.getElementById('menuDropdownBtn');
+                    const menuDropdown = document.getElementById('menuDropdown');
+                    
+                    // Toggle sidebar
+                    if (menuToggle && sidebar && sidebarOverlay) {
+                        menuToggle.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            sidebar.classList.toggle('-translate-x-full');
+                            sidebarOverlay.classList.toggle('hidden');
+                            document.body.style.overflow = document.body.style.overflow === 'hidden' ? '' : 'hidden';
+                        });
+                        
+                        closeMenuBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            closeMenu();
+                        });
+                        
+                        sidebarOverlay.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            closeMenu();
+                        });
+                    }
+                    
+                    // Close menu function
+                    function closeMenu() {
+                        if (sidebar && sidebarOverlay) {
+                            sidebar.classList.add('-translate-x-full');
+                            sidebarOverlay.classList.add('hidden');
+                            document.body.style.overflow = '';
+                        }
+                    }
+                    
+                    // Toggle menu dropdown
+                    if (menuDropdownBtn && menuDropdown) {
+                        menuDropdownBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            menuDropdown.classList.toggle('hidden');
+                            const icon = menuDropdownBtn.querySelector('i');
+                            if (icon) {
+                                icon.classList.toggle('fa-chevron-down');
+                                icon.classList.toggle('fa-chevron-up');
+                            }
+                        });
+                    }
+                    
+                    // Handle submenu clicks
+                    document.querySelectorAll('.menu-category-btn').forEach(button => {
+                        button.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const submenu = this.nextElementSibling;
+                            const icon = this.querySelector('i');
+                            
+                            if (submenu && submenu.classList.contains('menu-subcategory')) {
+                                // Toggle the current submenu
+                                submenu.classList.toggle('hidden');
+                                
+                                // Toggle the icon
+                                if (icon) {
+                                    icon.classList.toggle('fa-chevron-down');
+                                    icon.classList.toggle('fa-chevron-up');
+                                }
+                                
+                                // Close other submenus
+                                document.querySelectorAll('.menu-subcategory').forEach(otherSubmenu => {
+                                    if (otherSubmenu !== submenu) {
+                                        otherSubmenu.classList.add('hidden');
+                                        const otherButton = otherSubmenu.previousElementSibling;
+                                        if (otherButton && otherButton.classList.contains('menu-category-btn')) {
+                                            const otherIcon = otherButton.querySelector('i');
+                                            if (otherIcon) {
+                                                otherIcon.classList.remove('fa-chevron-up');
+                                                otherIcon.classList.add('fa-chevron-down');
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    });
+                    
+                    // Close menu when clicking on a link
+                    document.querySelectorAll('#sidebar a').forEach(link => {
+                        link.addEventListener('click', (e) => {
+                            // Only close if it's not a dropdown toggle
+                            if (!link.classList.contains('menu-category-btn')) {
+                                closeMenu();
+                            }
+                        });
+                    });
+                    
+                    // Close dropdown when clicking outside
+                    document.addEventListener('click', () => {
+                        if (menuDropdown && !menuDropdown.classList.contains('hidden')) {
+                            menuDropdown.classList.add('hidden');
+                            const icon = menuDropdownBtn.querySelector('i');
+                            if (icon) {
+                                icon.classList.remove('fa-chevron-up');
+                                icon.classList.add('fa-chevron-down');
+                            }
+                        }
+                    });
+                }
+            })
+            .catch(error => console.error('Error loading header:', error));
+    });
+    </script>
+</body>
+</html>

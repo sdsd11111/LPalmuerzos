@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1A531A">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="Descubre el Salmón Glaseado y el Picadillo de Los Sartenes. Platos exclusivos que definen el sabor auténtico y único en Loja.">
+    <title>Especialidades de la Casa | Platos Únicos en Restaurante Loja</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        /* Base styles */
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        /* Card styles */
+        .menu-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            margin-bottom: 1rem;
+            opacity: 0.98;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .menu-card:active {
+            transform: scale(0.98);
+        }
+        
+        @media (min-width: 768px) {
+            .menu-card {
+                margin-bottom: 0;
+            }
+            .menu-card:hover {
+                transform: translateY(-5px) translateZ(0);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                opacity: 1;
+            }
+        }
+        
+        .dish-icon {
+            background-color: #f3f4f6;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-card:active .dish-icon,
+        .menu-card:focus .dish-icon,
+        .menu-card:hover .dish-icon {
+            background-color: #FF8C42;
+            color: white;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 767px) {
+            html {
+                font-size: 15px;
+            }
+            
+            /* Improved touch targets */
+            button, a[role="button"], .btn, .menu-card {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Optimize typography for mobile */
+            h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            /* Optimize hero section for mobile */
+            section.min-h-\[90vh\] {
+                min-height: 85vh !important;
+                padding-top: 80px;
+            }
+            
+            /* Improve card layouts */
+            .menu-card {
+                margin-bottom: 1rem;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+            
+            /* Better spacing for mobile */
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Optimize images */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white font-['Open_Sans']" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component" class="fixed top-0 left-0 right-0 z-50">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-[90vh] sm:min-h-screen flex items-center justify-center w-full bg-cover bg-center bg-fixed relative bg-no-repeat" style="background-image: url('../img/menu/especialidades-bg.jpg');" role="banner" aria-label="Especialidades de la Casa">
+        <div class="absolute inset-0 bg-[#1A531A] opacity-80"></div>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10 py-16 sm:py-24 md:py-32">
+            <div class="max-w-4xl mx-auto text-center text-white px-2 sm:px-4">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 font-['Playfair_Display'] leading-tight">Especialidades de la Casa</h1>
+                <div class="w-24 h-1 bg-[#FF8C42] mx-auto mb-6 sm:mb-8"></div>
+                <p class="text-lg sm:text-xl md:text-xl mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed">Nuestra selección de Especialidades de la Casa representa la cúspide de la experiencia Los Sartenes. Estos son los platos diseñados por nuestros chefs para sorprenderte y son presentados en nuestras vajillas de barro tradicionales.</p>
+                <a href="#menu" class="inline-flex items-center justify-center bg-[#FF8C42] hover:bg-[#E67E37] text-white font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-full text-lg sm:text-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF8C42] min-h-[50px] min-w-[180px]" aria-label="Ver el menú de especialidades">
+                    Ver Menú
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+            <a href="#menu" class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white bg-opacity-20 text-white animate-bounce focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white" aria-label="Desplazarse al menú">
+                <i class="fas fa-chevron-down text-xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main id="menu" class="bg-gray-50 py-8 sm:py-12 md:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                <!-- Plato 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Salmón Glaseado</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Glaseado al whisky en salsa de frambuesas acompañado de deditos de plátano y vegetales.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$18.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Picadillo</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Cuatro deliciosos géneros de carne en una exquisita salsa de la casa al puro estilo Los Sartenes con papa y vegetales.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$10.75</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-shrimp"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Camarones al Ajillo</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Camarones salteados al fuego vivo con una base de salsa de ajillo acompañado con papas y vegetales.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$10.75</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-drumstick-bite"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Pollo Andaluz</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pechuga de pollo en salsa andaluz y pimientos asados acompañados con papas y vegetales.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$10.75</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 5 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-bacon"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Camarones Fredd</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Deliciosos camarones envueltos con tocino en una deliciosa salsa mediterránea.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$12.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 6 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-piggy-bank"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Chuleta de Cerdo en Salsa de Piña</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Chuleta ahumada sellada al Grill con salsa de piña acompañada de papas y vegetales.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$10.75</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 7 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card md:col-span-2 lg:col-span-1 lg:col-start-2">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Tilapia a Los Sartenes</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pieza de pescado sellado en aceite de albahaca y aceitunas acompañado de papas y vegetales.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$10.75</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20hacer%20una%20reserva%20o%20pedido" 
+       class="fixed bottom-6 right-4 sm:right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg z-40 transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 flex items-center justify-center"
+       style="width: 56px; height: 56px;"
+       target="_blank"
+       rel="noopener noreferrer nofollow"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="sr-only">Contactar por WhatsApp</span>
+    </a>
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>document.addEventListener("DOMContentLoaded", function() { if (typeof loadComponents === "function") { loadComponents(); } });</script>
+</body>
+</html>

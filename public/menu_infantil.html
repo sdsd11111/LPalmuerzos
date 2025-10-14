@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Menú infantil en Los Sartenes de Loja. Platos deliciosos y nutritivos especialmente diseñados para los más pequeños de la casa.">
+    <meta name="keywords" content="menú infantil Loja, comida para niños, restaurante familiar, nuggets de pollo, papas fritas, restaurante niños Loja">
+    <meta name="author" content="Los Sartenes">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Primary Meta Tags -->
+    <title>Menú Infantil en Loja | Comida Amigable para Niños | Los Sartenes</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lossartenes.com/menu_infantil.html">
+    <meta property="og:title" content="Menú Infantil en Loja | Comida Amigable para Niños | Los Sartenes">
+    <meta property="og:description" content="Diversión y sabor para los más pequeños con nuestro menú infantil. Platos nutritivos que encantarán a tus hijos.">
+    <meta property="og:image" content="https://lossartenes.com/images/menu-infantil/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_EC">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://lossartenes.com/menu_infantil.html">
+    <meta name="twitter:title" content="Menú Infantil en Loja | Comida Amigable para Niños | Los Sartenes">
+    <meta name="twitter:description" content="Diversión y sabor para los más pequeños con nuestro menú infantil. Platos nutritivos que encantarán a tus hijos.">
+    <meta name="twitter:image" content="https://lossartenes.com/images/menu-infantil/twitter-card.jpg">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2E8B57">
+    <meta name="msapplication-TileColor" content="#2E8B57">
+    <meta name="theme-color" content="#2E8B57">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Preload -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2E8B57',
+                        secondary: '#FF8C00',
+                        dark: '#1E3F1E',
+                        light: '#F9F8F6',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        sans: ['Open Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 0.5s ease-in-out',
+                        'fadeInUp': 'fadeInUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { 
+                                opacity: '0',
+                                transform: 'translateY(20px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            },
+                        }
+                    }
+                }
+            },
+            variants: {
+                extend: {
+                    animation: ['hover', 'group-hover'],
+                    transform: ['group-hover', 'hover'],
+                    scale: ['group-hover', 'hover'],
+                },
+            },
+        }
+    </script>
+    
+    <!-- Estilos personalizados -->
+    <style>
+        /* Fuentes de respaldo */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap');
+        
+        /* Estilos base */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        /* Estilos de transición para elementos interactivos */
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+        
+        /* Efectos hover para tarjetas */
+        .dish-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            opacity: 0.95;
+        }
+        
+        .dish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            opacity: 1;
+        }
+        
+        /* Iconos infantiles */
+        .kids-icon {
+            color: #FF8C42;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .dish-card:hover .kids-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        /* Animaciones personalizadas */
+        .animate-fadeInUp {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+        
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+        
+        /* Estilos para el botón de WhatsApp flotante */
+        .whatsapp-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Mejoras de accesibilidad */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* Estilos para el preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #2E8B57;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-white flex flex-col min-h-screen">
+    <!-- Componente Header -->
+    <div id="header-component" class="fixed top-0 left-0 right-0 z-50 w-full bg-white shadow-md">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Espaciador para el header fijo -->
+    <div class="h-16"></div>
+
+    <!-- Hero Section - Pantalla completa -->
+    <section class="relative pt-24 md:pt-32 pb-16 md:pb-24 flex items-center justify-center min-h-screen bg-cover bg-center bg-fixed" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/menu-infantil/hero.jpg');">
+        <div class="container mx-auto px-4 text-center text-white relative z-10">
+            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">El Rincón Favorito de los Pequeños</h1>
+            <p class="text-xl md:text-2xl lg:text-3xl mb-8 max-w-3xl mx-auto">Diversión y sabor en cada bocado para los más pequeños de la casa</p>
+            <div class="mt-10">
+                <a href="#nuestro-menu" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">Ver Menú</a>
+            </div>
+        </div>
+        
+        <!-- Flecha para hacer scroll hacia abajo -->
+        <a href="#nuestro-menu" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white hover:text-orange-400 transition-colors">
+            <svg class="w-10 h-10 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </a>
+    </section>
+
+    <!-- Main Content -->
+    <main id="nuestro-menu" class="flex-grow">
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-playfair text-3xl md:text-4xl font-bold text-green-800 mb-4">Opciones Deliciosas y Seguras para tus Hijos en Loja</h2>
+                    <div class="w-24 h-1 bg-orange-500 mx-auto my-6"></div>
+                    <p class="text-gray-600 max-w-3xl mx-auto">En Los Sartenes nos preocupamos por ofrecer opciones deliciosas, nutritivas y seguras para los más pequeños. Nuestro menú infantil está diseñado pensando en los gustos de los niños y la tranquilidad de los padres.</p>
+                </div>
+
+                <!-- Plato Principal -->
+                <div class="max-w-2xl mx-auto bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="h-64 overflow-hidden">
+                        <img src="/images/menu-infantil/nuggets.jpg" alt="Nuggets de Pollo con Papas" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-child kids-icon"></i>
+                            <h3 class="text-2xl font-bold text-green-800">NUGGETS DE POLLO</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Deliciosos lomitos de pollo empanizados, crujientes por fuera y jugosos por dentro. Acompañados de papas francesas doradas y una porción de ketchup casero. ¡El favorito de todos los niños!</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-orange-500">$6.00</span>
+                            <span class="text-sm text-gray-500">Incluye bebida pequeña</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beneficios -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-green-50 p-6 rounded-lg text-center">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-apple-alt text-2xl text-orange-500"></i>
+                        </div>
+                        <h4 class="font-bold text-green-800 mb-2">Ingredientes Frescos</h4>
+                        <p class="text-gray-600 text-sm">Utilizamos solo ingredientes frescos y de la más alta calidad en todos nuestros platos infantiles.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg text-center">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-heart text-2xl text-orange-500"></i>
+                        </div>
+                        <h4 class="font-bold text-green-800 mb-2">Preparación Saludable</h4>
+                        <p class="text-gray-600 text-sm">Cocinamos con menos sal y grasas, priorizando métodos de cocción saludables.</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg text-center">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-smile text-2xl text-orange-500"></i>
+                        </div>
+                        <h4 class="font-bold text-green-800 mb-2">Porciones Ideales</h4>
+                        <p class="text-gray-600 text-sm">Porciones adecuadas para el apetito de los más pequeños, sin desperdicios.</p>
+                    </div>
+                </div>
+
+                <!-- Galería de imágenes -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                    <div class="overflow-hidden rounded-lg h-64">
+                        <img src="/images/menu-infantil/ambiente-1.jpg" alt="Ambiente familiar" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg h-64">
+                        <img src="/images/menu-infantil/plato-infantil.jpg" alt="Plato infantil" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg h-64">
+                        <img src="/images/menu-infantil/ambiente-2.jpg" alt="Zona infantil" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+
+                <!-- Llamado a la acción -->
+                <div class="mt-16 bg-gradient-to-r from-green-800 to-green-700 rounded-xl p-8 text-center text-white relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-orange-500 rounded-full opacity-10"></div>
+                    <div class="absolute -left-10 -top-10 w-32 h-32 bg-orange-500 rounded-full opacity-10"></div>
+                    
+                    <h3 class="text-2xl md:text-3xl font-bold mb-4 font-playfair relative z-10">¡Celebra el cumpleaños de tu pequeño con nosotros!</h3>
+                    <p class="text-lg mb-6 max-w-2xl mx-auto relative z-10">Paquetes especiales con decoración, menú infantil y espacio para que los niños se diviertan.</p>
+                    <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20información%20sobre%20fiestas%20infantiles" 
+                       class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block relative z-10"
+                       target="_blank">
+                        <i class="fas fa-birthday-cake mr-2"></i> Consultar Fechas
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() { 
+            if (typeof loadComponents === "function") { 
+                loadComponents(); 
+            } 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+/* Ensure text is readable on hero section */
+#hero-plato-del-dia h1,
+#hero-plato-del-dia h2,
+#hero-plato-del-dia h3,
+#hero-plato-del-dia p,
+#hero-plato-del-dia .text-content {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 
+                 0 0 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Remove any potential overlay */
+#hero-plato-del-dia::before,
+#hero-plato-del-dia::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Ensure background image displays properly */
+#hero-plato-del-dia {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}

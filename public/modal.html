@@ -1,0 +1,19 @@
+<!-- Modal para el menú -->
+<div id="menuModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden p-4">
+    <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="relative p-6">
+            <!-- Botón de cierre -->
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <!-- Contenido dinámico -->
+            <div id="modalContent"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Incluir el script del modal -->
+<script src="/js/menu-modal.js"></script>

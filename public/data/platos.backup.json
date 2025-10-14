@@ -1,0 +1,334 @@
+{
+  "platos": [
+    {
+      "id": "espagueti_pollo_champinones",
+      "nombre": "Espagueti di Pollo con Champiñones",
+      "descripcion_corta": "Espagueti cocido al dente bañado en una deliciosa salsa bechamel flameada al vino blanco con trozos de pollo y champiñones frescos.",
+      "categoria": "Pastas",
+      "ingredientes": ["Espagueti", "Pechuga de pollo", "Champiñones", "Salsa bechamel", "Vino blanco", "Queso parmesano"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Media",
+      "precio": "$8.50"
+    },
+    {
+      "id": "risotto_marinero",
+      "nombre": "Risotto Marinero",
+      "descripcion_corta": "Exquisito risotto italiano con una selección de mariscos frescos, aromatizado con vino blanco y terminado con queso parmesano.",
+      "categoria": "Pastas",
+      "ingredientes": ["Arroz arborio", "Mezcla de mariscos", "Vino blanco", "Caldo de pescado", "Cebolla", "Ajo", "Queso parmesano", "Mantequilla"],
+      "tiempo_preparacion": "35 minutos",
+      "dificultad": "Alta",
+      "precio": "$10.50"
+    },
+    {
+      "id": "fettuccini_los_sartenes",
+      "nombre": "Fettuccini a Los Sartenes",
+      "descripcion_corta": "Pasta tipo cinta cocida al dente con trozos de lomo de res sellados, glaseados con vino blanco y bañados en salsa italiana con queso parmesano.",
+      "categoria": "Pastas",
+      "ingredientes": ["Fettuccini", "Lomo de res", "Vino blanco", "Salsa italiana", "Queso parmesano", "Pimienta"],
+      "tiempo_preparacion": "25 minutos",
+      "dificultad": "Media",
+      "precio": "$9.50"
+    },
+    {
+      "id": "espagueti_carbonara",
+      "nombre": "Espagueti Carbonara",
+      "descripcion_corta": "Clásico espagueti cocido al dente con una cremosa salsa de yema de huevo, tocino crujiente y queso parmesano, acompañado de pan de ajo.",
+      "categoria": "Pastas",
+      "ingredientes": ["Espagueti", "Yema de huevo", "Tocino", "Queso parmesano", "Pimienta negra", "Ajo"],
+      "tiempo_preparacion": "20 minutos",
+      "dificultad": "Media",
+      "precio": "$8.00"
+    },
+    {
+      "id": "espagueti_mariscos",
+      "nombre": "Espagueti con Mariscos",
+      "descripcion_corta": "Delicioso espagueti cocido al dente con una variedad de mariscos frescos en salsa pomodora casera.",
+      "categoria": "Pastas",
+      "ingredientes": ["Espagueti", "Mezcla de mariscos", "Salsa de tomate", "Ajo", "Cebolla", "Vino blanco", "Perejil"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Media",
+      "precio": "$11.00"
+    },
+    {
+      "id": "ceviche_peruano",
+      "nombre": "Ceviche Peruano",
+      "descripcion_corta": "Pescado fresco y camarones marinados en leche de tigre, acompañados de camote, tostado y ensalada fresca.",
+      "categoria": "Mariscos",
+      "ingredientes": ["Pescado blanco fresco", "Camarones", "Limón", "Cebolla morada", "Ají limo", "Camote", "Maíz tostado", "Lechuga"],
+      "tiempo_preparacion": "20 minutos",
+      "dificultad": "Media",
+      "precio": "$9.50"
+    },
+    {
+      "id": "langostinos_grill",
+      "nombre": "Sartén de Langostinos al Grill",
+      "descripcion_corta": "Langostinos frescos marinados en vinagreta hindú y sellados al grill, acompañados de papas doradas y vegetales asados.",
+      "categoria": "Mariscos",
+      "ingredientes": ["Langostinos", "Especias hindúes", "Aceite de oliva", "Limón", "Papas", "Verduras mixtas"],
+      "tiempo_preparacion": "25 minutos",
+      "dificultad": "Media",
+      "precio": "$12.50"
+    },
+    {
+      "id": "frutos_mar",
+      "nombre": "Sartén Frutos del Mar",
+      "descripcion_corta": "Exquisita mezcla de mariscos y verduras frescas selladas a fuego vivo, glaseadas con vino blanco y fondo de camarón, con un toque de aceite de albahaca.",
+      "categoria": "Mariscos",
+      "ingredientes": ["Mezcla de mariscos", "Verduras mixtas", "Vino blanco", "Fondo de camarón", "Aceite de albahaca", "Ajo"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Alta",
+      "precio": "$13.50"
+    },
+    {
+      "id": "camaron_los_sartenes",
+      "nombre": "Camarón a Los Sartenes",
+      "descripcion_corta": "200 gramos de camarones frescos sellados con ajo, glaseados con vino blanco y fondo de camarón, servidos con papas doradas.",
+      "categoria": "Mariscos",
+      "ingredientes": ["Camarones", "Ajo", "Vino blanco", "Fondo de camarón", "Mantequilla", "Perejil", "Papas"],
+      "tiempo_preparacion": "25 minutos",
+      "dificultad": "Media",
+      "precio": "$11.00"
+    },
+    {
+      "id": "alitas_bbq",
+      "nombre": "Sartén de Alitas BBQ",
+      "descripcion_corta": "Ocho jugosas alitas de pollo horneadas y bañadas en nuestra exclusiva salsa BBQ casera, acompañadas de papas doradas y vegetales frescos.",
+      "categoria": "Aves",
+      "ingredientes": ["Alitas de pollo", "Salsa BBQ casera", "Papas", "Verduras mixtas", "Especias"],
+      "tiempo_preparacion": "35 minutos",
+      "dificultad": "Baja",
+      "precio": "$8.50"
+    },
+    {
+      "id": "gordon_blue",
+      "nombre": "Gordon Blue",
+      "descripcion_corta": "Crujiente pechuga de pollo rellena de queso derretido y jamón, bañada en una deliciosa salsa de morrones, acompañada de papas doradas y vegetales al vapor.",
+      "categoria": "Aves",
+      "ingredientes": ["Pechuga de pollo", "Queso mozzarella", "Jamón", "Pan molido", "Huevo", "Salsa de morrones", "Papas", "Verduras"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Media",
+      "precio": "$9.50"
+    },
+    {
+      "id": "pollo_portobellos",
+      "nombre": "Sartén de Pollo en Salsa de Portobellos",
+      "descripcion_corta": "Tierna suprema de pollo sellada y bañada en una exquisita salsa cremosa de portobellos frescos, acompañada de papas doradas y vegetales al vapor.",
+      "categoria": "Aves",
+      "ingredientes": ["Suprema de pollo", "Champiñones portobello", "Crema de leche", "Vino blanco", "Ajo", "Cebolla", "Papas", "Verduras"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Media",
+      "precio": "$9.00"
+    },
+    {
+      "id": "pollo_los_sartenes",
+      "nombre": "Pollo Los Sartenes",
+      "descripcion_corta": "Jugosa pechuga de pollo sellada a la plancha con una deliciosa salsa de ajo, acompañada de papas doradas y vegetales frescos.",
+      "categoria": "Aves",
+      "ingredientes": ["Pechuga de pollo", "Ajo", "Mantequilla", "Perejil", "Papas", "Verduras mixtas"],
+      "tiempo_preparacion": "25 minutos",
+      "dificultad": "Baja",
+      "precio": "$8.00"
+    },
+    {
+      "id": "cecina_los_sartenes",
+      "nombre": "Cecina a Los Sartenes",
+      "descripcion_corta": "Delicioso lomo de cerdo al grill, acompañado de mote pillo, papas doradas y vegetales frescos de la estación.",
+      "categoria": "Cerdo",
+      "ingredientes": ["Lomo de cerdo", "Mote", "Huevo", "Cebolla", "Ajo", "Comino", "Papas", "Verduras"],
+      "tiempo_preparacion": "35 minutos",
+      "dificultad": "Media",
+      "precio": "$9.00"
+    },
+    {
+      "id": "costillas_bbq",
+      "nombre": "Sartén de Costillas BBQ",
+      "descripcion_corta": "Tiernas costillas de cerdo horneadas lentamente y bañadas en nuestra salsa BBQ casera, acompañadas de papas doradas y vegetales al vapor.",
+      "categoria": "Cerdo",
+      "ingredientes": ["Costillas de cerdo", "Salsa BBQ casera", "Especias", "Miel", "Papas", "Verduras"],
+      "tiempo_preparacion": "120 minutos",
+      "dificultad": "Media",
+      "precio": "$11.50"
+    },
+    {
+      "id": "chuleta_champinones",
+      "nombre": "Chuleta en Salsa de Champiñones",
+      "descripcion_corta": "Jugosa chuleta de cerdo al grill, cubierta con una exquisita salsa cremosa de champiñones, acompañada de papas doradas y ensalada fresca.",
+      "categoria": "Cerdo",
+      "ingredientes": ["Chuleta de cerdo", "Champiñones", "Crema de leche", "Vino blanco", "Ajo", "Cebolla", "Papas", "Ensalada"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Media",
+      "precio": "$10.00"
+    },
+    {
+      "id": "bistec_los_sartenes",
+      "nombre": "Bistec a Los Sartenes",
+      "descripcion_corta": "200 gramos de tierno lomo de res sellado con verduras, glaseado con vino tinto y un toque de achiote, acompañado de huevo poché, papas doradas y ensalada fresca.",
+      "categoria": "Res",
+      "ingredientes": ["Lomo de res", "Pimiento", "Tomate", "Cebolla", "Vino tinto", "Achiote", "Huevo", "Papas", "Ensalada"],
+      "tiempo_preparacion": "25 minutos",
+      "dificultad": "Media",
+      "precio": "$10.50"
+    },
+    {
+      "id": "lomo_pimienta",
+      "nombre": "Sartén de Lomo a la Pimienta",
+      "descripcion_corta": "200 gramos de lomo de res sellado y glaseado con whisky y vino tinto, reducido a la perfección, acompañado de papas doradas.",
+      "categoria": "Res",
+      "ingredientes": ["Lomo de res", "Whisky", "Vino tinto", "Pimienta negra", "Crema", "Mantequilla", "Papas"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Alta",
+      "precio": "$12.00"
+    },
+    {
+      "id": "filet_mignon",
+      "nombre": "Filet Mignon",
+      "descripcion_corta": "200 gramos de tierno lomo de res envuelto en tocino, sellado a la perfección y flameado al brandy, servido con una rica semi-glace, acompañado de papas doradas y vegetales al vapor.",
+      "categoria": "Res",
+      "ingredientes": ["Lomo de res", "Tocino", "Brandy", "Salsa semi-glace", "Mantequilla", "Papas", "Verduras"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Alta",
+      "precio": "$14.00"
+    },
+    {
+      "id": "sopa_pollo",
+      "nombre": "Sopa de Pollo",
+      "descripcion_corta": "Reconfortante caldo de pollo casero con pechuga de pollo desmenuzada, zanahorias, arvejas y cabello de ángel, acompañado de canguil crocante.",
+      "categoria": "Sopas",
+      "ingredientes": ["Pechuga de pollo", "Zanahoria", "Arvejas", "Cabello de ángel", "Cebolla", "Ajo", "Cilantro", "Maíz pira"],
+      "tiempo_preparacion": "45 minutos",
+      "dificultad": "Baja",
+      "precio": "$5.50"
+    },
+    {
+      "id": "crema_verduras",
+      "nombre": "Crema de Verduras",
+      "descripcion_corta": "Cremosa y reconfortante sopa de verduras de temporada, selladas a fuego vivo y glaseadas con vino blanco, servida con crotones de pan artesanales.",
+      "categoria": "Sopas",
+      "ingredientes": ["Verduras mixtas (zanahoria, apio, calabacín, espinaca)", "Cebolla", "Ajo", "Vino blanco", "Crema de leche", "Pan", "Hierbas frescas"],
+      "tiempo_preparacion": "40 minutos",
+      "dificultad": "Media",
+      "precio": "$5.00"
+    },
+    {
+      "id": "locro_papa",
+      "nombre": "Locro de Papa Clásico",
+      "descripcion_corta": "Tradicional sopa ecuatoriana preparada con tres variedades de papa (chor, cecilia y chaucha), sazonada con achiote y acompañada de aguacate, queso fresco y tostado.",
+      "categoria": "Sopas",
+      "ingredientes": ["Papa chor", "Papa cecilia", "Papa chaucha", "Achiote", "Ajo", "Cebolla", "Aguacate", "Queso fresco", "Maíz tostado"],
+      "tiempo_preparacion": "60 minutos",
+      "dificultad": "Media",
+      "precio": "$6.00"
+    },
+    {
+      "id": "crema_camaron",
+      "nombre": "Crema de Camarón",
+      "descripcion_corta": "Exquisita crema de camarón con trozos de mariscos frescos, preparada con fondo de camarón y vino blanco, servida con cebollas caramelizadas y fosforitos de plátano verde.",
+      "categoria": "Sopas",
+      "ingredientes": ["Camarones", "Vino blanco", "Fondo de camarón", "Cebolla", "Ajo", "Crema de leche", "Plátano verde", "Cilantro"],
+      "tiempo_preparacion": "45 minutos",
+      "dificultad": "Media",
+      "precio": "$7.50"
+    },
+    {
+      "id": "ensalada_los_sartenes",
+      "nombre": "Ensalada Los Sartenes",
+      "descripcion_corta": "Fresca ensalada de lechuga romana en corte rústico con tomate cherry, aderezo de queso crema, lomitos de pollo a la plancha y un toque de reducción de aceite balsámico.",
+      "categoria": "Ensaladas",
+      "ingredientes": ["Lechuga romana", "Tomate cherry", "Pechuga de pollo", "Queso crema", "Aceite balsámico", "Miel", "Nueces"],
+      "tiempo_preparacion": "20 minutos",
+      "dificultad": "Baja",
+      "precio": "$7.50"
+    },
+    {
+      "id": "ensalada_cesar",
+      "nombre": "Ensalada César",
+      "descripcion_corta": "Clásica ensalada César con hojas de lechuga romana, crujientes crotones de pan, queso parmesano rallado, aderezo César cremoso y lomitos de pollo a la planja.",
+      "categoria": "Ensaladas",
+      "ingredientes": ["Lechuga romana", "Pechuga de pollo", "Pan", "Queso parmesano", "Salsa César", "Ajo", "Anchoas", "Huevo"],
+      "tiempo_preparacion": "20 minutos",
+      "dificultad": "Baja",
+      "precio": "$8.00"
+    },
+    {
+      "id": "ensalada_campera",
+      "nombre": "Ensalada Campera",
+      "descripcion_corta": "Colorida ensalada con lechuga en corte rústico, tomate fresco, pimiento, zanahoria, huevo cocido y lomitos de atún en aceite de albahaca.",
+      "categoria": "Ensaladas",
+      "ingredientes": ["Lechuga", "Tomate", "Pimiento", "Zanahoria", "Huevo cocido", "Atún en aceite de oliva", "Aceite de albahaca", "Vinagre"],
+      "tiempo_preparacion": "15 minutos",
+      "dificultad": "Baja",
+      "precio": "$7.00"
+    },
+    {
+      "id": "tilapia_los_sartenes",
+      "nombre": "Tilapia a Los Sartenes",
+      "descripcion_corta": "Fresco filete de tilapia sellado a la perfección, glaseado con vino blanco y bañado en una exquisita salsa de aceite de albahaca, aceitunas y alcaparras, acompañado de papas doradas y vegetales al vapor.",
+      "categoria": "Pescados",
+      "ingredientes": ["Filete de tilapia", "Vino blanco", "Aceite de albahaca", "Aceitunas", "Alcaparras", "Mantequilla", "Limón", "Papas", "Verduras"],
+      "tiempo_preparacion": "25 minutos",
+      "dificultad": "Media",
+      "precio": "$10.50"
+    },
+    {
+      "id": "chuleta_pina",
+      "nombre": "Chuleta de Cerdo en Salsa de Piña",
+      "descripcion_corta": "Jugosa chuleta de cerdo ahumada al grill, cubierta con una deliciosa salsa agridulce de piña natural, servida con papas doradas y vegetales al vapor.",
+      "categoria": "Cerdo",
+      "ingredientes": ["Chuleta de cerdo", "Piña natural", "Vino blanco", "Azúcar", "Pimienta", "Papas", "Verduras"],
+      "tiempo_preparacion": "35 minutos",
+      "dificultad": "Media",
+      "precio": "$9.50"
+    },
+    {
+      "id": "camarones_fredd",
+      "nombre": "Camarones Fredd",
+      "descripcion_corta": "Exclusivos camarones envueltos en crujiente tocino, bañados en una exquisita salsa mediterránea a base de fondo de camarón, azafrán y un toque de jalapeño, acompañados de papas doradas y vegetales al vapor.",
+      "categoria": "Mariscos",
+      "ingredientes": ["Camarones grandes", "Tocino", "Fondo de camarón", "Azafrán", "Jalapeño", "Ajo", "Mantequilla", "Papas", "Verduras"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Alta",
+      "precio": "$12.50"
+    },
+    {
+      "id": "pollo_andaluz",
+      "nombre": "Pollo Andaluz",
+      "descripcion_corta": "Suculenta pechuga de pollo al grill bañada en una deliciosa salsa cremosa de morrones asados, acompañada de pimientos asados, papas doradas y vegetales al vapor.",
+      "categoria": "Aves",
+      "ingredientes": ["Pechuga de pollo", "Pimientos morrones", "Queso parmesano", "Crema de leche", "Ajo", "Perejil", "Papas", "Verduras"],
+      "tiempo_preparacion": "30 minutos",
+      "dificultad": "Media",
+      "precio": "$9.50"
+    },
+    {
+      "id": "camarones_ajillo",
+      "nombre": "Camarones al Ajillo",
+      "descripcion_corta": "Deliciosos camarones frescos sellados en ajo y mantequilla, glaseados con vino blanco y terminados con perejil fresco, servidos con papas doradas y vegetales al vapor.",
+      "categoria": "Mariscos",
+      "ingredientes": ["Camarones", "Ajo", "Mantequilla", "Vino blanco", "Perejil", "Limón", "Papas", "Verduras"],
+      "tiempo_preparacion": "20 minutos",
+      "dificultad": "Media",
+      "precio": "$11.00"
+    },
+    {
+      "id": "picadillo",
+      "nombre": "Picadillo",
+      "descripcion_corta": "Exquisita mezcla de cuatro carnes seleccionadas en una salsa especial de la casa con vino blanco, escabeche y ajo, acompañada de papas doradas y vegetales al vapor.",
+      "categoria": "Especialidades",
+      "ingredientes": ["Carne de res", "Cerdo", "Pollo", "Chorizo", "Vino blanco", "Vinagre", "Ajo", "Cebolla", "Pimientos", "Papas", "Verduras"],
+      "tiempo_preparacion": "50 minutos",
+      "dificultad": "Alta",
+      "precio": "$12.00"
+    },
+    {
+      "id": "salmon",
+      "nombre": "Salmón a la Parrilla",
+      "descripcion_corta": "Fresco filete de salmón glaseado con whisky y cubierto con una exquisita salsa de frambuesas frescas, acompañado de deditos de plátano maduro y vegetales grillados.",
+      "categoria": "Pescados",
+      "ingredientes": ["Filete de salmón", "Whisky", "Frambuesas frescas", "Miel", "Plátano maduro", "Mantequilla", "Verduras grilladas"],
+      "tiempo_preparacion": "25 minutos",
+      "dificultad": "Media",
+      "precio": "$13.50"
+    }
+  ]
+}

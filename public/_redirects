@@ -1,0 +1,16 @@
+# Redirecciones para SPA
+/*    /index.html   200
+
+# API
+/api/*    /api/:splat    200
+
+# Admin
+/admin/*  /admin/:splat  200
+/admin    /admin/index.html  200
+
+# Redirecciones para los platos
+/menu/platos/*  /menu/platos/:splat.html  200
+
+# Manejo de errores
+/404     /404.html   404
+/*       /index.html   200

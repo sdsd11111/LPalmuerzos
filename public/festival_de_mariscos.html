@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disfruta del mejor festival de mariscos en Loja. Ceviches, cazuelas y más preparados con los mariscos más frescos. ¡Una experiencia marina inolvidable!">
+    <meta name="keywords" content="mariscos Loja, ceviche, cazuela de mariscos, comida marina, restaurante de mariscos, pescados, mariscos frescos">
+    <meta name="author" content="Los Sartenes">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Festival de Mariscos en Loja | Los Sartenes">
+    <meta property="og:description" content="Descubre nuestra selección de platos de mariscos preparados con los ingredientes más frescos. Una experiencia culinaria única en Loja.">
+    <meta property="og:image" content="/images/mariscos/mariscos-hero.jpg">
+    <meta property="og:url" content="https://lossartenes.com/festival_de_mariscos.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Festival de Mariscos en Loja | Los Sartenes">
+    <meta name="twitter:description" content="Descubre nuestra selección de platos de mariscos preparados con los ingredientes más frescos. Una experiencia culinaria única en Loja.">
+    <meta name="twitter:image" content="/images/mariscos/mariscos-hero.jpg">
+    <title>Festival de Mariscos en Loja | Dónde Comer el Mejor Marisco | Los Sartenes</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/favicon.ico">
+    
+    <!-- CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    
+    <style>
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .dish-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .dish-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .seafood-icon {
+            color: #1A531A;
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white flex flex-col min-h-screen" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] md:min-h-[90vh] flex items-center justify-center bg-cover bg-center bg-fixed" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/mariscos/mariscos-hero.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="container mx-auto px-4 text-center relative z-10 py-24 md:py-32">
+            <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Festival de Mariscos en Loja
+            </h1>
+            <div class="w-24 h-1 bg-[#FF8C00] mx-auto my-6"></div>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                Sabores del mar que te transportarán a la costa
+            </p>
+            <div class="mt-8">
+                <a href="#nuestros-platos" class="inline-block bg-[#FF8C00] hover:bg-[#E67E00] text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                    Ver Menú Completo
+                </a>
+            </div>
+        </div>
+        
+        <!-- Flecha de desplazamiento -->
+        <a href="#nuestros-platos" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white hover:text-[#FF8C00] transition-colors">
+            <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
+        </a>
+    </section>
+
+    <!-- Sección de Introducción -->
+    <section class="py-16 md:py-20 bg-[#f9f8f6] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDAsMCwuMDIpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+')]"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-6">
+                    Una Experiencia Marina Inolvidable en el Corazón de Loja
+                </h2>
+                <div class="w-24 h-1 bg-[#FF8C00] mx-auto mb-8"></div>
+                <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                    En Los Sartenes, llevamos los sabores del mar directamente a tu mesa. Nuestro Festival de Mariscos es una celebración de los frutos del mar más frescos, preparados con pasión y las recetas tradicionales que han hecho de nuestro restaurante un referente en Loja. Cada bocado es un viaje de sabores que te transportará a la costa.
+                </p>
+                <div class="rounded-xl overflow-hidden shadow-xl max-w-4xl mx-auto">
+                    <img src="/images/mariscos/experiencia-marina.jpg" alt="Experiencia marina en Los Sartenes" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Platos Principales -->
+    <section id="nuestros-platos" class="py-16 md:py-20 bg-white relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-4">Nuestra Selección de Mariscos</h2>
+                <div class="w-24 h-1 bg-[#FF8C00] mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Descubre nuestra cuidadosa selección de platos de mariscos, preparados con los ingredientes más frescos y las recetas tradicionales que resaltan los sabores del mar.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Plato 1 -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 observe-me">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="/images/mariscos/sopa-mariscos.jpg" alt="Sopa de Mariscos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h4 class="font-bold text-xl md:text-2xl mb-1">Sopa de Mariscos</h4>
+                            <p class="text-[#FF8C00] font-bold text-lg">$9.00</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-fish text-[#2E8B57] text-xl mr-2"></i>
+                            <span class="text-sm font-medium text-gray-500">Especialidad del Chef</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Una exquisita sopa cargada con una variedad de mariscos frescos, cocinados a la perfección en un caldo aromático que realza su sabor natural.</p>
+                        <button class="w-full bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+                            Ordenar Ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Plato 2 -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 observe-me" style="animation-delay: 0.1s">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="/images/mariscos/cazuela-mariscos.jpg" alt="Cazuela de Mariscos" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h4 class="font-bold text-xl md:text-2xl mb-1">Cazuela de Mariscos</h4>
+                            <p class="text-[#FF8C00] font-bold text-lg">$10.00</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-shrimp text-[#2E8B57] text-xl mr-2"></i>
+                            <span class="text-sm font-medium text-gray-500">Más Pedido</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Una deliciosa mezcla de mariscos en una cremosa y sabrosa cazuela, preparada con leche de coco y especias que resaltan su sabor único.</p>
+                        <button class="w-full bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+                            Ordenar Ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Plato 3 -->
+                <div class="dish-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 observe-me" style="animation-delay: 0.2s">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="/images/mariscos/arroz-camaron.jpg" alt="Arroz con Camarón" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-4 text-white">
+                            <h4 class="font-bold text-xl md:text-2xl mb-1">Arroz con Camarón</h4>
+                            <p class="text-[#FF8C00] font-bold text-lg">$9.00</p>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-utensils text-[#2E8B57] text-xl mr-2"></i>
+                            <span class="text-sm font-medium text-gray-500">Recomendación</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Arroz perfumado con camarones frescos, vegetales salteados y un toque de especias que lo convierten en un plato irresistible.</p>
+                        <button class="w-full bg-[#2E8B57] hover:bg-[#1E6B47] text-white font-medium py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+                            Ordenar Ahora
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Entrantes -->
+            <div class="bg-[#f5f9f5] rounded-2xl p-8 md:p-12 mb-16 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#FF8C00]/10 rounded-bl-full"></div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl md:text-3xl font-playfair font-bold text-[#2E8B57] mb-6 text-center">Para Compartir</h3>
+                    <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">Disfruta de nuestros deliciosos entrantes, perfectos para compartir o como inicio de una gran comida.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Entrante 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex items-start">
+                            <div class="bg-[#FF8C00]/10 p-3 rounded-lg mr-4">
+                                <i class="fas fa-drumstick-bite text-[#FF8C00] text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800 mb-2">Alitas BBQ</h4>
+                                <p class="text-gray-600 mb-3">Crujientes alitas bañadas en nuestra exclusiva salsa BBQ casera, acompañadas de apio y aderezo ranch.</p>
+                                <p class="text-[#2E8B57] font-bold text-lg">$6.00</p>
+                            </div>
+                        </div>
+
+                        <!-- Entrante 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex items-start">
+                            <div class="bg-[#FF8C00]/10 p-3 rounded-lg mr-4">
+                                <i class="fas fa-utensils text-[#FF8C00] text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800 mb-2">Papas con Chorizo</h4>
+                                <p class="text-gray-600 mb-3">Crujientes papas fritas acompañadas de trozos de chorizo español, bañadas en queso derretido y especias.</p>
+                                <p class="text-[#2E8B57] font-bold text-lg">$6.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Imágenes -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-4">Galería de Nuestros Platos</h2>
+                <div class="w-24 h-1 bg-[#FF8C00] mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Descubre la presentación de nuestros exquisitos platos, donde la frescura y la pasión por la cocina se unen para ofrecerte una experiencia gastronómica inolvidable.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                    <img src="/images/mariscos/ceviche-mixto.jpg" alt="Ceviche Mixto" class="w-full h-80 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div class="text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-xl font-bold">Ceviche Mixto</h4>
+                            <p class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Una explosión de sabores frescos del mar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                    <img src="/images/mariscos/langostinos.jpg" alt="Langostinos a la Parrilla" class="w-full h-80 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div class="text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-xl font-bold">Langostinos a la Parrilla</h4>
+                            <p class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Cocidos al punto perfecto con hierbas aromáticas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-xl shadow-lg">
+                    <img src="/images/mariscos/orgia-mariscos.jpg" alt="Mariscada Especial" class="w-full h-80 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div class="text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h4 class="text-xl font-bold">Mariscada Especial</h4>
+                            <p class="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">Una selección de los mejores frutos del mar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamado a la Acción -->
+    <section class="py-16 md:py-20 bg-gradient-to-r from-[#1A531A] to-[#2E8B57] text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwuMSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=')]"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold mb-6">¿Listo para una Experiencia Marina Inolvidable?</h2>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Visítanos y descubre por qué somos el destino favorito de los amantes de los mariscos en Loja.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/reservas.html" class="inline-flex items-center justify-center bg-[#FF8C00] hover:bg-[#E67E00] text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                        <i class="far fa-calendar-alt mr-2"></i> Reservar Mesa
+                    </a>
+                    <a href="tel:+593987654321" class="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-[#2E8B57] font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
+                        <i class="fas fa-phone-alt mr-2"></i> Llamar Ahora
+                    </a>
+                </div>
+                <p class="mt-6 text-gray-200 text-sm">
+                    <i class="fas fa-clock mr-1"></i> Abierto de Martes a Domingo: 11:00 AM - 10:00 PM
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+
+    <!-- Script para animaciones -->
+    <script>
+        // Animación de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animación de aparición de elementos al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos con la clase 'observe-me'
+        document.querySelectorAll('.observe-me').forEach(el => {
+            el.classList.add('opacity-0', 'transform', 'translate-y-8', 'transition-all', 'duration-500', 'ease-out');
+            observer.observe(el);
+        });
+
+        // Agregar clase cuando el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>

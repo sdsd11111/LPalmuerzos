@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialidades de la Casa | Platos Únicos en Restaurante Loja</title>
+    <meta name="description" content="Descubre el Salmón Glaseado y el Picadillo de Los Sartenes. Platos exclusivos que definen el sabor auténtico y único en Loja.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Open Sans', sans-serif; }
+        .menu-item { transition: all 0.3s ease; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+    <link rel="stylesheet" href="../css/header-fix.css">
+</head>
+<body class="bg-white menu-page">
+    <!-- Header Component -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Contenido principal -->
+    <main class="hero-section">
+        <div class="container mx-auto px-4 py-8">
+        
+        <nav class="py-4">
+            <ul class="space-y-1">
+                <li><a href="/" class="block px-6 py-3 hover:bg-green-700 hover:text-orange-300 transition-colors">Inicio</a></li>
+                
+                <!-- Menú desplegable -->
+                <li class="relative">
+                    <button id="menuDropdownBtn" class="w-full text-left px-6 py-3 flex justify-between items-center hover:bg-green-700 hover:text-orange-300 transition-colors">
+                        <span>Menú</span>
+                        <i class="fas fa-chevron-down text-xs transition-transform duration-200"></i>
+                    </button>
+                    <ul id="menuDropdown" class="hidden bg-green-900">
+                        <li><a href="especialidades.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Especialidades de la Casa</a></li>
+                        <li><a href="pescados-mariscos.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Pescados y Mariscos</a></li>
+                        <li><a href="pastas.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Pastas</a></li>
+                        <li><a href="carnes.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Res, Cerdo y Aves</a></li>
+                        <li><a href="vegetariano.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Opciones Vegetarianas</a></li>
+                        <li><a href="parrilladas.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Festival y Parrilladas</a></li>
+                        <li><a href="ensaladas-sopas.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Ensaladas y Sopas</a></li>
+                        <li><a href="postres.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Postres e Infantil</a></li>
+                        <li><a href="bebidas.html" class="block px-10 py-2 hover:bg-green-700 hover:text-orange-300 transition-colors">Bebidas y Cocteles</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#" class="block px-6 py-3 hover:bg-green-700 hover:text-orange-300 transition-colors">Galería</a></li>
+                <li><a href="#" class="block px-6 py-3 hover:bg-green-700 hover:text-orange-300 transition-colors">Sobre Nosotros</a></li>
+                <li><a href="#" class="block px-6 py-3 hover:bg-green-700 hover:text-orange-300 transition-colors">Contacto</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <script>
+        // Script para el menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const menuDropdownBtn = document.getElementById('menuDropdownBtn');
+            const menuDropdown = document.getElementById('menuDropdown');
+            
+            // Abrir menú
+            menuToggle.addEventListener('click', function() {
+                sidebar.classList.remove('-translate-x-full');
+                sidebarOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Cerrar menú
+            function closeSidebar() {
+                sidebar.classList.add('-translate-x-full');
+                sidebarOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+            
+            closeMenu.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+            
+            // Toggle submenú
+            menuDropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const icon = this.querySelector('i');
+                menuDropdown.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+                
+                // Cerrar otros menús desplegables si están abiertos
+                document.querySelectorAll('.menu-dropdown').forEach(dropdown => {
+                    if (dropdown !== menuDropdown && !dropdown.classList.contains('hidden')) {
+                        dropdown.classList.add('hidden');
+                        const otherIcon = dropdown.previousElementSibling.querySelector('i');
+                        if (otherIcon) otherIcon.classList.remove('rotate-180');
+                    }
+                });
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('#sidebar a').forEach(link => {
+                link.addEventListener('click', closeSidebar);
+            });
+            
+            // Cerrar menú con tecla Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+                    closeSidebar();
+                }
+            });
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="relative h-64 md:h-96 flex items-center justify-center bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                alt="Especialidades de la Casa" 
+                class="w-full h-full object-cover opacity-70"
+                loading="eager"
+            >
+            <div class="absolute inset-0 bg-[#1A531A] opacity-70"></div>
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-playfair font-bold text-white mb-4">Especialidades de la Casa</h1>
+            <div class="h-1.5 w-24 bg-[#FF8C42] mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- Menu Items Grid -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Category Description -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <p class="text-gray-600 text-lg">Nuestra selección de Especialidades de la Casa representa la cúspide de la experiencia Los Sartenes. Estos son los platos diseñados por nuestros chefs para sorprenderte y son presentados en nuestras vajillas de barro tradicionales. Aquí te garantizamos la consistencia y el sabor que nos hacen únicos.</p>
+            </div>
+            
+            <!-- Menu Items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" 
+                            alt="Salmón Glaseado" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $18.00
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Salmón Glaseado</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.8
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Glaseado al whisky en salsa de frambuesas acompañado de deditos de plátano y vegetales frescos de la estación.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo 1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1071&q=80" 
+                            alt="Picadillo" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $18.99
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Picadillo</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.7
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Cuatro deliciosos géneros de carne en una exquisita salsa de la casa al puro estilo Los Sartenes con papa y vegetales.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1601050691231-dfc3d1f3f120?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                            alt="Camarones al Ajillo" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Camarones al Ajillo</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.7
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Camarones salteados al fuego vivo con una base de salsa de ajillo acompañado con papas y vegetales.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                            alt="Pollo Andaluz" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Pollo Andaluz</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.6
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pechuga de pollo en salsa andaluz y pimientos asados acompañados con papas y vegetales.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 5 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1071&q=80" 
+                            alt="Camarones Fredd" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $12.00
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Camarones Fredd</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.8
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Deliciosos camarones envueltos con tocino en una exquisita salsa mediterránea.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 6 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                            alt="Chuleta de Cerdo en Salsa de Piña" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Chuleta de Cerdo en Salsa de Piña</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.5
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Chuleta ahumada sellada al Grill con salsa de piña acompañada de papas y vegetales.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 7 -->
+                <div class="menu-item bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="relative h-48 bg-gray-100">
+                        <img 
+                            src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" 
+                            alt="Tilapia a Los Sartenes" 
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        >
+                        <div class="absolute top-4 right-4 bg-[#FF8C42] text-white font-bold py-1 px-3 rounded-full text-sm">
+                            $10.75
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-[#1A531A] mb-2">Tilapia a Los Sartenes</h3>
+                            <span class="text-gray-400 text-sm">
+                                <i class="fas fa-star text-yellow-400"></i> 4.7
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pieza de pescado sellado en aceite de albahaca y aceitunas acompañado de papas y vegetales.</p>
+                        <button class="w-full bg-[#1A531A] hover:bg-[#134113] text-white py-2 px-4 rounded-lg transition-colors">
+                            Agregar al Pedido
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Button Fixed -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/59372587432?text=¡Hola%20Los%20Sartenes!%20Me%20gustaría%20reservar%20o%20preguntar%20por%20las%20Especialidades%20de%20la%20Casa" 
+           target="_blank" 
+           class="bg-[#FF8C42] hover:bg-[#E67E37] text-white font-bold py-4 px-6 rounded-full shadow-lg flex items-center transition-all transform hover:scale-105">
+            <i class="fab fa-whatsapp text-2xl mr-2"></i>
+            <span>¡Llámanos para Ordenar o Reservar tu Mesa!</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-[#1A531A] text-white w-full border-t-4 border-[#FF8C42]">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center md:text-left">
+                    <div class="flex flex-col items-center md:items-start mb-4">
+                        <img src="https://via.placeholder.com/60" alt="Logo Los Sartenes" class="h-15 w-15 mb-3">
+                        <h2 class="text-2xl font-bold">LOS SARTENES</h2>
+                    </div>
+                    <p class="text-gray-200">Tradición Lojana y el sabor de la fusión Latinoamericana.</p>
+                </div>
+
+                <!-- Columna 2: Contacto -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-[#FF8C42] text-xl font-bold mb-6 uppercase tracking-wider">Contacto</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start max-w-xs mx-auto md:mx-0">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-[#FF8C42]"></i>
+                            <span>XRX2+WWM, Loja, Ecuador (Centro)</span>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-start">
+                            <i class="fas fa-phone-alt mr-3 text-[#FF8C42]"></i>
+                            <a href="tel:+59372587432" class="hover:text-[#FF8C42] transition-colors">+593 7-258-7432</a>
+                        </div>
+                        <div class="mt-6">
+                            <h4 class="font-semibold mb-3 text-lg">Horarios de Atención:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li class="font-medium">Lunes a Sábado:</li>
+                                <li class="ml-4">11:00 AM - 4:00 PM</li>
+                                <li class="ml-4">6:00 PM - 11:00 PM</li>
+                                <li class="mt-2 font-medium">Domingos:</li>
+                                <li class="ml-4">10:00 AM - 5:00 PM</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Navegación -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-[#FF8C42] text-xl font-bold mb-6 uppercase tracking-wider">Enlaces</h3>
+                    <nav>
+                        <ul class="space-y-3">
+                            <li><a href="/" class="hover:text-[#FF8C42] transition-colors block">Inicio</a></li>
+                            <li><a href="/#nuestro-menu" class="hover:text-[#FF8C42] transition-colors block">Menú</a></li>
+                            <li><a href="/#quienes-somos" class="hover:text-[#FF8C42] transition-colors block">Sobre Nosotros</a></li>
+                            <li><a href="/#contacto" class="hover:text-[#FF8C42] transition-colors block">Contacto</a></li>
+                        </ul>
+                    </nav>
+                    
+                    <!-- Redes Sociales -->
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Síguenos</h4>
+                        <div class="flex justify-center md:justify-start space-x-4">
+                            <a href="#" class="text-white hover:text-[#FF8C42] transition-colors">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-[#FF8C42] transition-colors">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-[#FF8C42] transition-colors">
+                                <i class="fab fa-tripadvisor text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

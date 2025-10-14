@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disfruta las mejores Pastas en Loja: desde el cremoso Espagueti Carbonara hasta nuestro exquisito Risotto Marinero. Sabores italianos con la calidad de Los Sartenes.">
+    <title>Pastas y Risottos en Loja | Carbonara y Mariscos | Los Sartenes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .menu-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dish-icon {
+            background-color: #f3f4f6;
+            transition: background-color 0.3s ease;
+        }
+        .menu-card:hover .dish-icon {
+            background-color: #FF8C42;
+            color: white;
+        }
+        .wave-divider {
+            margin-top: -1px;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-divider svg {
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+        .wave-divider .shape-fill {
+            fill: #1A531A;
+        }
+        .pasta-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e5e7eb' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-white font-['Open_Sans']" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component" class="fixed top-0 left-0 right-0 z-50">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="h-screen w-full bg-cover bg-center relative" style="background-image: url('../img/menu/pastas-bg.jpg');">
+        <div class="absolute inset-0 bg-[#1A531A] opacity-70"></div>
+        <div class="h-full flex items-center justify-center relative z-10">
+            <div class="text-center text-white px-4">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-['Playfair_Display']">Pastas Italianas y Sabores de Fusión</h1>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Nuestra selección de pastas fusiona la tradición italiana con ingredientes de alta calidad. Descubre la cremosidad de nuestro Espagueti Carbonara o déjate llevar por el sabor profundo del Risotto Marinero.</p>
+                <a href="#menu" class="bg-[#FF8C42] hover:bg-[#e67e38] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">Ver Especialidades</a>
+            </div>
+        </div>
+        
+        <!-- Wave divider -->
+        <div class="wave-divider absolute bottom-0 left-0 w-full">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,86c57.52-8.15,108.87-41.9,128.38-97.05,1.56-4.48,3.04-9.01,4.42-13.57C1015.31,10.9,1010.93,3.31,1008.66,0H0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="bg-gray-50 py-12 md:py-16 relative overflow-hidden">
+        <!-- Patrón decorativo sutil -->
+        <div class="absolute inset-0 pasta-pattern opacity-5"></div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="max-w-4xl mx-auto text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#1A531A] mb-4 font-['Playfair_Display']">Nuestras Especialidades de Pasta</h2>
+                <div class="w-24 h-1 bg-[#FF8C42] mx-auto mb-6"></div>
+                <p class="text-gray-600 text-lg">Elaboradas con ingredientes frescos y recetas tradicionales que combinan lo mejor de la cocina italiana con sabores locales.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Plato 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Espagueti con Mariscos</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Espagueti cocido al dente con mariscos en salsa Pomodora.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$10.75</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-cheese"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Espagueti Carbonara</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Espagueti cocido al dente con tocino envuelto en una salsa italiana, con queso parmesano y orégano.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$9.25</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Fettuccini a Los Sartenes</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Pasta tipo cinta con trocitos de lomo de res con pimienta en salsa italiana y queso parmesano.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$9.25</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-utensil-spoon"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Risotto Marinero</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Arroz italiano aromatizado con vino blanco y mariscos.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$13.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plato 5 - Centrado -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md menu-card md:col-span-2 lg:col-span-2 max-w-2xl mx-auto">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="dish-icon w-12 h-12 rounded-full flex items-center justify-center mr-4 text-2xl text-[#1A531A]">
+                                <i class="fas fa-drumstick-bite"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#1A531A]">Espagueti di Pollo con Champiñones</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Espagueti cocido al dente con filete de pollo y hongos en una salsa bechamel y flameado al vino blanco.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-[#FF8C42]">$10.75</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección de promoción -->
+            <div class="mt-16 bg-gradient-to-r from-[#1A531A] to-[#2E7D32] rounded-xl p-8 text-white text-center max-w-4xl mx-auto relative overflow-hidden">
+                <!-- Elemento decorativo -->
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-[#FF8C42] rounded-full opacity-10"></div>
+                <div class="absolute -left-10 -top-10 w-32 h-32 bg-[#FF8C42] rounded-full opacity-10"></div>
+                
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 font-['Playfair_Display'] relative z-10">¿Listo para una experiencia culinaria italiana?</h3>
+                <p class="text-lg mb-6 relative z-10">Déjate sorprender por nuestros platos de pasta artesanales, preparados al momento con los ingredientes más frescos.</p>
+                <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20reservar%20una%20mesa%20y%20preguntar%20por%20sus%20especialidades%20de%20pasta" 
+                   class="bg-[#FF8C42] hover:bg-[#e67e38] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block relative z-10"
+                   target="_blank">
+                    <i class="fab fa-whatsapp mr-2"></i> Reserva tu mesa
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20hacer%20una%20reserva%20o%20pedido" 
+       class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg z-40 transition-all duration-300 transform hover:scale-110 flex items-center"
+       target="_blank"
+       aria-label="Hacer pedido por WhatsApp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="ml-2 font-semibold hidden md:inline">¡Reserva Ahora!</span>
+    </a>
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>document.addEventListener("DOMContentLoaded", function() { if (typeof loadComponents === "function") { loadComponents(); } });</script>
+</body>
+</html>

@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Panel de Administración - Sartenes</title>
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        /* Asegurar que el contenido no se oculte detrás de la barra de navegación */
+        .content {
+            padding-top: 4rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .content {
+                padding-top: 0;
+                margin-left: 16rem;
+            }
+        }
+        
+        /* Estilos para el menú lateral */
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+        
+        /* Estilos para las tarjetas de platos */
+        .plato-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .plato-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Asegurar que el contenido no se oculte detrás de la barra de navegación */
+        .content {
+            padding-top: 4rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .content {
+                padding-top: 0;
+                margin-left: 16rem;
+            }
+        }
+        
+        /* Estilos para el menú lateral */
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+        
+        /* Estilos para las tarjetas de platos */
+        .plato-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .plato-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Asegurar que el contenido no se oculte detrás de la barra de navegación */
+        .content {
+            padding-top: 4rem;
+        }
+        
+        @media (min-width: 1024px) {
+            .content {
+                padding-top: 0;
+                margin-left: 16rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Script de inicialización de Tailwind -->
+    <script>
+      // Evitar que Tailwind se queje en la consola
+      if (typeof window !== 'undefined') {
+        window.tailwind = { utils: { createUtilities: () => {} } };
+      }
+    </script>
+    
+    <!-- Script de configuración de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Barra de navegación móvil -->
+    <nav class="lg:hidden fixed top-0 left-0 right-0 bg-white shadow-md z-50 p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a href="/" class="text-gray-600 hover:text-gray-800">
+                <i class="fas fa-arrow-left text-xl"></i>
+            </a>
+            <div class="text-xl font-bold text-green-700">Panel de Administración</div>
+        </div>
+        <button id="menuToggle" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-green-800 text-white transition-transform duration-300 ease-in-out z-40">
+        <div class="p-4 h-full flex flex-col">
+            <div class="flex items-center justify-between mb-8 pt-4">
+                <h1 class="text-2xl font-bold">Sartenes</h1>
+            </div>
+            
+            <nav class="flex-1">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="/admin" class="flex items-center px-4 py-3 rounded-lg bg-green-900 text-white">
+                            <i class="fas fa-utensils mr-3"></i>
+                            <span>Platos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/ordenes" class="flex items-center px-4 py-3 rounded-lg text-green-200 hover:bg-green-700">
+                            <i class="fas fa-receipt mr-3"></i>
+                            <span>Órdenes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="flex items-center px-4 py-3 rounded-lg text-green-200 hover:bg-green-700">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>Volver al Sitio</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="pt-4 border-t border-green-700">
+                <button id="btnCerrarSesion" class="w-full flex items-center px-4 py-2 text-green-200 hover:bg-green-700 rounded-lg">
+                    <i class="fas fa-sign-out-alt mr-3"></i>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="min-h-screen content">
+        <div class="p-4 md:p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Gestión de Platos</h2>
+                <button id="btnNuevoPlato" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-plus mr-2"></i>
+                    <span>Nuevo Plato</span>
+                </button>
+            </div>
+            
+            <!-- Lista de platos -->
+            <div id="listaPlatos" class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="hidden md:block p-4 border-b border-gray-200">
+                    <div class="grid grid-cols-12 gap-4 font-medium text-gray-600">
+                        <div class="col-span-1">#</div>
+                        <div class="col-span-3">Imagen</div>
+                        <div class="col-span-3">Título</div>
+                        <div class="col-span-2">Precio</div>
+                        <div class="col-span-2">Estado</div>
+                        <div class="col-span-1">Acciones</div>
+                    </div>
+                </div>
+                <div id="platosContainer" class="divide-y divide-gray-200">
+                    <!-- Los platos se cargarán aquí dinámicamente -->
+                    <div class="p-4 text-center text-gray-500">Cargando platos...</div>
+                </div>
+            </div>
+            
+            <!-- Botón flotante para móviles -->
+            <div class="fixed bottom-6 right-6 md:hidden">
+                <button id="btnNuevoPlatoMobile" class="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    <i class="fas fa-plus text-xl"></i>
+                </button>
+            </div>
+        </div>
+            </div>
+            
+            <!-- Botón flotante para móviles -->
+            <div class="fixed bottom-6 right-6 md:hidden">
+                <button id="btnNuevoPlatoMobile" class="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    <i class="fas fa-plus text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal para agregar/editar plato -->
+    <div id="modalPlato" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg w-full max-w-2xl">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold" id="modalTitulo">Nuevo Plato</h2>
+                    <button id="btnCerrarModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="formPlato" class="space-y-4">
+                    <input type="hidden" id="platoId">
+                    
+                    <div>
+                        <label for="titulo" class="block text-sm font-medium text-gray-700">Título</label>
+                        <input type="text" id="titulo" name="titulo" required 
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+                    </div>
+                    
+                    <div>
+                        <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" rows="3"
+                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="valor" class="block text-sm font-medium text-gray-700">Precio ($)</label>
+                        <input type="number" id="valor" name="valor" step="0.01" min="0" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+                    </div>
+                    
+                    <div>
+                        <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen</label>
+                        <input type="file" id="imagen" name="imagen" accept="image/*" class="mt-1 block w-full">
+                        <p class="mt-1 text-sm text-gray-500">Sube una imagen para este plato (formato JPG, PNG)</p>
+                        <div id="vistaPreviaImagen" class="mt-2 hidden">
+                            <img id="imagenPrevia" src="#" alt="Vista previa" class="h-32 object-cover rounded">
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input id="activo" name="activo" type="checkbox" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                        <label for="activo" class="ml-2 block text-sm text-gray-700">Activo (visible en el sitio)</label>
+                    </div>
+                    
+                    <div class="flex justify-end space-x-3 pt-4">
+                        <button type="button" id="btnCancelar" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+    <script>
+        // Configuración de la API
+        const API_BASE_URL = window.location.origin + '/api';
+        
+        // Configurar fetch para incluir credenciales
+        const fetchWithAuth = async (url, options = {}) => {
+            console.log(`Iniciando solicitud a: ${url}`, { method: options.method || 'GET' });
+            
+            try {
+                const defaultHeaders = {
+                    'Accept': 'application/json',
+                };
+                
+                // No establecer Content-Type si es FormData, el navegador lo hará automáticamente con el boundary
+                if (!(options.body instanceof FormData)) {
+                    defaultHeaders['Content-Type'] = 'application/json';
+                }
+                
+                const fetchOptions = {
+                    ...options,
+                    headers: {
+                        ...defaultHeaders,
+                        ...(options.headers || {})
+                    },
+                    credentials: 'include',
+                    mode: 'cors'
+                };
+
+                console.log('Opciones de fetch:', JSON.stringify(fetchOptions, null, 2));
+                
+                const fullUrl = url.startsWith('http') ? url : `${API_BASE_URL}${url}`;
+                console.log('URL completa:', fullUrl);
+                
+                const response = await fetch(fullUrl, fetchOptions);
+                
+                console.log(`Respuesta recibida de ${url}:`, {
+                    status: response.status,
+                    statusText: response.statusText,
+                    headers: Object.fromEntries(response.headers.entries())
+                });
+                
+                // Clonar la respuesta para poder leerla dos veces si es necesario
+                const responseClone = response.clone();
+                
+                // Intentar parsear la respuesta como JSON, si falla, devolver el texto
+                let responseData;
+                const contentType = response.headers.get('content-type');
+                
+                if (contentType && contentType.includes('application/json')) {
+                    try {
+                        responseData = await response.json();
+                    } catch (jsonError) {
+                        console.warn('Error al parsear JSON, intentando como texto:', jsonError);
+                        responseData = await responseClone.text();
+                    }
+                } else {
+                    responseData = await responseClone.text();
+                }
+                
+                if (!response.ok) {
+                    console.error('Error en la respuesta:', {
+                        status: response.status,
+                        statusText: response.statusText,
+                        data: responseData
+                    });
+                    
+                    const error = new Error(responseData.message || 'Algo salió mal');
+                    error.status = response.status;
+                    error.data = responseData;
+                    throw error;
+                }
+                
+                // Devolver un objeto con métodos similares a Response pero con los datos ya leídos
+                return {
+                    ok: true,
+                    status: response.status,
+                    statusText: response.statusText,
+                    headers: response.headers,
+                    json: async () => {
+                        if (typeof responseData === 'object') {
+                            return responseData;
+                        }
+                        try {
+                            return JSON.parse(responseData);
+                        } catch (e) {
+                            throw new Error('La respuesta no es un JSON válido');
+                        }
+                    },
+                    text: async () => {
+                        if (typeof responseData === 'string') {
+                            return responseData;
+                        }
+                        return JSON.stringify(responseData);
+                    }
+                };
+            } catch (error) {
+                console.error('Error en fetchWithAuth:', error);
+                throw error;
+            }
+        };
+            
+        // Variables globales
+        let platos = [];
+        
+        // Elementos del DOM
+        const platosContainer = document.getElementById('platosContainer');
+        const modalPlato = document.getElementById('modalPlato');
+        const formPlato = document.getElementById('formPlato');
+        const btnNuevoPlato = document.getElementById('btnNuevoPlato');
+        const btnCerrarModal = document.getElementById('btnCerrarModal');
+        const btnCancelar = document.getElementById('btnCancelar');
+        const modalTitulo = document.getElementById('modalTitulo');
+        const imagenInput = document.getElementById('imagen');
+        const imagenPrevia = document.getElementById('imagenPrevia');
+        const vistaPreviaImagen = document.getElementById('vistaPreviaImagen');
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', cargarPlatos);
+        btnNuevoPlato.addEventListener('click', mostrarFormularioNuevo);
+        btnCerrarModal.addEventListener('click', cerrarModal);
+        btnCancelar.addEventListener('click', cerrarModal);
+        formPlato.addEventListener('submit', guardarPlato);
+        imagenInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagenPrevia.src = e.target.result;
+                    vistaPreviaImagen.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Funciones
+        async function cargarPlatos() {
+            const loadingElement = document.getElementById('loading');
+            try {
+                console.log('Solicitando lista de platos a:', `${API_BASE_URL}/platos`);
+                loadingElement && (loadingElement.style.display = 'block');
+                
+                const response = await fetchWithAuth(`${API_BASE_URL}/platos`);
+                
+                // Usar el método json() del objeto de respuesta personalizado
+                platos = await response.json();
+                
+                // Verificar que los platos tengan la estructura esperada
+                if (!Array.isArray(platos)) {
+                    console.warn('La respuesta no es un arreglo:', platos);
+                    platos = [];
+                }
+                
+                console.log(`Platos cargados exitosamente: ${platos.length} platos`);
+                mostrarPlatos();
+                return platos;
+                
+            } catch (error) {
+                console.error('❌ Error al cargar platos:', {
+                    message: error.message,
+                    status: error.status,
+                    data: error.data,
+                    stack: error.stack
+                });
+                
+                // Mostrar mensaje de error en la interfaz
+                const errorMessage = error.status === 401 
+                    ? 'No autorizado. Por favor, inicia sesión.' 
+                    : `Error: ${error.message || 'No se pudieron cargar los platos'}`;
+                
+                platosContainer.innerHTML = `
+                    <div class="p-4 text-center">
+                        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
+                            <p class="font-bold">Error al cargar los platos</p>
+                            <p>${errorMessage}</p>
+                            ${error.status === 401 ? '<p class="mt-2">Redirigiendo a la página de inicio de sesión...</p>' : ''}
+                        </div>
+                    </div>
+                `;
+                
+                // Si no está autorizado, redirigir al login después de 2 segundos
+                if (error.status === 401) {
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 2000);
+                }
+                
+                // Retornar un arreglo vacío para evitar errores
+                platos = [];
+                return [];
+            }
+        }
+        
+        function mostrarPlatos() {
+            if (!platos || platos.length === 0) {
+                platosContainer.innerHTML = `
+                    <div class="p-4 text-center">
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-yellow-700">
+                                        No hay platos registrados. Haz clic en "Nuevo Plato" para agregar uno.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            platosContainer.innerHTML = '';
+            
+            platos.forEach((plato, index) => {
+                const platoElement = document.createElement('div');
+                platoElement.className = 'p-4 hover:bg-gray-50 border-b border-gray-200';
+                
+                // Versión móvil
+                platoElement.innerHTML = `
+                    <!-- Versión móvil -->
+                    <div class="md:hidden mb-4">
+                        <div class="flex items-start space-x-4">
+                            <img src="${plato.imagen_url || '/images/placeholder.jpg'}" 
+                                 alt="${plato.titulo}" 
+                                 class="h-20 w-20 object-cover rounded">
+                            <div class="flex-1">
+                                <h3 class="font-medium text-gray-900">${plato.titulo}</h3>
+                                <p class="text-green-600 font-semibold">$${parseFloat(plato.valor).toFixed(2)}</p>
+                                <div class="mt-1">
+                                    <span class="px-2 py-1 text-xs rounded-full ${plato.activo ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                        ${plato.activo ? 'Activo' : 'Inactivo'}
+                                    </span>
+                                </div>
+                                <div class="mt-2 flex space-x-4 flex-wrap gap-2">
+                                    <button onclick="editarPlato(${plato.id})" class="text-blue-600 hover:text-blue-800 px-2 py-1 border border-blue-200 rounded">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                    <button onclick="toggleActivo(${plato.id}, ${!plato.activo})" class="px-2 py-1 border rounded ${plato.activo ? 'border-yellow-200 text-yellow-600 hover:bg-yellow-50' : 'border-green-200 text-green-600 hover:bg-green-50'}">
+                                        <i class="fas ${plato.activo ? 'fa-eye-slash' : 'fa-eye'}"></i> ${plato.activo ? 'Desactivar' : 'Activar'}
+                                    </button>
+                                    <button onclick="eliminarPlato(${plato.id})" class="text-red-600 hover:text-red-800 px-2 py-1 border border-red-200 rounded hover:bg-red-50">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Versión escritorio -->
+                    <div class="hidden md:grid grid-cols-12 gap-4 items-center">
+                        <div class="col-span-1">${index + 1}</div>
+                        <div class="col-span-3">
+                            <img src="${plato.imagen_url || '/images/placeholder.jpg'}" 
+                                 alt="${plato.titulo}" 
+                                 class="h-16 w-16 object-cover rounded">
+                        </div>
+                        <div class="col-span-3 font-medium">${plato.titulo}</div>
+                        <div class="col-span-2">$${parseFloat(plato.valor).toFixed(2)}</div>
+                        <div class="col-span-2">
+                            <span class="px-2 py-1 text-xs rounded-full ${plato.activo ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                ${plato.activo ? 'Activo' : 'Inactivo'}
+                            </span>
+                        </div>
+                        <div class="col-span-1 flex space-x-2">
+                            <button onclick="editarPlato(${plato.id})" class="text-blue-500 hover:text-blue-700 p-1" title="Editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="toggleActivo(${plato.id}, ${!plato.activo})" class="p-1 ${plato.activo ? 'text-yellow-500 hover:text-yellow-700' : 'text-green-500 hover:text-green-700'}" title="${plato.activo ? 'Desactivar' : 'Activar'}">
+                                <i class="fas ${plato.activo ? 'fa-eye-slash' : 'fa-eye'}"></i>
+                            </button>
+                            <button onclick="eliminarPlato(${plato.id})" class="text-red-500 hover:text-red-700" title="Eliminar">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                platosContainer.appendChild(platoElement);
+            });
+        }
+        
+        function mostrarFormularioNuevo() {
+            formPlato.reset();
+            document.getElementById('platoId').value = '';
+            modalTitulo.textContent = 'Nuevo Plato';
+            vistaPreviaImagen.classList.add('hidden');
+            imagenInput.required = true;
+            modalPlato.classList.remove('hidden');
+            modalPlato.classList.add('flex');
+        }
+        
+        function cerrarModal() {
+            modalPlato.classList.add('hidden');
+            modalPlato.classList.remove('flex');
+        }
+        
+        async function guardarPlato(e) {
+            e.preventDefault();
+            
+            const platoId = document.getElementById('platoId').value;
+            const esNuevo = !platoId;
+            const submitBtn = formPlato.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            try {
+                // Mostrar indicador de carga
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Guardando...';
+                
+                // Obtener los valores del formulario
+                const titulo = document.getElementById('titulo').value.trim();
+                const descripcion = document.getElementById('descripcion').value.trim();
+                const valor = document.getElementById('valor').value;
+                const activo = document.getElementById('activo').checked;
+                const imagenInput = document.getElementById('imagen');
+                
+                // Validaciones básicas
+                if (!titulo) throw new Error('El título es requerido');
+                if (!valor) throw new Error('El precio es requerido');
+                if (isNaN(parseFloat(valor))) throw new Error('El precio debe ser un número válido');
+                
+                // Determinar si estamos subiendo una nueva imagen
+                const tieneNuevaImagen = imagenInput.files && imagenInput.files[0];
+                
+                // Si es una actualización y no hay nueva imagen, mantener la existente
+                let imagen_url = '';
+                if (!esNuevo && !tieneNuevaImagen) {
+                    const imagenActual = document.querySelector('#vistaPreviaImagen img');
+                    if (imagenActual && imagenActual.src && !imagenActual.src.startsWith('data:')) {
+                        imagen_url = imagenActual.src;
+                        console.log('Manteniendo imagen existente:', imagen_url);
+                    }
+                }
+                
+                // Crear FormData para enviar los datos
+                const formData = new FormData();
+                formData.append('titulo', titulo);
+                formData.append('descripcion', descripcion);
+                formData.append('valor', parseFloat(valor).toFixed(2));
+                formData.append('activo', activo);
+                
+                // Si hay una nueva imagen, agregarla al FormData
+                if (tieneNuevaImagen) {
+                    console.log('Subiendo nueva imagen:', imagenInput.files[0].name);
+                    formData.append('imagen', imagenInput.files[0]);
+                } else if (imagen_url) {
+                    // Si no hay nueva imagen pero hay una URL existente, enviarla
+                    formData.append('imagen_url', imagen_url);
+                }
+                
+                // Configurar la URL y el método según si es nuevo o edición
+                const url = esNuevo 
+                    ? `${API_BASE_URL}/platos` 
+                    : `${API_BASE_URL}/platos/${platoId}`;
+                
+                const method = esNuevo ? 'POST' : 'PUT';
+                
+                console.log(`Enviando ${method} a ${url}`, {
+                    titulo,
+                    descripcion,
+                    valor,
+                    activo,
+                    tieneNuevaImagen,
+                    imagen_url: imagen_url || 'Ninguna'
+                });
+                
+                // Realizar la petición
+                try {
+                    const response = await fetchWithAuth(url, {
+                        method: method,
+                        body: formData
+                        // No establecer Content-Type, el navegador lo hará con el boundary correcto
+                    });
+                    
+                    console.log('Respuesta del servidor (raw):', response);
+                    
+                    // Verificar si la respuesta es exitosa
+                    if (response.status >= 200 && response.status < 300) {
+                        // Intentar obtener el JSON de la respuesta
+                        try {
+                            const data = await response.json();
+                            console.log('Datos de respuesta:', data);
+                            
+                            // Recargar la lista de platos
+                            await cargarPlatos();
+                            
+                            // Cerrar el modal y mostrar mensaje de éxito
+                            cerrarModal();
+                            showNotification(
+                                `Plato ${esNuevo ? 'creado' : 'actualizado'} correctamente`,
+                                'success'
+                            );
+                            return;
+                        } catch (jsonError) {
+                            console.error('Error al parsear respuesta JSON:', jsonError);
+                            throw new Error('Respuesta del servidor no válida');
+                        }
+                    } else {
+                        // Manejar errores HTTP
+                        let errorMessage = 'Error en la solicitud';
+                        try {
+                            const errorData = await response.json();
+                            errorMessage = errorData.error || errorData.message || errorMessage;
+                            console.error('Error del servidor:', errorData);
+                        } catch (e) {
+                            const errorText = await response.text();
+                            console.error('Error al procesar respuesta de error:', errorText);
+                            errorMessage = errorText || errorMessage;
+                        }
+                        throw new Error(errorMessage);
+                    }
+                } catch (error) {
+                    console.error('Error en la petición:', error);
+                    throw error;
+                }
+                
+            } catch (error) {
+                console.error('Error al guardar el plato:', error);
+                showNotification(
+                    `Error al ${esNuevo ? 'crear' : 'actualizar'} el plato: ${error.message || 'Intente nuevamente'}`,
+                    'error'
+                );
+            } finally {
+                // Restaurar el botón
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        }
+        
+        // Función para mostrar notificaciones
+        function showNotification(message, type = 'info') {
+            // Eliminar notificaciones anteriores
+            const existingNotification = document.getElementById('global-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const colors = {
+                success: 'bg-green-100 border-green-500 text-green-700',
+                error: 'bg-red-100 border-red-500 text-red-700',
+                info: 'bg-blue-100 border-blue-500 text-blue-700'
+            };
+            
+            const notification = document.createElement('div');
+            notification.id = 'global-notification';
+            notification.className = `fixed top-4 right-4 border-l-4 p-4 rounded shadow-lg ${colors[type] || colors.info} z-50 max-w-sm`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        ${type === 'success' ? '<i class="fas fa-check-circle"></i>' : ''}
+                        ${type === 'error' ? '<i class="fas fa-exclamation-circle"></i>' : ''}
+                        ${type === 'info' ? '<i class="fas fa-info-circle"></i>' : ''}
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-xl">&times;</button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-ocultar después de 5 segundos
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.opacity = '0';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+        }
+        
+        async function editarPlato(id) {
+            try {
+                console.log(`Buscando plato con ID: ${id}`);
+                
+                // Buscar el plato en la lista actual
+                let plato = platos.find(p => p.id == id);
+                
+                // Si no lo encontramos, intentar cargarlo directamente de la API
+                if (!plato) {
+                    console.log(`Plato no encontrado en caché, cargando desde la API...`);
+                    const response = await fetchWithAuth(`${API_BASE_URL}/platos/${id}`);
+                    if (!response.ok) {
+                        throw new Error('No se pudo cargar el plato');
+                    }
+                    plato = await response.json();
+                    console.log('Plato cargado desde la API:', plato);
+                }
+                
+                if (!plato) {
+                    throw new Error('Plato no encontrado');
+                }
+                
+                // Actualizar el formulario
+                document.getElementById('modalTitulo').textContent = 'Editar Plato';
+                document.getElementById('platoId').value = plato.id;
+                document.getElementById('titulo').value = plato.titulo || '';
+                document.getElementById('descripcion').value = plato.descripcion || '';
+                document.getElementById('valor').value = plato.precio || '';
+                document.getElementById('activo').checked = plato.activo !== false; // Por defecto true si no está definido
+                
+                // Manejar la imagen
+                const vistaPreviaImagen = document.getElementById('vistaPreviaImagen');
+                const imagenPrevia = document.getElementById('imagenPrevia');
+                const imagenInput = document.getElementById('imagen');
+                
+                // Función para establecer la imagen de vista previa
+                const setPreviewImage = (url) => {
+                    if (url) {
+                        imagenPrevia.src = url;
+                        vistaPreviaImagen.classList.remove('hidden');
+                        // Guardar la URL de la imagen actual para referencia
+                        imagenPrevia.dataset.currentImage = url;
+                    } else {
+                        vistaPreviaImagen.classList.add('hidden');
+                        imagenPrevia.src = '#';
+                        delete imagenPrevia.dataset.currentImage;
+                    }
+                };
+                
+                // Manejar la imagen del plato
+                if (plato.imagen_url) {
+                    // Si la URL de la imagen es relativa, hacerla absoluta
+                    let imageUrl = plato.imagen_url;
+                    
+                    // Si no es una URL completa ni un data URL
+                    if (!imageUrl.startsWith('http') && !imageUrl.startsWith('data:')) {
+                        // Asegurarse de que comience con / si no lo hace
+                        if (!imageUrl.startsWith('/')) {
+                            imageUrl = '/' + imageUrl;
+                        }
+                        
+                        // Si no está en la carpeta de imágenes, asumir que está en /images/platos/
+                        if (!imageUrl.startsWith('/images/')) {
+                            const fileName = imageUrl.split('/').pop();
+                            imageUrl = `/images/platos/${fileName}`;
+                        }
+                    }
+                    
+                    console.log('Intentando cargar imagen:', imageUrl);
+                    
+                    // Verificar si la imagen existe antes de mostrarla
+                    const img = new Image();
+                    img.onload = function() {
+                        console.log('Imagen cargada correctamente:', imageUrl);
+                        setPreviewImage(imageUrl);
+                    };
+                    img.onerror = function() {
+                        console.warn('No se pudo cargar la imagen, usando placeholder:', imageUrl);
+                        // Si falla, intentar con la URL original
+                        if (imageUrl !== plato.imagen_url) {
+                            console.log('Intentando con la URL original:', plato.imagen_url);
+                            img.src = plato.imagen_url;
+                        } else {
+                            setPreviewImage('/images/placeholder.jpg');
+                        }
+                    };
+                    img.src = imageUrl;
+                } else {
+                    console.log('No hay imagen para este plato');
+                    setPreviewImage(null);
+                }
+                
+                // Limpiar el input de archivo
+                if (imagenInput) {
+                    imagenInput.value = '';
+                }
+                
+                // Mostrar el modal
+                modalPlato.classList.remove('hidden');
+                
+                // Hacer scroll al inicio del formulario
+                modalPlato.scrollTo(0, 0);
+                
+                
+            } catch (error) {
+                console.error('❌ Error al cargar el plato para editar:', error);
+                showNotification(
+                    `Error al cargar el plato: ${error.message || 'Intente nuevamente'}`,
+                    'error'
+                );
+            }
+        }
+        
+        // Función para eliminar un plato
+        async function eliminarPlato(id) {
+            if (!id) {
+                console.error('ID de plato no proporcionado para eliminar');
+                showNotification('Error: ID de plato no proporcionado', 'error');
+                return;
+            }
+            
+            // Confirmar antes de eliminar
+            const confirmar = confirm('¿Estás seguro de que deseas eliminar este plato? Esta acción no se puede deshacer.');
+            if (!confirmar) return;
+            
+            const botonEliminar = document.querySelector(`button[onclick="eliminarPlato('${id}')"]`);
+            const textoOriginal = botonEliminar ? botonEliminar.innerHTML : '';
+            
+            try {
+                // Mostrar indicador de carga
+                if (botonEliminar) {
+                    botonEliminar.disabled = true;
+                    botonEliminar.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Eliminando...';
+                }
+                
+                console.log(`Eliminando plato con ID: ${id}`);
+                const response = await fetchWithAuth(`${API_BASE_URL}/platos/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.error || 'Error al eliminar el plato');
+                }
+                
+                // Recargar la lista de platos después de eliminar
+                await cargarPlatos();
+                showNotification('Plato eliminado correctamente', 'success');
+                
+            } catch (error) {
+                console.error('Error al eliminar el plato:', error);
+                showNotification(
+                    `Error al eliminar el plato: ${error.message || 'Intente nuevamente'}`,
+                    'error'
+                );
+            } finally {
+                // Restaurar el botón
+                if (botonEliminar) {
+                    botonEliminar.disabled = false;
+                    botonEliminar.innerHTML = textoOriginal;
+                }
+            }
+        }
+        
+        // Función para actualizar la interfaz de un plato sin recargar toda la página
+        function actualizarFilaPlato(plato) {
+            // Función auxiliar para actualizar un contenedor específico
+            function actualizarContenedor(selectorContenedor, esMobile) {
+                const contenedor = document.querySelector(selectorContenedor);
+                if (!contenedor) return;
+
+                // Actualizar estado activo
+                const statusSpans = contenedor.querySelectorAll('span');
+                statusSpans.forEach(span => {
+                    if (span.textContent.trim() === 'Activo' || span.textContent.trim() === 'Inactivo') {
+                        span.className = `px-2 py-1 text-xs rounded-full ${plato.activo ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`;
+                        span.textContent = plato.activo ? 'Activo' : 'Inactivo';
+                    }
+                });
+                
+                // Actualizar botón de activar/desactivar
+                const toggleButtons = contenedor.querySelectorAll('button');
+                toggleButtons.forEach(button => {
+                    if (button.innerHTML.includes('fa-eye') || button.innerHTML.includes('fa-eye-slash')) {
+                        if (esMobile) {
+                            button.className = `px-2 py-1 border rounded ${plato.activo ? 'border-yellow-200 text-yellow-600 hover:bg-yellow-50' : 'border-green-200 text-green-600 hover:bg-green-50'}`;
+                            button.innerHTML = `<i class="fas ${plato.activo ? 'fa-eye-slash' : 'fa-eye'}"></i> ${plato.activo ? 'Desactivar' : 'Activar'}`;
+                        } else {
+                            button.className = `p-1 ${plato.activo ? 'text-yellow-500 hover:text-yellow-700' : 'text-green-500 hover:text-green-700'}`;
+                            button.innerHTML = `<i class="fas ${plato.activo ? 'fa-eye-slash' : 'fa-eye'}"></i>`;
+                            button.title = plato.activo ? 'Desactivar' : 'Activar';
+                            
+                            // Actualizar tooltip
+                            if (bootstrap.Tooltip.getInstance(button)) {
+                                bootstrap.Tooltip.getInstance(button).dispose();
+                            }
+                            new bootstrap.Tooltip(button);
+                        }
+                        button.onclick = () => toggleActivo(plato.id, !plato.activo);
+                    }
+                });
+            }
+
+            // Actualizar versión móvil
+            actualizarContenedor(`.md\\:hidden button[onclick*="toggleActivo(${plato.id},"]`);
+            
+            // Actualizar versión de escritorio
+            actualizarContenedor(`.hidden\\:grid button[onclick*="toggleActivo(${plato.id},"]`);
+        }
+        
+        // Función para activar/desactivar un plato
+        async function toggleActivo(id, activo) {
+            try {
+                // Mostrar indicador de carga
+                const buttons = document.querySelectorAll(`button[onclick*="toggleActivo(${id},"]`);
+                buttons.forEach(button => {
+                    button.disabled = true;
+                    const icon = button.querySelector('i');
+                    if (icon) {
+                        icon.className = 'fas fa-spinner fa-spin';
+                    }
+                });
+                
+                // Realizar la petición sin confirmación previa
+                const response = await fetchWithAuth(`${API_BASE_URL}/platos/${id}`, {
+                    method: 'PUT',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ activo })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || `Error ${response.status}: ${response.statusText}`);
+                }
+                
+                const updatedPlato = await response.json();
+                
+                // Actualizar el objeto local
+                const platoIndex = platos.findIndex(p => p.id == id);
+                if (platoIndex !== -1) {
+                    platos[platoIndex] = { ...platos[platoIndex], ...updatedPlato };
+                }
+                
+                // Actualizar la interfaz
+                actualizarFilaPlato(updatedPlato);
+                
+                // Mostrar notificación de éxito
+                showNotification(
+                    `Plato ${updatedPlato.activo ? 'activado' : 'desactivado'} correctamente`, 
+                    'success'
+                );
+                
+            } catch (error) {
+                console.error('Error al actualizar el estado del plato:', error);
+                
+                // Mostrar notificación de error
+                showNotification(
+                    `Error al ${activo ? 'activar' : 'desactivar'} el plato: ${error.message}`,
+                    'error'
+                );
+                
+                // Restaurar botones en caso de error
+                const buttons = document.querySelectorAll(`button[onclick*="toggleActivo(${id},"]`);
+                buttons.forEach(button => {
+                    button.disabled = false;
+                    const icon = button.querySelector('i');
+                    if (icon) {
+                        icon.className = `fas ${activo ? 'fa-eye' : 'fa-eye-slash'}`;
+                    }
+                });
+            }
+        }
+        
+        // Hacer las funciones accesibles globalmente
+        window.editarPlato = editarPlato;
+        window.eliminarPlato = eliminarPlato;
+        window.toggleActivo = toggleActivo;
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle del menú móvil
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden hidden';
+            document.body.appendChild(overlay);
+            
+            // Botón flotante para móviles
+            const btnNuevoPlatoMobile = document.getElementById('btnNuevoPlatoMobile');
+            const btnNuevoPlato = document.getElementById('btnNuevoPlato');
+            
+            if (menuToggle && sidebar) {
+                menuToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('-translate-x-full');
+                    overlay.classList.toggle('hidden');
+                    document.body.classList.toggle('overflow-hidden');
+                });
+                
+                overlay.addEventListener('click', function() {
+                    sidebar.classList.add('-translate-x-full');
+                    overlay.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                });
+                
+                // Cerrar menú al hacer clic en un enlace en móviles
+                const navLinks = document.querySelectorAll('aside a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth < 1024) {
+                            sidebar.classList.add('-translate-x-full');
+                            overlay.classList.add('hidden');
+                            document.body.classList.remove('overflow-hidden');
+                        }
+                    });
+                });
+                
+                // Manejar clic en el botón flotante de móviles
+                if (btnNuevoPlatoMobile) {
+                    btnNuevoPlatoMobile.addEventListener('click', function() {
+                        mostrarFormularioNuevo();
+                    });
+                }
+            }
+            
+            // Cargar los platos al iniciar
+            cargarPlatos();
+            
+            // Event listeners
+            if (document.getElementById('btnNuevoPlato')) {
+                document.getElementById('btnNuevoPlato').addEventListener('click', mostrarFormularioNuevo);
+            }
+            
+            if (document.getElementById('btnCerrarModal')) {
+                document.getElementById('btnCerrarModal').addEventListener('click', cerrarModal);
+            }
+            
+            if (document.getElementById('formPlato')) {
+                document.getElementById('formPlato').addEventListener('submit', guardarPlato);
+            }
+            
+            // Cerrar sesión
+            const btnCerrarSesion = document.getElementById('btnCerrarSesion');
+            if (btnCerrarSesion) {
+                btnCerrarSesion.addEventListener('click', function() {
+                    // Aquí iría la lógica para cerrar sesión
+                    window.location.href = '/logout';
+                });
+            }
+        });
+    </script>
+    <!-- Overlay para móviles (se agrega dinámicamente) -->
+</body>
+</html>

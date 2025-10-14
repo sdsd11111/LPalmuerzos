@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disfruta de nuestra selección de bebidas y cócteles en Los Sartenes. Refrescantes jugos naturales, cervezas heladas y exquisitos cócteles para acompañar tu comida.">
+    <title>Bebidas y Cócteles | Los Sartenes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 80px;
+        }
+        
+        .wave-divider .shape-fill {
+            fill: #F3F4F6;
+        }
+        
+        .drink-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #1A531A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .drink-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .drink-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #1A531A;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        .bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+        
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: rise 10s infinite ease-in;
+        }
+        
+        .bubble:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            left: 10%;
+            animation-duration: 8s;
+        }
+        
+        .bubble:nth-child(2) {
+            width: 20px;
+            height: 20px;
+            left: 20%;
+            animation-duration: 5s;
+            animation-delay: 1s;
+        }
+        
+        .bubble:nth-child(3) {
+            width: 50px;
+            height: 50px;
+            left: 35%;
+            animation-duration: 7s;
+            animation-delay: 2s;
+        }
+        
+        .bubble:nth-child(4) {
+            width: 30px;
+            height: 30px;
+            left: 50%;
+            animation-duration: 6s;
+            animation-delay: 0s;
+        }
+        
+        .bubble:nth-child(5) {
+            width: 25px;
+            height: 25px;
+            left: 70%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+        
+        .bubble:nth-child(6) {
+            width: 45px;
+            height: 45px;
+            left: 85%;
+            animation-duration: 7s;
+            animation-delay: 3s;
+        }
+        
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(100px);
+            }
+            100% {
+                bottom: 100%;
+                transform: translateX(-100px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component" class="fixed top-0 left-0 right-0 z-50">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen w-full bg-cover bg-center bg-fixed flex items-center" style="background-image: url('../img/menu/bebidas-bg.jpg');">
+        <!-- Overlay con gradiente para mejor legibilidad -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#1A531A]/90 to-[#1A531A]/70"></div>
+        
+        <!-- Contenido del hero -->
+        <div class="container mx-auto px-4 relative z-10 py-32">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 font-['Playfair_Display'] leading-tight">Bebidas y Cócteles</h1>
+                <div class="w-24 h-1 bg-[#FF8C42] mx-auto mb-8"></div>
+                <p class="text-xl md:text-2xl text-white mb-10 max-w-3xl mx-auto leading-relaxed">Descubre nuestra exquisita selección de bebidas artesanales, jugos naturales y cócteles exclusivos, perfectamente combinados para realzar tu experiencia gastronómica</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#menu" class="bg-[#FF8C42] hover:bg-[#E67E37] text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
+                        <i class="fas fa-wine-glass-alt mr-2"></i> Ver Nuestras Bebidas
+                    </a>
+                    <a href="#cocteles" class="bg-transparent hover:bg-white/10 text-white border-2 border-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center">
+                        <i class="fas fa-cocktail mr-2"></i> Cócteles Especiales
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Flecha de desplazamiento -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#menu" class="text-white text-3xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+        
+        <!-- Onda decorativa en la parte inferior -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-16 md:h-24">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512,56,583.67,72.05c69.27,15,138.3,24.22,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity="0.25" class="fill-current text-gray-100"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity="0.5" class="fill-current text-gray-100"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="fill-current text-gray-100"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <main id="menu" class="bg-gray-100 py-16 relative overflow-hidden">
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-serif">Nuestra Carta de Bebidas</h2>
+                <div class="w-24 h-1 bg-[#FF8C42] mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Disfruta de nuestra selección de bebidas refrescantes, jugos naturales y exquisitos cócteles preparados con los mejores ingredientes para complementar tu experiencia culinaria.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Jugo de Mora -->
+                <div class="drink-card group">
+                    <div class="p-6">
+                        <div class="drink-icon">
+                            <i class="fas fa-wine-glass-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 text-center mb-3">Jugo de Mora</h3>
+                        <p class="text-gray-600 text-center mb-4">Refrescante jugo natural de mora, preparado al momento con frutas frescas de la región. Una opción saludable y deliciosa.</p>
+                        <div class="text-center">
+                            <span class="text-[#FF8C42] font-bold text-xl">$3.50</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mojito de Maracuyá -->
+                <div class="drink-card group">
+                    <div class="p-6">
+                        <div class="drink-icon">
+                            <i class="fas fa-cocktail"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 text-center mb-3">Mojito de Maracuyá</h3>
+                        <p class="text-gray-600 text-center mb-4">Una versión tropical del clásico mojito, preparado con maracuyá fresco, hierbabuena, ron blanco y un toque de lima. Refrescante y exótico.</p>
+                        <div class="text-center">
+                            <span class="text-[#FF8C42] font-bold text-xl">$5.99</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cerveza Artesanal -->
+                <div class="drink-card group">
+                    <div class="p-6">
+                        <div class="drink-icon">
+                            <i class="fas fa-beer"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 text-center mb-3">Cerveza Artesanal</h3>
+                        <p class="text-gray-600 text-center mb-4">Selección de cervezas artesanales locales, con variedades que incluyen rubia, ámbar y negra. Pregunta por nuestras cervezas del día.</p>
+                        <div class="text-center">
+                            <span class="text-[#FF8C42] font-bold text-xl">$4.50 - $6.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Limonada de Coco -->
+                <div class="drink-card group">
+                    <div class="p-6">
+                        <div class="drink-icon">
+                            <i class="fas fa-glass-whiskey"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 text-center mb-3">Limonada de Coco</h3>
+                        <p class="text-gray-600 text-center mb-4">Una refrescante combinación de limón natural, agua de coco y un toque de leche de coco. Perfecta para los días calurosos.</p>
+                        <div class="text-center">
+                            <span class="text-[#FF8C42] font-bold text-xl">$4.25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="mt-16 bg-white rounded-lg shadow-md p-8 text-center max-w-4xl mx-auto relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#1A531A] bg-opacity-10 rounded-full"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-[#FF8C42] bg-opacity-10 rounded-full"></div>
+                
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 font-serif">¿Buscas una bebida especial?</h3>
+                <p class="text-gray-600 mb-6 max-w-2xl mx-auto">Contamos con una amplia variedad de bebidas, vinos y licores. Pregunta a nuestro personal por recomendaciones para acompañar tu comida.</p>
+                <a href="#" class="bg-[#1A531A] hover:bg-[#134113] text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">Ver Carta Completa</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/593000000000?text=Hola%20Los%20Sartenes,%20me%20gustaría%20hacer%20una%20reserva%20y%20consultar%20sobre%20sus%20bebidas%20y%20cócteles" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>document.addEventListener("DOMContentLoaded", function() { if (typeof loadComponents === "function") { loadComponents(); } });</script>
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disfruta de nuestra selección de bebidas, postres y picaditos en Los Sartenes de Loja. La combinación perfecta para acompañar tus comidas.">
+    <meta name="keywords" content="bebidas Loja, postres Loja, coctelería, picaditos, restaurante Los Sartenes, comida para compartir">
+    <meta name="author" content="Los Sartenes">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Coctelería, Postres y Picaditos en Loja | Bebidas Calientes y Frías | Los Sartenes">
+    <meta property="og:description" content="Descubre nuestra amplia selección de bebidas, postres y picaditos. El complemento perfecto para una experiencia gastronómica inolvidable.">
+    <title>Coctelería, Postres y Picaditos en Loja | Bebidas Calientes y Frías | Los Sartenes</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .menu-section {
+            scroll-margin-top: 120px;
+        }
+        .menu-item {
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 12px 0;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item:hover {
+            background-color: #f9fafb;
+            padding-left: 10px;
+        }
+        .price-tag {
+            background-color: #f59e0b;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #fef3c7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: #d97706;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+<body class="bg-white flex flex-col min-h-screen">
+    <!-- Componente Header -->
+    <div id="header-component" class="fixed top-0 left-0 right-0 z-50 w-full bg-white shadow-md">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Espaciador para el header fijo -->
+    <div class="h-16"></div>
+
+    <!-- Hero Section - Pantalla completa -->
+    <section class="relative pt-24 md:pt-32 pb-16 md:pb-24 flex items-center justify-center min-h-[70vh] bg-cover bg-center bg-fixed" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/bebidas-postres/hero.jpg');">
+        <div class="container mx-auto px-4 text-center text-white relative z-10">
+            <h1 class="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">El Complemento Perfecto</h1>
+            <p class="text-xl md:text-2xl lg:text-3xl mb-8 max-w-3xl mx-auto">Postres, Bebidas y Coctelería para acompañar tu experiencia</p>
+            <div class="mt-10">
+                <a href="#nuestro-menu" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">Ver Menú</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="nuestro-menu" class="flex-grow py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-green-800 mb-4">Nuestra Amplia Selección de Complementos y Postres en Loja</h2>
+                <div class="w-24 h-1 bg-orange-500 mx-auto my-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Disfruta de nuestra variedad de bebidas, postres y picaditos, perfectos para acompañar tus comidas o para disfrutar en cualquier momento.</p>
+            </div>
+
+            <!-- Sección de Postres -->
+            <section id="postres" class="menu-section mb-20">
+                <div class="flex items-center mb-8">
+                    <div class="category-icon">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-green-800">Postres</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">TIRAMISÚ</h4>
+                                        <p class="text-gray-600 text-sm">El clásico postre italiano con capas de bizcocho de soletilla empapado en café y crema de mascarpone.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$3.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">MOJADO DE CHOCOLATE</h4>
+                                        <p class="text-gray-600 text-sm">Delicioso bizcocho de chocolate empapado en salsa de chocolate caliente, acompañado de helado de vainilla.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$3.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">CHEESECAKE DE MARACUYÁ</h4>
+                                        <p class="text-gray-600 text-sm">Suave y cremoso cheesecake con base de galleta, coronado con una deliciosa salsa de maracuyá.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$3.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="overflow-hidden rounded-lg h-48">
+                        <img src="/images/bebidas-postres/postre-1.jpg" alt="Tiramisú" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg h-48">
+                        <img src="/images/bebidas-postres/postre-2.jpg" alt="Mojado de Chocolate" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg h-48">
+                        <img src="/images/bebidas-postres/postre-3.jpg" alt="Cheesecake de Maracuyá" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Bebidas Calientes -->
+            <section id="bebidas-calientes" class="menu-section mb-20">
+                <div class="flex items-center mb-8">
+                    <div class="category-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-green-800">Bebidas Calientes</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">CAPUCHINO</h4>
+                                    <span class="price-tag">$2.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">MOCACHINO</h4>
+                                    <span class="price-tag">$2.80</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">CAFÉ AMERICANO</h4>
+                                    <span class="price-tag">$1.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">CHOCOLATE CON QUESO</h4>
+                                    <span class="price-tag">$3.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">AROMÁTICAS</h4>
+                                    <span class="price-tag">$1.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">VINO HERVIDO (COPA)</h4>
+                                    <span class="price-tag">$4.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">VINO HERVIDO (JARRA)</h4>
+                                    <span class="price-tag">$10.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Bebidas Frías -->
+            <section id="bebidas-frias" class="menu-section mb-20">
+                <div class="flex items-center mb-8">
+                    <div class="category-icon">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-green-800">Bebidas Frías</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">LIMONADA</h4>
+                                    <span class="price-tag">$2.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">HORCHATA</h4>
+                                    <span class="price-tag">$2.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">JUGO DE TOMATE DE ÁRBOL</h4>
+                                    <span class="price-tag">$2.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">GASEOSAS PERSONALES</h4>
+                                    <span class="price-tag">$1.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">VINO</h4>
+                                    <span class="price-tag">$4.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">CERVEZA PILSENER</h4>
+                                    <span class="price-tag">$3.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">CERVEZA CLUB</h4>
+                                    <span class="price-tag">$3.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">CERVEZA CORONA</h4>
+                                    <span class="price-tag">$3.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">CERVEZA HEINEKEN</h4>
+                                    <span class="price-tag">$3.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">SANGRÍA</h4>
+                                    <span class="price-tag">$5.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">TINTO DE VERANO</h4>
+                                    <span class="price-tag">$4.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">JUGOS NATURALES</h4>
+                                    <span class="price-tag">$2.50</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="font-bold text-gray-800">BATIDOS</h4>
+                                    <span class="price-tag">$3.50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Cocteles -->
+            <section id="cocteles" class="menu-section mb-20">
+                <div class="flex items-center mb-8">
+                    <div class="category-icon">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-green-800">Cocteles</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-6">Disfruta de nuestros exquisitos cocteles preparados con los mejores licores y jugos naturales. Todos los cocteles incluyen decoración y acompañamiento.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">ALEXANDER</h4>
+                                        <p class="text-gray-600 text-sm">Una mezcla cremosa de licor de cacao marrón, crema y brandy.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$5.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">PIÑA COLADA</h4>
+                                        <p class="text-gray-600 text-sm">Ron blanco, jugo de piña y crema de coco, servido con hielo.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$5.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">MOJITO CUBANO</h4>
+                                        <p class="text-gray-600 text-sm">Ron blanco, azúcar, menta, limón y agua con gas.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$5.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">MARGARITA</h4>
+                                        <p class="text-gray-600 text-sm">Tequila, triple seco y jugo de limón, servida con sal en el borde.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$5.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">RUSO NEGRO</h4>
+                                        <p class="text-gray-600 text-sm">Vodka mezclado con licor de café, servido con hielo.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$5.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="overflow-hidden rounded-lg h-64">
+                        <img src="/images/bebidas-postres/coctel-1.jpg" alt="Cocteles variados" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="overflow-hidden rounded-lg h-64">
+                        <img src="/images/bebidas-postres/coctel-2.jpg" alt="Mojito Cubano" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Picaditas -->
+            <section id="picaditas" class="menu-section">
+                <div class="flex items-center mb-8">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-green-800">Picaditas</h3>
+                </div>
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">TABLITA DE EMBUTIDOS</h4>
+                                        <p class="text-gray-600 text-sm">Selección de embutidos finos, quesos, aceitunas y pan tostado.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$12.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">CAMARONES REVENTADOS</h4>
+                                        <p class="text-gray-600 text-sm">Camarones salteados con ajo, mantequilla y especias, servidos con pan.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$10.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">NACHOS</h4>
+                                        <p class="text-gray-600 text-sm">Tortillas de maíz horneadas con queso derretido, frijoles, guacamole, crema agria y jalapeños.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$8.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">BURRITOS DE CARNE</h4>
+                                        <p class="text-gray-600 text-sm">Tortillas de harina rellenas de carne sazonada, frijoles, arroz y vegetales.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$7.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">ALITAS BBQ</h4>
+                                        <p class="text-gray-600 text-sm">Alitas de pollo horneadas bañadas en salsa BBQ casera, acompañadas de apio y aderezo ranch.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$9.00</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-gray-800">CHORIZO MEDITERRÁNEO</h4>
+                                        <p class="text-gray-600 text-sm">Chorizo español a la parrilla con pimientos asados y pan con tomate.</p>
+                                    </div>
+                                    <span class="price-tag ml-4 whitespace-nowrap">$8.50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <div class="overflow-hidden rounded-lg h-64 w-full">
+                        <img src="/images/bebidas-postres/picada-1.jpg" alt="Tablita de embutidos" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Llamado a la acción -->
+            <div class="mt-16 bg-gradient-to-r from-green-800 to-green-700 rounded-xl p-8 text-center text-white relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-orange-500 rounded-full opacity-10"></div>
+                <div class="absolute -left-10 -top-10 w-32 h-32 bg-orange-500 rounded-full opacity-10"></div>
+                
+                <h3 class="text-2xl md:text-3xl font-bold mb-4 font-playfair relative z-10">¿Listo para disfrutar de nuestros cocteles y postres?</h3>
+                <p class="text-lg mb-6 max-w-2xl mx-auto relative z-10">Visítanos y descubre por qué tenemos la mejor selección de bebidas y postres en Loja.</p>
+                <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20hacer%20una%20reserva%20y%20consultar%20por%20sus%20cocteles%20y%20postres" 
+                   class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block relative z-10"
+                   target="_blank">
+                    <i class="fas fa-calendar-alt mr-2"></i> Reservar Ahora
+                </a>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() { 
+            if (typeof loadComponents === "function") { 
+                loadComponents(); 
+            } 
+            
+            // Smooth scroll para los enlaces del menú
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Cerrar el menú móvil si está abierto
+                        const sidebar = document.getElementById('sidebar');
+                        const overlay = document.getElementById('sidebarOverlay');
+                        if (sidebar && overlay) {
+                            sidebar.classList.remove('translate-x-0');
+                            sidebar.classList.add('-translate-x-full');
+                            overlay.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

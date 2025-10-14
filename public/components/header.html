@@ -1,0 +1,205 @@
+<!-- Header Fixed -->
+<header class="fixed top-0 left-0 right-0 z-50 w-full bg-primary shadow-md">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center h-16">
+        <!-- Logo y Nombre -->
+        <a href="/" class="flex items-center">
+            <img src="/images/Logo.png" alt="Logo Los Almuerzos" class="h-10 w-10 mr-2 rounded-full object-cover">
+            <h1 class="text-xl md:text-2xl font-bold text-white">LOS ALMUERZOS</h1>
+        </a>
+        
+        <!-- Botón Reserva Aquí -->
+        <a href="/reservas.html" class="bg-accent hover:bg-secondary text-white font-medium py-1.5 px-3 sm:py-2 sm:px-4 rounded-full transition-colors duration-300 text-xs sm:text-base flex items-center justify-center min-w-[100px]">
+            <span class="text-center">Reserva Aquí</span>
+        </a>
+    </div>
+</header>
+
+<!-- Sidebar -->
+<div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+<aside id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-primary text-white transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+    <div class="flex justify-between items-center p-4 border-b border-accent">
+        <h2 class="text-xl font-bold">Menú</h2>
+        <button id="closeMenu" class="text-white hover:text-accent focus:outline-none">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+    </div>
+    
+    <nav class="py-4">
+        <ul class="space-y-1">
+            <!-- Inicio -->
+            <li><a href="/" class="block px-6 py-3 hover:bg-accent hover:text-primary transition-colors">Inicio</a></li>
+            
+            <!-- Nosotros -->
+            <li><a href="/sobre-nosotros.html" class="block px-6 py-3 hover:bg-accent hover:text-primary transition-colors">Nosotros</a></li>
+            
+            <!-- Menú Principal -->
+            <li class="relative">
+                <button id="menuDropdownBtn" class="w-full text-left px-6 py-3 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors">
+                    <span>Menú</span>
+                    <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                </button>
+                <ul id="menuDropdown" class="hidden bg-primary">
+                    <!-- Especiales de la Casa -->
+                    <li class="relative">
+                        <button class="menu-category-btn w-full text-left px-10 py-2 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="especialidades-submenu">
+                            <span>Especiales de la Casa</span>
+                            <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <ul class="menu-subcategory hidden bg-primary">
+                            <li><a href="/menu/platos/salmon.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Salmón</a></li>
+                            <li><a href="/menu/platos/picadillo.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Picadillo</a></li>
+                            <li><a href="/menu/platos/camarones_al_ajillo.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Camarones al Ajillo</a></li>
+                            <li><a href="/menu/platos/pollo_andaluz.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Pollo Andaluz</a></li>
+                            <li><a href="/menu/platos/camarones_fredd.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Camarones FREDD</a></li>
+                            <li><a href="/menu/platos/chuleta_de_cerdo_en_salsa_de_pina.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Chuleta de Cerdo en Salsa de Piña</a></li>
+                            <li><a href="/menu/platos/tilapia_a_los_sartenes.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Tilapia a los Sartenes</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Ensaladas -->
+                    <li class="relative">
+                        <button class="menu-category-btn w-full text-left px-10 py-2 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors">
+                            <span>Ensaladas</span>
+                            <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <ul class="menu-subcategory hidden bg-primary">
+                            <li><a href="/menu/platos/ensalada_campera.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Ensalada Campera</a></li>
+                            <li><a href="/menu/platos/ensalada_cesar.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Ensalada César</a></li>
+                            <li><a href="/menu/platos/ensalada_los_sartenes.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Ensalada Los Sartenes</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Sopas -->
+                    <li class="relative">
+                        <button class="menu-category-btn w-full text-left px-10 py-2 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors">
+                            <span>Sopas</span>
+                            <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <ul class="menu-subcategory hidden bg-primary">
+                            <li><a href="/menu/platos/crema_de_camaron.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Crema de Camarón</a></li>
+                            <li><a href="/menu/platos/locro_de_papa_clasico.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Locro de Papa Clásico</a></li>
+                            <li><a href="/menu/platos/crema_de_verduras.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Crema de Verduras</a></li>
+                            <li><a href="/menu/platos/sopa_de_pollo.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Sopa de Pollo</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Res -->
+                    <li class="relative">
+                        <button class="menu-category-btn w-full text-left px-10 py-2 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors">
+                            <span>Res</span>
+                            <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <ul class="menu-subcategory hidden bg-primary">
+                            <li><a href="/menu/platos/filet_mignon.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Filet Mignon</a></li>
+                            <li><a href="/menu/platos/sarten_de_lomo_a_la_pimienta.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Sartén de Lomo a la Pimienta</a></li>
+                            <li><a href="/menu/platos/bistec_a_los_sartenes.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Bistec a los Sartenes</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Cerdo -->
+                    <li class="relative">
+                        <button class="menu-category-btn w-full text-left px-10 py-2 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors">
+                            <span>Cerdo</span>
+                            <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <ul class="menu-subcategory hidden bg-primary">
+                            <li><a href="/menu/platos/chuleta_en_salsa_de_champinones.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Chuleta en Salsa de Champiñones</a></li>
+                            <li><a href="/menu/platos/sarten_de_costillas_bbq.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Sartén de Costillas BBQ</a></li>
+                            <li><a href="/menu/platos/cecina_a_los_sartenes.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Cecina a los Sartenes</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Aves -->
+                    <li class="relative">
+                        <button class="menu-category-btn w-full text-left px-10 py-2 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors">
+                            <span>Aves</span>
+                            <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <ul class="menu-subcategory hidden bg-primary">
+                            <li><a href="/menu/platos/pollo_los_sartenes.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Pollo los Sartenes</a></li>
+                            <li><a href="/menu/platos/sarten_de_pollo_en_salsa_de_portobellos.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Sartén de Pollo en Salsa de Portobellos</a></li>
+                            <li><a href="/menu/platos/gordon_blue.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Gordon Blue</a></li>
+                            <li><a href="/menu/platos/sarten_de_alitas.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Sartén de Alitas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Pescados y Mariscos -->
+                    <li class="relative">
+                        <button class="menu-category-btn w-full text-left px-10 py-2 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors">
+                            <span>Pescados y Mariscos</span>
+                            <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <ul class="menu-subcategory hidden bg-primary">
+                            <li><a href="/menu/platos/sarten_frutos_del_mar.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Sartén Frutos del Mar</a></li>
+                            <li><a href="/menu/platos/camaron_a_los_sartenes.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Camarón a los Sartenes</a></li>
+                            <li><a href="/menu/platos/sarten_de_langostinos_al_grill.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Sartén de Langostinos al Grill</a></li>
+                            <li><a href="/menu/platos/ceviche_peruano.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Ceviche Peruano</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Pastas -->
+                    <li class="relative">
+                        <button class="menu-category-btn w-full text-left px-10 py-2 flex justify-between items-center hover:bg-accent hover:text-primary transition-colors">
+                            <span>Pastas</span>
+                            <i class="fas fa fa-chevron-down text-xs transition-transform duration-200"></i>
+                        </button>
+                        <ul class="menu-subcategory hidden bg-primary">
+                            <li><a href="/menu/platos/espagueti_con_mariscos.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Espagueti con Mariscos</a></li>
+                            <li><a href="/menu/platos/espagueti_carbonara.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Espagueti Carbonara</a></li>
+                            <li><a href="/menu/platos/fettuccini_a_los_sartenes.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Fettuccini a los Sartenes</a></li>
+                            <li><a href="/menu/platos/risotto_marinero.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Risotto Marinero</a></li>
+                            <li><a href="/menu/platos/espagueti_di_pollo_con_champinones.html" class="block px-6 py-2 hover:bg-accent hover:text-primary transition-colors">Espagueti di Pollo con Champiñones</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Vegetarianos -->
+                    <li>
+                        <a href="/vegetarianos.html" class="block w-full text-left px-10 py-2 hover:bg-accent hover:text-primary transition-colors">
+                            <span>Vegetarianos</span>
+                        </a>
+                    </li>
+                    
+                    <!-- Festival de Mariscos -->
+                    <li>
+                        <a href="/festival_de_mariscos.html" class="block w-full text-left px-10 py-2 hover:bg-accent hover:text-primary transition-colors">
+                            <span>Festival de Mariscos</span>
+                        </a>
+                    </li>
+                    
+                    <!-- Parrilladas -->
+                    <li>
+                        <a href="/menu/parrilladas.html" class="block w-full text-left px-10 py-2 hover:bg-accent hover:text-primary transition-colors">
+                            <span>Parrilladas</span>
+                        </a>
+                    </li>
+                    
+                    <!-- Menú Infantil -->
+                    <li>
+                        <a href="/menu_infantil.html" class="block w-full text-left px-10 py-2 hover:bg-accent hover:text-primary transition-colors">
+                            <span>Menú Infantil</span>
+                        </a>
+                    </li>
+                    
+                    <!-- Bebidas, Postres y Picaditos -->
+                    <li>
+                        <a href="/bebidas_postres_picaditos.html" class="block px-10 py-2 hover:bg-accent hover:text-primary transition-colors">Bebidas, Postres y Picaditos</a>
+                    </li>
+                    </li>
+                </ul>
+            </li>
+            
+            <!-- Galería -->
+            <li><a href="/galeria.html" class="block px-6 py-3 hover:bg-accent hover:text-primary transition-colors">Galería</a></li>
+            
+            <!-- Contacto -->
+            <li><a href="/contacto.html" class="block px-6 py-3 hover:bg-accent hover:text-primary transition-colors">Contacto</a></li>
+            <!-- Enlace de administración oculto temporalmente
+            <li class="border-t border-accent">
+                <a href="/admin" target="_blank" class="block px-6 py-3 text-accent hover:bg-primary transition-colors">
+                    <i class="fas fa-lock mr-2"></i>Panel de Administración
+                </a>
+            </li>
+            -->
+        </ul>
+    </nav>
+</aside>

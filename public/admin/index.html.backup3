@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Panel de AdministraciÃ³n - Los Sartenes</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <base href="/">
+    <style>
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                bottom: 0;
+                width: 80%;
+                max-width: 300px;
+                z-index: 1000;
+                transition: left 0.3s ease-in-out;
+                overflow-y: auto;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            }
+            .sidebar.active {
+                left: 0;
+            }
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 999;
+            }
+            .sidebar-overlay.active {
+                display: block;
+            }
+            .content {
+                margin-left: 0;
+                width: 100%;
+                position: relative;
+                z-index: 1;
+            }
+            .mobile-menu-btn {
+                display: block;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 100;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: #1a531a;
+                color: white;
+                border: none;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            }
+            .plato-item {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            .plato-actions {
+                flex-direction: row;
+                justify-content: flex-end;
+                width: 100%;
+                gap: 0.5rem;
+            }
+            .btn-action {
+                padding: 0.5rem;
+                min-width: 40px;
+                text-align: center;
+            }
+            .btn-action i {
+                margin: 0;
+                font-size: 1.2rem;
+            }
+            .plato-imagen {
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+        /* Estilos personalizados */
+        body { background-color: #f8f9fa; }
+        .sidebar {
+            min-height: 100vh;
+            background-color: #1a531a;
+            color: white;
+        }
+        .sidebar a {
+            color: #e2e8f0;
+            transition: all 0.3s;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            min-height: 100vh;
+            background-color: #1a531a;
+            color: white;
+        }
+        .sidebar a {
+            color: #e2e8f0;
+            transition: all 0.3s;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .content {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- BotÃ³n flotante para mÃ³viles -->
+    <button id="mobileMenuBtn" class="mobile-menu-btn md:hidden">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Overlay para cerrar el menÃº -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+    
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar w-64 p-4 md:relative md:left-0">
+            <div class="flex justify-between items-center mb-8">
+                <div class="text-2xl font-bold">
+                    Los Sartenes
+                    <div class="text-sm font-normal">Panel de AdministraciÃ³n</div>
+                </div>
+                <button id="closeSidebar" class="md:hidden text-white text-xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="space-y-1">
+                <a href="#" class="active">
+                    <i class="fas fa-utensils w-6 text-center"></i>
+                </a>
+                <a href="#" class="opacity-80 hover:opacity-100">
+                    <i class="fas fa-cog w-6 text-center"></i>
+                    <span class="ml-2">ConfiguraciÃ³n</span>
+                </a>
+                <a href="/" class="mt-8 text-sm opacity-80 hover:opacity-100 flex items-center p-3 rounded-lg hover:bg-green-700">
+                    <i class="fas fa-arrow-left w-6 text-center"></i>
+                    <span class="ml-2">Volver al sitio</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="content flex-1 overflow-y-auto p-8">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-2xl font-bold text-gray-800">GestiÃ³n de Platos del DÃ­a</h1>
+                <button id="btnNuevoPlato" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center">
+                    <i class="fas fa-plus mr-2"></i> Nuevo Plato
+                </button>
+            </div>
+
+            <!-- Lista de platos -->
+            <div id="listaPlatos" class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="p-4 border-b border-gray-200 hidden md:block">
+                    <div class="grid grid-cols-12 gap-4 font-medium text-gray-600">
+                        <div class="col-span-1">#</div>
+                        <div class="col-span-3">Imagen</div>
+                        <div class="col-span-3">TÃ­tulo</div>
+                        <div class="col-span-2">Precio</div>
+                        <div class="col-span-2">Estado</div>
+                        <div class="col-span-1">Acciones</div>
+                    </div>
+                </div>
+                <div id="platosContainer" class="divide-y divide-gray-200">
+                    <!-- Los platos se cargarÃ¡n aquÃ­ dinÃ¡micamente -->
+                    <div class="p-4 text-center text-gray-500">Cargando platos...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar plato -->
+    <div id="modalPlato" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold" id="modalTitulo">Nuevo Plato</h2>
+                    <button id="btnCerrarModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="formPlato" class="space-y-4">
+                    <input type="hidden" id="platoId">
+                    
+                    <div>
+                        <label for="titulo" class="block text-sm font-medium text-gray-700">TÃ­tulo</label>
+                        <input type="text" id="titulo" name="titulo" required 
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+                    </div>
+                    
+                    <div>
+                        <label for="descripcion" class="block text-sm font-medium text-gray-700">DescripciÃ³n</label>
+                        <textarea id="descripcion" name="descripcion" rows="3"
+                                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="precio" class="block text-sm font-medium text-gray-700">Precio ($)</label>
+                        <input type="number" id="precio" name="precio" step="0.01" min="0" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+                    </div>
+                    
+                    <div>
+                        <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen</label>
+                        <input type="file" id="imagen" name="imagen" accept="image/*" class="mt-1 block w-full">
+                        <p class="mt-1 text-sm text-gray-500">Sube una imagen para este plato (formato JPG, PNG)</p>
+                        <div id="vistaPreviaImagen" class="mt-2 hidden">
+                            <img id="imagenPrevia" src="#" alt="Vista previa" class="h-32 object-cover rounded">
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input id="activo" name="activo" type="checkbox" class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                        <label for="activo" class="ml-2 block text-sm text-gray-700">Activo (visible en el sitio)</label>
+                    </div>
+                    
+                    <div class="flex justify-end space-x-3 pt-4">
+                        <button type="button" id="btnCancelar" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                            Guardar Plato
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ConfiguraciÃ³n de la API - Usar ruta relativa para funcionar en cualquier entorno
+        const API_BASE_URL = '/api';
+        console.log('API Base URL:', API_BASE_URL);
+        
+        // Configurar fetch para incluir credenciales
+        const fetchWithAuth = async (url, options = {}) => {
+            const defaultHeaders = {};
+            
+            // No establecer Content-Type si es FormData, el navegador lo harÃ¡ automÃ¡ticamente con el boundary
+            if (!(options.body instanceof FormData)) {
+                defaultHeaders['Content-Type'] = 'application/json';
+            }
+            
+            const response = await fetch(url, {
+                ...options,
+                credentials: 'include',
+                headers: {
+                    ...defaultHeaders,
+                    ...options.headers
+                }
+            });
+            
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                const error = new Error(errorData.message || 'Error en la solicitud');
+                error.status = response.status;
+                error.data = errorData;
+                throw error;
+            }
+            
+            return response;
+        };
+            
+        // Variables globales
+        let platos = [];
+        
+        // Elementos del DOM
+        const platosContainer = document.getElementById('platosContainer');
+        const modalPlato = document.getElementById('modalPlato');
+        const formPlato = document.getElementById('formPlato');
+        const btnNuevoPlato = document.getElementById('btnNuevoPlato');
+        const btnCerrarModal = document.getElementById('btnCerrarModal');
+        const btnCancelar = document.getElementById('btnCancelar');
+        const modalTitulo = document.getElementById('modalTitulo');
+        const imagenInput = document.getElementById('imagen');
+        const imagenPrevia = document.getElementById('imagenPrevia');
+        const vistaPreviaImagen = document.getElementById('vistaPreviaImagen');
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', cargarPlatos);
+        btnNuevoPlato.addEventListener('click', mostrarFormularioNuevo);
+        btnCerrarModal.addEventListener('click', cerrarModal);
+        btnCancelar.addEventListener('click', cerrarModal);
+        formPlato.addEventListener('submit', guardarPlato);
+        imagenInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagenPrevia.src = e.target.result;
+                    vistaPreviaImagen.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Funciones
+        async function cargarPlatos() {
+            try {
+                console.log('Solicitando lista de platos a:', `${API_BASE_URL}/platos`);
+                const response = await fetchWithAuth(`${API_BASE_URL}/platos`);
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || 'Error en la respuesta del servidor');
+                }
+                
+                platos = await response.json();
+                
+                // Procesar los platos para asegurar que los precios estÃ©n correctamente formateados
+                platos = platos.map(plato => {
+                    // Asegurarse de que el precio sea un nÃºmero
+                    if (plato.precio !== undefined && plato.precio !== null) {
+                        plato.precio = parseFloat(plato.precio);
+                    } else if (plato.valor !== undefined && plato.valor !== null) {
+                        // Si no hay precio, usar valor
+                        plato.precio = parseFloat(plato.valor);
+                    } else {
+                        plato.precio = 0;
+                    }
+                    
+                    // Asegurar que activo sea un booleano
+                    plato.activo = plato.activo !== false; // true por defecto
+                    
+                    return plato;
+                });
+                
+                console.log('Platos cargados y procesados:', platos);
+                
+                // Verificar que los platos tengan la estructura esperada
+                if (!Array.isArray(platos)) {
+                    console.warn('La respuesta no es un arreglo:', platos);
+                    platos = [];
+                }
+                
+                mostrarPlatos();
+                return platos;
+                
+            } catch (error) {
+                console.error('âŒ Error al cargar platos:', error);
+                
+                // Mostrar mensaje de error en la interfaz
+                const errorMessage = error.status === 401 
+                    ? 'No autorizado. Por favor, inicia sesiÃ³n.' 
+                    : `Error: ${error.message || 'No se pudieron cargar los platos'}`;
+                
+                platosContainer.innerHTML = `
+                    <div class="p-4 text-center">
+                        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded" role="alert">
+                            <p class="font-bold">Error al cargar los platos</p>
+                            <p>${errorMessage}</p>
+                            ${error.status === 401 ? '<p class="mt-2">Redirigiendo a la pÃ¡gina de inicio de sesiÃ³n...</p>' : ''}
+                        </div>
+                    </div>
+                `;
+                
+                // Si no estÃ¡ autorizado, redirigir al login despuÃ©s de 2 segundos
+                if (error.status === 401) {
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 2000);
+                }
+                
+                // Retornar un arreglo vacÃ­o para evitar errores
+                platos = [];
+                return [];
+            }
+        }
+        
+        function mostrarPlatos() {
+            if (!platos || platos.length === 0) {
+                platosContainer.innerHTML = `
+                    <div class="p-4 text-center">
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-yellow-700">
+                                        No hay platos registrados. Haz clic en "Nuevo Plato" para agregar uno.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Encabezados de la tabla
+            platosContainer.innerHTML = `
+                <div class="hidden md:grid grid-cols-12 gap-4 px-4 py-2 bg-gray-100 text-sm font-medium text-gray-600 rounded-t-lg">
+                    <div class="col-span-1">#</div>
+                    <div class="col-span-3">Imagen</div>
+                    <div class="col-span-2">Plato</div>
+                    <div class="col-span-2">Precio</div>
+                    <div class="col-span-2">Estado</div>
+                    <div class="col-span-2 text-right">Acciones</div>
+                </div>
+            `;
+            
+            platos.forEach((plato, index) => {
+                const platoElement = document.createElement('div');
+                platoElement.className = 'border-b border-gray-200 hover:bg-gray-50 transition-colors';
+                
+                // Formatear precio
+                const precio = (plato.precio !== undefined && plato.precio !== null) ? 
+                    parseFloat(plato.precio) : 
+                    (plato.valor !== undefined && plato.valor !== null ? parseFloat(plato.valor) : 0);
+                const precioFormateado = `$${precio.toFixed(2).replace(/\.?0+$/, '')}`;
+                
+                platoElement.innerHTML = `
+                    <!-- VersiÃ³n Desktop -->
+                    <div class="hidden md:grid grid-cols-12 gap-4 p-4 items-center">
+                        <div class="col-span-1 text-gray-600">${index + 1}</div>
+                        <div class="col-span-3">
+                            <div class="flex items-center">
+                                <img src="${plato.imagen_url || '/images/platos/placeholder.jpg'}" 
+                                     alt="${plato.titulo}" 
+                                     class="h-16 w-16 object-cover rounded-lg shadow-sm">
+                            </div>
+                        </div>
+                        <div class="col-span-2 font-medium text-gray-800">${plato.titulo}</div>
+                        <div class="col-span-2 font-mono">${precioFormateado}</div>
+                        <div class="col-span-2">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${plato.activo ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                <span class="w-2 h-2 mr-1.5 rounded-full ${plato.activo ? 'bg-green-500' : 'bg-red-500'}"></span>
+                                ${plato.activo ? 'Activo' : 'Inactivo'}
+                            </span>
+                        </div>
+                        <div class="col-span-2 flex justify-end space-x-2">
+                            <button 
+                                onclick="toggleActivoPlato(${plato.id}, ${plato.activo})" 
+                                class="p-2 rounded-full ${plato.activo ? 'bg-yellow-100 text-yellow-600 hover:bg-yellow-200' : 'bg-green-100 text-green-600 hover:bg-green-200'} transition-colors"
+                                title="${plato.activo ? 'Desactivar' : 'Activar'} plato"
+                            >
+                                <i class="fas ${plato.activo ? 'fa-eye-slash' : 'fa-eye'}"></i>
+                            </button>
+                            <button 
+                                onclick="editarPlato(${plato.id})" 
+                                class="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors"
+                                title="Editar plato"
+                            >
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button 
+                                onclick="eliminarPlato(${plato.id})" 
+                                class="p-2 rounded-full bg-red-100 text-red-600 hover:bg-red-200 transition-colors"
+                                title="Eliminar plato"
+                            >
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- VersiÃ³n MÃ³vil -->
+                    <div class="md:hidden p-4">
+                        <div class="flex items-start space-x-3">
+                            <img src="${plato.imagen_url || '/images/platos/placeholder.jpg'}" 
+                                 alt="${plato.titulo}" 
+                                 class="h-16 w-16 flex-shrink-0 object-cover rounded-lg shadow">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-sm font-medium text-gray-900 truncate">${plato.titulo}</h3>
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${plato.activo ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                                        ${plato.activo ? 'Activo' : 'Inactivo'}
+                                    </span>
+                                </div>
+                                <p class="mt-1 text-sm text-gray-600">${precioFormateado}</p>
+                                <div class="mt-2 flex space-x-2">
+                                    <button 
+                                        onclick="toggleActivoPlato(${plato.id}, ${plato.activo})" 
+                                        class="p-2 rounded-full ${plato.activo ? 'bg-yellow-100 text-yellow-600' : 'bg-green-100 text-green-600'} hover:opacity-80"
+                                        title="${plato.activo ? 'Desactivar' : 'Activar'}"
+                                    >
+                                        <i class="fas ${plato.activo ? 'fa-eye-slash' : 'fa-eye'}"></i>
+                                    </button>
+                                    <button 
+                                        onclick="editarPlato(${plato.id})" 
+                                        class="p-2 rounded-full bg-blue-100 text-blue-600 hover:opacity-80"
+                                        title="Editar"
+                                    >
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button 
+                                        onclick="eliminarPlato(${plato.id})" 
+                                        class="p-2 rounded-full bg-red-100 text-red-600 hover:opacity-80"
+                                        title="Eliminar"
+                                    >
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                platosContainer.appendChild(platoElement);
+            });
+        }
+        
+        function mostrarFormularioNuevo() {
+            formPlato.reset();
+            document.getElementById('platoId').value = '';
+            modalTitulo.textContent = 'Nuevo Plato';
+            vistaPreviaImagen.classList.add('hidden');
+            imagenInput.required = true;
+            modalPlato.classList.remove('hidden');
+            modalPlato.classList.add('flex');
+        }
+        
+        function cerrarModal() {
+            modalPlato.classList.add('hidden');
+            modalPlato.classList.remove('flex');
+        }
+        
+        async function guardarPlato(e) {
+            e.preventDefault();
+            
+            const platoId = document.getElementById('platoId').value;
+            const esNuevo = !platoId;
+            const submitBtn = formPlato.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            try {
+                // Mostrar indicador de carga
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Guardando...';
+                
+                // Obtener los valores del formulario
+                const titulo = document.getElementById('titulo').value.trim();
+                const descripcion = document.getElementById('descripcion').value.trim();
+                let precio = document.getElementById('precio').value.trim();
+                const activo = document.getElementById('activo').checked;
+                const imagenInput = document.getElementById('imagen');
+                
+                // Validaciones bÃ¡sicas
+                if (!titulo) throw new Error('El tÃ­tulo es requerido');
+                if (!precio) throw new Error('El precio es requerido');
+                
+                // Limpiar el precio (reemplazar comas por puntos y eliminar caracteres no numÃ©ricos)
+                precio = precio.replace(/,/g, '.').replace(/[^0-9.]/g, '');
+                
+                // Asegurarse de que haya al menos un nÃºmero
+                if (!precio) {
+                    throw new Error('El precio debe ser un nÃºmero vÃ¡lido');
+                }
+                
+                // Convertir el precio a nÃºmero y validar
+                const precioNumerico = parseFloat(precio);
+                if (isNaN(precioNumerico) || precioNumerico < 0) {
+                    throw new Error('El precio debe ser un nÃºmero vÃ¡lido mayor o igual a 0');
+                }
+                
+                // Redondear a 2 decimales
+                const precioRedondeado = Math.round(precioNumerico * 100) / 100;
+                
+                // Asegurarse de que el precio tenga exactamente 2 decimales
+                const precioFormateado = precioRedondeado.toFixed(2);
+                const precioFinal = parseFloat(precioFormateado);
+                
+                console.log('Datos del plato a guardar:', {
+                    titulo,
+                    descripcion,
+                    precioOriginal: document.getElementById('precio').value,
+                    precioLimpio: precio,
+                    precioNumerico: precioNumerico,
+                    precioRedondeado: precioRedondeado,
+                    precioFinal: precioFinal,
+                    activo
+                });
+                
+                // Determinar si estamos subiendo una nueva imagen
+                const tieneNuevaImagen = imagenInput.files && imagenInput.files[0];
+                
+                // Si es una actualizaciÃ³n y no hay nueva imagen, mantener la existente
+                let imagen_url = '';
+                if (!esNuevo && !tieneNuevaImagen) {
+                    const imagenActual = document.querySelector('#vistaPreviaImagen img');
+                    if (imagenActual && imagenActual.src && !imagenActual.src.startsWith('data:')) {
+                        imagen_url = imagenActual.src;
+                        console.log('Manteniendo imagen existente:', imagen_url);
+                    }
+                }
+                
+                // Crear FormData para enviar los datos
+                const formData = new FormData();
+                formData.append('titulo', titulo);
+                formData.append('descripcion', descripcion);
+                formData.append('precio', precioFinal.toString());
+                formData.append('valor', precioFinal.toString()); // Mantener compatibilidad
+                formData.append('activo', activo);
+                
+                // Si hay una nueva imagen, agregarla al FormData
+                if (tieneNuevaImagen) {
+                    console.log('Subiendo nueva imagen:', imagenInput.files[0].name);
+                    formData.append('imagen', imagenInput.files[0]);
+                } else if (imagen_url) {
+                    // Si no hay nueva imagen pero hay una URL existente, enviarla
+                    formData.append('imagen_url', imagen_url);
+                }
+                
+                // Configurar la URL y el mÃ©todo segÃºn si es nuevo o ediciÃ³n
+                const url = esNuevo 
+                    ? `${API_BASE_URL}/platos` 
+                    : `${API_BASE_URL}/platos/${platoId}`;
+                
+                const method = esNuevo ? 'POST' : 'PUT';
+                
+                console.log(`Enviando ${method} a ${url}`, {
+                    titulo,
+                    descripcion,
+                    precio: precioFinal,
+                    activo,
+                    tieneNuevaImagen: !!tieneNuevaImagen,
+                    imagen_url: imagen_url || 'Ninguna'
+                });
+                
+                // Realizar la peticiÃ³n
+                const response = await fetchWithAuth(url, {
+                    method: method,
+                    body: formData
+                    // No establecer Content-Type, el navegador lo harÃ¡ con el boundary correcto
+                });
+                
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('Error en la respuesta del servidor:', errorText);
+                    let errorMessage = 'Error en la solicitud';
+                    try {
+                        const errorData = JSON.parse(errorText);
+                        errorMessage = errorData.error || errorMessage;
+                    } catch (e) {
+                        errorMessage = errorText || errorMessage;
+                    }
+                    throw new Error(errorMessage);
+                }
+                
+                const data = await response.json().catch(() => ({}));
+                console.log('Respuesta del servidor:', data);
+                
+                // Recargar la lista de platos
+                await cargarPlatos();
+                
+                // Cerrar el modal y mostrar mensaje de Ã©xito
+                cerrarModal();
+                showNotification(
+                    `Plato ${esNuevo ? 'creado' : 'actualizado'} correctamente`,
+                    'success'
+                );
+                
+                // Limpiar el formulario si era un nuevo plato
+                if (esNuevo) {
+                    formPlato.reset();
+                }
+                
+            } catch (error) {
+                console.error('Error al guardar el plato:', error);
+                showNotification(
+                    `Error al ${esNuevo ? 'crear' : 'actualizar'} el plato: ${error.message || 'Intente nuevamente'}`,
+                    'error'
+                );
+            } finally {
+                // Restaurar el botÃ³n
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        }
+        
+        // FunciÃ³n para mostrar notificaciones
+        function showNotification(message, type = 'info') {
+            // Eliminar notificaciones anteriores
+            const existingNotification = document.getElementById('global-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            const colors = {
+                success: 'bg-green-100 border-green-500 text-green-700',
+                error: 'bg-red-100 border-red-500 text-red-700',
+                info: 'bg-blue-100 border-blue-500 text-blue-700'
+            };
+            
+            const notification = document.createElement('div');
+            notification.id = 'global-notification';
+            notification.className = `fixed top-4 right-4 border-l-4 p-4 rounded shadow-lg ${colors[type] || colors.info} z-50 max-w-sm`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        ${type === 'success' ? '<i class="fas fa-check-circle"></i>' : ''}
+                        ${type === 'error' ? '<i class="fas fa-exclamation-circle"></i>' : ''}
+                        ${type === 'info' ? '<i class="fas fa-info-circle"></i>' : ''}
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-xl">&times;</button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto-ocultar despuÃ©s de 5 segundos
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.style.opacity = '0';
+                    setTimeout(() => notification.remove(), 300);
+                }
+            }, 5000);
+        }
+        
+        async function editarPlato(id) {
+            try {
+                console.log(`Buscando plato con ID: ${id}`);
+                
+                // Buscar el plato en la lista actual
+                let plato = platos.find(p => p.id == id);
+                
+                // Si no lo encontramos, intentar cargarlo directamente de la API
+                if (!plato) {
+                    console.log(`Plato no encontrado en cachÃ©, cargando desde la API...`);
+                    const response = await fetchWithAuth(`${API_BASE_URL}/platos/${id}`);
+                    if (!response.ok) {
+                        throw new Error('No se pudo cargar el plato');
+                    }
+                    plato = await response.json();
+                    console.log('Plato cargado desde la API:', plato);
+                }
+                
+                if (!plato) {
+                    throw new Error('Plato no encontrado');
+                }
+                
+                // Mostrar informaciÃ³n de depuraciÃ³n
+                console.log('Datos del plato a editar:', {
+                    id: plato.id,
+                    id_plato: plato.id_plato,
+                    titulo: plato.titulo,
+                    descripcion: plato.descripcion,
+                    precio: plato.precio,
+                    valor: plato.valor,
+                    activo: plato.activo
+                });
+                
+                // Actualizar el formulario
+                // Usar plato.id en lugar de plato.id_plato
+                document.getElementById('platoId').value = plato.id;
+                document.getElementById('titulo').value = plato.titulo || '';
+                document.getElementById('descripcion').value = plato.descripcion || '';
+                
+                // Asegurarse de que el precio sea un nÃºmero vÃ¡lido
+                // Primero intentar con precio, si no existe usar valor
+                let precioAMostrar = '';
+                
+                // Verificar si el precio estÃ¡ en precio o valor
+                if (plato.precio !== undefined && plato.precio !== null) {
+                    precioAMostrar = plato.precio;
+                } else if (plato.valor !== undefined && plato.valor !== null) {
+                    precioAMostrar = plato.valor;
+                }
+                
+                console.log('Precio a mostrar en el formulario:', precioAMostrar);
+                
+                // Formatear el precio para mostrarlo en el input
+                let precioFormateado = '';
+                if (precioAMostrar !== '' && precioAMostrar !== null) {
+                    // Convertir a nÃºmero y luego a string con 2 decimales
+                    const num = parseFloat(precioAMostrar);
+                    if (!isNaN(num)) {
+                        precioFormateado = num.toString();
+                        // Si no tiene decimales, agregar .00
+                        if (precioFormateado.indexOf('.') === -1) {
+                            precioFormateado += '.00';
+                        }
+                    }
+                }
+                
+                document.getElementById('precio').value = precioFormateado;
+                document.getElementById('activo').checked = plato.activo !== false; // Por defecto true si no estÃ¡ definido
+                
+                // Manejar la imagen
+                const vistaPreviaImagen = document.getElementById('vistaPreviaImagen');
+                const imagenPrevia = document.getElementById('imagenPrevia');
+                
+                // FunciÃ³n para establecer la imagen de vista previa
+                const setPreviewImage = (url) => {
+                    if (url) {
+                        imagenPrevia.src = url;
+                        vistaPreviaImagen.classList.remove('hidden');
+                        // Guardar la URL de la imagen actual para referencia
+                        imagenPrevia.dataset.currentImage = url;
+                    } else {
+                        vistaPreviaImagen.classList.add('hidden');
+                        imagenPrevia.src = '#';
+                        delete imagenPrevia.dataset.currentImage;
+                    }
+                };
+                
+                // Manejar la imagen del plato
+                if (plato.imagen_url) {
+                    // Si la URL de la imagen es relativa, hacerla absoluta
+                    let imageUrl = plato.imagen_url;
+                    
+                    // Si no es una URL completa ni un data URL
+                    if (!imageUrl.startsWith('http') && !imageUrl.startsWith('data:')) {
+                        // Asegurarse de que comience con / si no lo hace
+                        if (!imageUrl.startsWith('/')) {
+                            imageUrl = '/' + imageUrl;
+                        }
+                        
+                        // Si no estÃ¡ en la carpeta de imÃ¡genes, asumir que estÃ¡ en /images/platos/
+                        if (!imageUrl.startsWith('/images/')) {
+                            const fileName = imageUrl.split('/').pop();
+                            imageUrl = `/images/platos/${fileName}`;
+                        }
+                    }
+                    
+                    console.log('Intentando cargar imagen:', imageUrl);
+                    
+                    // Verificar si la imagen existe antes de mostrarla
+                    const img = new Image();
+                    img.onload = function() {
+                        console.log('Imagen cargada correctamente:', imageUrl);
+                        setPreviewImage(imageUrl);
+                    };
+                    img.onerror = function() {
+                        console.warn('No se pudo cargar la imagen, usando placeholder:', imageUrl);
+                        // Si falla, intentar con la URL original
+                        if (imageUrl !== plato.imagen_url) {
+                            console.log('Intentando con la URL original:', plato.imagen_url);
+                            img.src = plato.imagen_url;
+                        } else {
+                            setPreviewImage('/images/placeholder.jpg');
+                        }
+                    };
+                    img.src = imageUrl;
+                } else {
+                    console.log('No hay imagen para este plato');
+                    setPreviewImage(null);
+                }
+                
+                // Limpiar el input de archivo
+                if (imagenInput) {
+                    imagenInput.value = '';
+                }
+                
+                // Mostrar el modal
+                modalPlato.classList.remove('hidden');
+                
+                // Hacer scroll al inicio del formulario
+                modalPlato.scrollTo(0, 0);
+                
+                
+            } catch (error) {
+                console.error('âŒ Error al cargar el plato para editar:', error);
+                showNotification(
+                    `Error al cargar el plato: ${error.message || 'Intente nuevamente'}`,
+                    'error'
+                );
+            }
+        }
+        
+        // FunciÃ³n para eliminar un plato
+        async function eliminarPlato(id) {
+            if (!id) {
+                console.error('ID de plato no proporcionado para eliminar');
+                showNotification('Error: ID de plato no proporcionado', 'error');
+                return;
+            }
+            
+            // Confirmar antes de eliminar
+            const confirmar = confirm('Â¿EstÃ¡s seguro de que deseas eliminar este plato? Esta acciÃ³n no se puede deshacer.');
+            if (!confirmar) return;
+            
+            const botonEliminar = document.querySelector(`button[onclick="eliminarPlato('${id}')"]`);
+            const textoOriginal = botonEliminar ? botonEliminar.innerHTML : '';
+            
+            try {
+                // Mostrar indicador de carga
+                if (botonEliminar) {
+                    botonEliminar.disabled = true;
+                    botonEliminar.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Eliminando...';
+                }
+                
+                console.log(`Eliminando plato con ID: ${id}`);
+                const response = await fetchWithAuth(`${API_BASE_URL}/platos/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.error || 'Error al eliminar el plato');
+                }
+                
+                // Recargar la lista de platos
+                await cargarPlatos();
+                
+                // Mostrar notificaciÃ³n de Ã©xito
+                showNotification('Plato eliminado correctamente', 'success');
+                
+            } catch (error) {
+                console.error('âŒ Error al eliminar el plato:', error);
+                showNotification(
+                    `Error al eliminar el plato: ${error.message || 'Intente nuevamente'}`,
+                    'error'
+                );
+            } finally {
+                // Restaurar el botÃ³n
+                if (botonEliminar) {
+                    botonEliminar.disabled = false;
+                    botonEliminar.innerHTML = textoOriginal || 'Eliminar';
+                }
+            }
+        }
+        
+        // FunciÃ³n para mostrar/ocultar el menÃº en mÃ³viles
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const isActive = sidebar.classList.contains('active');
+            
+            if (isActive) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                sidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // FunciÃ³n para alternar el estado activo de un plato
+        async function toggleActivoPlato(id, activo) {
+            if (!confirm(`Â¿EstÃ¡s seguro de que deseas ${activo ? 'desactivar' : 'activar'} este plato?`)) {
+                return;
+            }
+
+            try {
+                const response = await fetchWithAuth(`${API_BASE_URL}/platos/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ activo: !activo })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al actualizar el estado del plato');
+                }
+
+                const data = await response.json();
+                showNotification(`Plato ${activo ? 'desactivado' : 'activado'} correctamente`, 'success');
+                
+                // Actualizar la lista de platos
+                await cargarPlatos();
+            } catch (error) {
+                console.error('Error al actualizar el estado del plato:', error);
+                showNotification(`Error al ${activo ? 'desactivar' : 'activar'} el plato: ${error.message}`, 'error');
+            }
+        }
+
+        // Cerrar menÃº al hacer clic en el overlay
+        document.getElementById('sidebarOverlay')?.addEventListener('click', toggleMobileMenu);
+        
+        // Event listeners para el menÃº mÃ³vil
+        document.getElementById('mobileMenuBtn')?.addEventListener('click', toggleMobileMenu);
+        
+        // Asegurar que el menÃº se cierre al cambiar el tamaÃ±o de la pantalla
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                const sidebar = document.getElementById('sidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                if (sidebar) sidebar.classList.remove('active');
+                if (overlay) overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Hacer las funciones accesibles globalmente
+{{ ... }}
+        window.eliminarPlato = eliminarPlato;
+    </script>
+</body>
+</html>

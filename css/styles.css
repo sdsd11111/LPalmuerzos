@@ -1,0 +1,191 @@
+/* Estilos personalizados */
+/* Asegurar que el contenido no se oculte detrás del header fijo */
+
+.font-sans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para la sección Hero */
+.hero-content {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Ajustes para el botón de WhatsApp */
+.whatsapp-btn {
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.4);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    box-shadow: 0 6px 20px rgba(255, 140, 66, 0.6);
+}
+
+/* Ajustes de tipografía responsiva */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem;
+        line-height: 1.1;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+}
+
+/* Transiciones suaves */
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animación para el menú desplegable */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#menuDropdown {
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Ajustes para el scrollbar en el menú */
+#menuDropdown {
+    max-height: 60vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4a7c59 #1a531a;
+}
+
+#menuDropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+#menuDropdown::-webkit-scrollbar-track {
+    background: #1a531a;
+}
+
+#menuDropdown::-webkit-scrollbar-thumb {
+    background-color: #4a7c59;
+    border-radius: 3px;
+}
+
+/* Mejoras de accesibilidad */
+button:focus, a:focus {
+    outline: 2px solid #FF8C42;
+    outline-offset: 2px;
+}
+
+/* Asegurar que el contenido no se desplace cuando el menú está abierto */
+body.menu-open {
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Estilos para el Footer */
+footer {
+    background-color: #1A531A;
+    color: white;
+}
+
+/* Estilos para los títulos de sección */
+footer h3 {
+    color: #FF8C42;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+footer h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 50px;
+    height: 2px;
+    background-color: #FF8C42;
+}
+
+/* Estilos para los íconos del footer */
+footer i {
+    min-width: 24px;
+    text-align: center;
+    color: #FF8C42;
+}
+
+/* Efecto hover para los enlaces del footer */
+footer a {
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+footer a:hover {
+    color: #FF8C42;
+}
+
+/* Estilos para la barra de copyright */
+footer .copyright-bar {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* Mejoras de espaciado y tipografía */
+footer p, footer li {
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    footer .grid > div {
+        margin-bottom: 2rem;
+    }
+    
+    footer .text-center-md {
+        text-align: center !important;
+    }
+    
+    footer .flex {
+        justify-content: center;
+    }
+}
+
+/* Asegurar que el footer siempre esté al final */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Mejoras de accesibilidad */
+footer a:focus {
+    outline: 2px solid #FF8C42;
+    outline-offset: 2px;
+}

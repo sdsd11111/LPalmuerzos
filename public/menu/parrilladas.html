@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disfruta de las mejores parrilladas en Loja con Los Sartenes. Carnes al carbón, asados jugosos y platos para compartir en un ambiente acogedor.">
+    <meta name="keywords" content="parrilladas Loja, asados Loja, carne al carbón, restaurante de carnes, comida a la parrilla, restaurante familiar Loja">
+    <meta name="author" content="Los Sartenes">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lossartenesloja.com/menu/parrilladas.html">
+    <meta property="og:title" content="Las Mejores Parrilladas en Loja | Asados de Res, Pollo y Cerdo | Los Sartenes">
+    <meta property="og:description" content="Disfruta de auténticas parrilladas y asados al carbón en Loja. Carnes jugosas, sabores intensos y el mejor ambiente familiar.">
+    <meta property="og:image" content="https://lossartenesloja.com/images/parrilladas/parrillada-social.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lossartenesloja.com/menu/parrilladas.html">
+    <meta property="twitter:title" content="Las Mejores Parrilladas en Loja | Los Sartenes">
+    <meta property="twitter:description" content="Disfruta de auténticas parrilladas y asados al carbón en Loja. Carnes jugosas, sabores intensos y el mejor ambiente familiar.">
+    <meta property="twitter:image" content="https://lossartenesloja.com/images/parrilladas/parrillada-social.jpg">
+    
+    <title>Las Mejores Parrilladas en Loja | Asados de Res, Pollo y Cerdo | Los Sartenes</title>
+    
+    <!-- Preload de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        sans: ['Open Sans', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#2E8B57',
+                        secondary: '#FF8C42',
+                        accent: '#25D366'
+                    }
+                }
+            },
+            corePlugins: {
+                preflight: true,
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/favicon.ico">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <style>
+        /* Estilos personalizados */
+        .btn-primary {
+            background-color: #FF8C42;
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            transform: scale(1);
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background-color: #E67E38;
+            transform: scale(1.05);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            transform: scale(1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: scale(1.05);
+        }
+        
+        .menu-card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f3f4f6;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .menu-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+        }
+        
+        .menu-card .image-container {
+            height: 16rem;
+            overflow: hidden;
+        }
+        
+        .menu-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .menu-card .content {
+            padding: 1.5rem;
+        }
+        
+        .menu-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-card p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ed8936;
+        }
+        
+        .menu-card .serving {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+        
+        /* Animaciones personalizadas */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        /* Estilos para la sección hero */
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/images/parrilladas/parrillada-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        /* Estilos para la sección de llamada a la acción */
+        .cta-section {
+            background: linear-gradient(135deg, #f9f8f6 0%, #f0ede8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d1d5db' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 1;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        .menu-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+        .wave-divider {
+            margin-top: -1px;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .wave-divider svg {
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+        .wave-divider .shape-fill {
+            fill: #1A531A;
+        }
+        .grill-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF8C42' fill-opacity='0.1'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .serves-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #FF8C42;
+            color: white;
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="bg-white font-sans pt-16" data-initialized="true">
+    <!-- Componente Header -->
+    <div id="header-component">
+        <!-- El contenido del header se cargará aquí mediante JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[80vh] md:min-h-[90vh] flex items-center justify-center bg-cover bg-center bg-fixed hero-section">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="container mx-auto px-4 text-center relative z-10 py-24 md:py-32">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Parrilladas y Asados en Loja
+                </h1>
+                <div class="w-24 h-1 bg-[#FF8C42] mx-auto my-6"></div>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    Descubre nuestros cortes premium preparados al carbón con las más finas especias y sazones tradicionales
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+                    <a href="#nuestros-platos" class="btn-primary inline-flex items-center justify-center">
+                        <i class="fas fa-utensils mr-2"></i> Ver Especialidades
+                    </a>
+                    <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20reservar%20una%20mesa%20para%20disfrutar%20de%20sus%20parrilladas" 
+                       class="btn-whatsapp"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp text-xl mr-2"></i> Reservar Mesa
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Flecha de desplazamiento -->
+        <a href="#nuestros-platos" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white hover:text-[#FF8C42] transition-colors">
+            <i class="fas fa-chevron-down text-2xl animate-bounce"></i>
+        </a>
+    </section>
+
+    <!-- Contenido principal -->
+    <main class="flex-grow">
+        <!-- Sección de Introducción -->
+        <section class="py-16 md:py-20 bg-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDAsMCwuMDIpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+')]"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-6">
+                        La Mejor Carne al Carbón en Loja
+                    </h2>
+                    <div class="w-24 h-1 bg-[#FF8C42] mx-auto mb-8"></div>
+                    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+                        En Los Sartenes, llevamos la tradición de la parrilla a otro nivel. Nuestros cortes premium son seleccionados minuciosamente y sazonados con una mezcla secreta de especias que realza su sabor natural. Cada bocado es una explosión de sabores que te transportará a una experiencia culinaria inolvidable.
+                    </p>
+                    <div class="rounded-xl overflow-hidden shadow-xl max-w-4xl mx-auto">
+                        <img src="/images/parrilladas/parrillada-destacada.jpg" alt="Parrillada Los Sartenes" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Platos -->
+        <section id="nuestros-platos" class="py-16 bg-[#f9f8f6] relative">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <span class="text-[#FF8C42] font-semibold text-lg mb-2 block">Nuestras Especialidades</span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-[#2E8B57] mb-4">Parrilladas y Asados</h2>
+                    <div class="w-24 h-1 bg-[#FF8C42] mx-auto my-6"></div>
+                    <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+                        Descubre nuestros cortes premium preparados a la perfección y sazonados con nuestras mezclas secretas de especias. Cada bocado es una experiencia única de sabor.
+                    </p>
+                </div>
+
+                <!-- Parrilladas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- Bandeja Parrillera Mar y Tierra -->
+                    <div class="menu-card animate-fadeInUp" style="animation-delay: 0.1s;">
+                        <div class="image-container">
+                            <img src="/images/parrilladas/bandeja-parrillera.jpg" alt="Bandeja Parrillera Mar y Tierra">
+                        </div>
+                        <div class="content">
+                            <h3>
+                                <i class="fas fa-drumstick-bite text-[#FF8C42] mr-3"></i>
+                                Bandeja Parrillera Mar y Tierra
+                            </h3>
+                            <p>La combinación perfecta de carne, pollo, cerdo y mariscos. Una experiencia culinaria completa que incluye cortes selectos de res, pechuga de pollo marinada, costillas de cerdo, camarones y chorizo, acompañados de vegetales asados y nuestras salsas especiales.</p>
+                            <div class="flex justify-between items-center mt-4">
+                                <span class="price">$18.00</span>
+                                <span class="serving">Para 2-3 personas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Asados -->
+                    <div class="menu-card animate-fadeInUp" style="animation-delay: 0.2s;">
+                        <div class="image-container">
+                            <img src="/images/parrilladas/asados.jpg" alt="Asados Variados">
+                        </div>
+                        <div class="content">
+                            <h3>
+                                <i class="fas fa-utensils text-[#FF8C42] mr-3"></i>
+                                Asados (Pollo, Res y Cerdo)
+                            </h3>
+                            <p>Jugosos asados individuales a elegir entre nuestras tres opciones: Pollo (pechuga o muslo marinados en hierbas), Res (corte de lomito o entraña) o Cerdo (costilla o lomo adobado). Todos incluyen guarnición a elección: papas fritas, arroz o ensalada.</p>
+                            <div class="flex justify-between items-center mt-4">
+                                <span class="price">$6.50</span>
+                                <span class="serving">Porción individual</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Galería de imágenes -->
+                <div class="mt-20">
+                    <h3 class="text-2xl md:text-3xl font-playfair font-bold text-center text-[#2E8B57] mb-8">Galería de Nuestras Parrilladas</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="overflow-hidden rounded-xl h-64 shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <img src="/images/parrilladas/parrillada-1.jpg" alt="Cortes selectos de carne" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="overflow-hidden rounded-xl h-64 shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <img src="/images/parrilladas/parrillada-2.jpg" alt="Asado a la parrilla" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="overflow-hidden rounded-xl h-64 shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <img src="/images/parrilladas/parrillada-3.jpg" alt="Presentación de parrillada" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Llamado a la acción -->
+        <section class="cta-section py-16 md:py-20 relative">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center cta-content">
+                    <h3 class="text-2xl md:text-4xl font-playfair font-bold text-[#2E8B57] mb-4">¿Listo para una experiencia de parrilla inolvidable?</h3>
+                    <p class="text-gray-700 text-lg mb-8 max-w-2xl mx-auto">
+                        Reserva tu mesa ahora y disfruta de nuestras parrilladas preparadas con los mejores cortes y el auténtico sabor a carbón.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="https://wa.me/59372587432?text=Hola%20Los%20Sartenes,%20quisiera%20reservar%20una%20mesa%20para%20disfrutar%20de%20sus%20parrilladas" 
+                           class="btn-whatsapp inline-flex items-center justify-center"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp text-xl mr-2"></i> Reservar por WhatsApp
+                        </a>
+                        <a href="tel:+59372587432" class="btn-primary inline-flex items-center justify-center">
+                            <i class="fas fa-phone-alt mr-2"></i> Llamar Ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Componente Footer -->
+    <div id="footer-component">
+        <!-- El contenido del footer se cargará aquí mediante JavaScript -->
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/js/components.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() { 
+            if (typeof loadComponents === "function") { 
+                loadComponents(); 
+            }
+            
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animación al hacer scroll
+            const animateOnScroll = () => {
+                const elements = document.querySelectorAll('.animate-fadeInUp');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Ejecutar al cargar y al hacer scroll
+            window.addEventListener('load', animateOnScroll);
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>
