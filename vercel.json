@@ -4,7 +4,10 @@
     {
       "src": "api/index.js",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["**"], "maxLambdaSize": "15mb" }
+      "config": { 
+        "includeFiles": ["**"], 
+        "maxLambdaSize": "15mb" 
+      }
     },
     {
       "src": "public/**",
@@ -41,10 +44,6 @@
   },
   "functions": {
     "api/index.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
       "memory": 1024,
       "maxDuration": 10
     }
