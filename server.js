@@ -97,6 +97,16 @@ app.use((req, res, next) => {
   next();
 });
 
+// Test route
+app.get('/api/test', (req, res) => {
+  console.log('✅ Test endpoint hit');
+  res.json({ 
+    status: 'success',
+    message: 'API is working!',
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Middleware para manejo de errores global
 app.use((err, req, res, next) => {
   console.error('❌ Error en el servidor:', {
