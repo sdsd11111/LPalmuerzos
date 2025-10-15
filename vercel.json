@@ -16,11 +16,11 @@
       "dest": "/server.js"
     },
     {
-      "src": "/admin",
+      "src": "/admin(?:/(.*))?",
       "dest": "/public/admin/index.html"
     },
     {
-      "src": "/menu/platos/(.*)",
+      "src": "/menu/platos/([^/]+)\\.html$",
       "dest": "/public/menu/platos/$1.html"
     },
     {
