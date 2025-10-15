@@ -206,8 +206,39 @@ app.use((err, req, res, next) => {
 });
 
 // Rutas de la API
+
+// Ruta de prueba
 app.get('/api/test', (req, res) => {
-  res.json({ message: '¡API funcionando correctamente con Supabase!' });
+  res.json({ 
+    status: 'success',
+    message: '✅ API funcionando correctamente',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Ruta de prueba de conexión con Supabase
+app.get('/api/test-supabase', async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('platos')
+      .select('*')
+      .limit(1);
+
+    if (error) throw error;
+    
+    res.json({
+      status: 'success',
+      message: '✅ Conexión con Supabase exitosa',
+      data: data || []
+    });
+  } catch (error) {
+    console.error('Error en /api/test-supabase:', error);
+    res.status(500).json({
+      status: 'error',
+      message: '❌ Error al conectar con Supabase',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
 });
 
 // Obtener todos los platos
