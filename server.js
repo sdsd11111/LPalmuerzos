@@ -458,10 +458,13 @@ app.use((req, res, next) => {
   });
 });
 
-// Iniciar el servidor
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en el puerto ${PORT}`);
-  console.log(`Entorno: ${process.env.NODE_ENV || 'development'}`);
-});
-
+// Exportar la aplicación para Vercel
 module.exports = app;
+
+// Solo iniciar el servidor si no estamos en Vercel
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
+    console.log(`Entorno: ${process.env.NODE_ENV || 'development'}`);
+  });
+}
