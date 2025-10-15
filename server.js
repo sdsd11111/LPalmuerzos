@@ -27,30 +27,29 @@ const corsOptions = {
       'http://localhost:9000',
       'https://lp-almuerzos.vercel.app',
       'https://sartenes.vercel.app',
-      'https://lp-menus.vercel.app',
-      'https://los-sartenes.vercel.app',
-      'https://los-sartenes-admin.vercel.app'
+      'https://l-palmuerzos.vercel.app',
+      'http://l-palmuerzos.vercel.app',
+      'https://l-palmuerzos.vercel.app',
+      'https://www.l-palmuerzos.vercel.app'
     ];
     
-    // En producción, verificar el origen
-    if (process.env.NODE_ENV === 'production') {
-      if (!origin || allowedOrigins.includes(origin)) {
-        console.log(`✅ Origen permitido: ${origin}`);
-        return callback(null, true);
-      } else {
-        console.warn('⚠️ Origen no permitido por CORS:', origin);
-        return callback(new Error('No permitido por CORS'));
-      }
-    } else {
-      // En desarrollo, permitir cualquier origen
-      console.log(`🔧 Modo desarrollo - Origen permitido: ${origin}`);
+    // En desarrollo, permitir cualquier origen
+    if (process.env.NODE_ENV === 'development') {
       return callback(null, true);
     }
+    
+    // En producción, verificar contra la lista de orígenes permitidos
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    
+    console.warn('Intento de acceso no permitido desde el origen:', origin);
+    return callback(new Error('No permitido por CORS'));
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Content-Length'],
-  exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar', 'Content-Type', 'Authorization'],
+  exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar', 'Content-Type'],
   maxAge: 86400 // 24 hours
 };
 
@@ -60,54 +59,17 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Middleware para loggear todas las solicitudes
 app.use((req, res, next) => {
-  console.log(`\n[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
-  console.log('🔹 Origen:', req.headers.origin || 'No especificado');
-  console.log('🔹 User-Agent:', req.headers['user-agent']);
-  
-  if (req.method !== 'GET') {
-    console.log('🔹 Headers:', JSON.stringify(req.headers, null, 2));
-    if (req.body && Object.keys(req.body).length > 0) {
-      console.log('🔹 Body:', JSON.stringify(req.body, null, 2));
-    }
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
+  console.log('Headers:', JSON.stringify(req.headers, null, 2));
+  if (req.body && Object.keys(req.body).length > 0) {
+    console.log('Body:', JSON.stringify(req.body, null, 2));
   }
-  
   next();
 });
 
 // Aplicar CORS a todas las rutas
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
-
-// Middleware para headers CORS
-app.use((req, res, next) => {
-  const allowedOrigins = [
-    'http://localhost:3000',
-    'http://localhost:9000',
-    'https://lp-almuerzos.vercel.app',
-    'https://sartenes.vercel.app',
-    'https://lp-menus.vercel.app',
-    'https://los-sartenes.vercel.app',
-    'https://los-sartenes-admin.vercel.app'
-  ];
-  
-  const origin = req.headers.origin;
-  if (origin && allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Length');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Expose-Headers', 'Content-Length, X-Foo, X-Bar, Content-Type, Authorization');
-  
-  // Responder inmediatamente a las solicitudes OPTIONS
-  if (req.method === 'OPTIONS') {
-    console.log('🔹 Preflight OPTIONS request');
-    return res.status(200).end();
-  }
-  
-  next();
-});
 
 // Middleware para agregar headers CORS
 app.use((req, res, next) => {
