@@ -8,15 +8,37 @@ const fs = require('fs');
 const { createClient } = require('@supabase/supabase-js');
 const multer = require('multer');
 
+// Validar variables de entorno de Supabase
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  console.error('❌ Error: Las variables de entorno de Supabase no están configuradas');
+  console.error('SUPABASE_URL:', process.env.SUPABASE_URL ? '✅ Configurada' : '❌ Faltante');
+  console.error('SUPABASE_SERVICE_ROLE_KEY:', process.env.SUPABASE_SERVICE_ROLE_KEY ? '✅ Configurada' : '❌ Faltante');
+  process.exit(1);
+}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Inicializar Supabase
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+console.log('🔌 Inicializando cliente Supabase...');
+let supabase;
+try {
+  supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    }
+  );
+  console.log('✅ Cliente Supabase inicializado correctamente');
+} catch (error) {
+  console.error('❌ Error al inicializar Supabase:', error.message);
+  process.exit(1);
+}
 
 // Configuración de CORS
 const corsOptions = {
@@ -71,70 +93,74 @@ app.use((req, res, next) => {
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 
-// Middleware para agregar headers CORS
+// Middleware para logging de solicitudes
 app.use((req, res, next) => {
-  const allowedOrigins = [
-    'http://localhost:3000',
-    'http://localhost:9000',
-    'https://lp-almuerzos.vercel.app',
-    'https://sartenes.vercel.app'
-  ];
-  
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Length');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Expose-Headers', 'Content-Length, X-Foo, X-Bar, Content-Type');
-  
-  // Responder inmediatamente a las solicitudes OPTIONS
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
-  
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
   next();
 });
 
-// Middleware de manejo de errores centralizado
+// Middleware para manejo de errores global
 app.use((err, req, res, next) => {
-  console.error('❌ Error en el servidor:', err);
-  
+  console.error('❌ Error en el servidor:', {
+    message: err.message,
+    stack: process.env.NODE_ENV !== 'production' ? err.stack : undefined,
+    code: err.code,
+    details: err.details,
+    path: req.path,
+    method: req.method,
+    ...(process.env.NODE_ENV !== 'production' && {
+      body: req.body,
+      params: req.params,
+      query: req.query,
+      headers: {
+        'user-agent': req.headers['user-agent'],
+        referer: req.headers.referer,
+        origin: req.headers.origin
+      }
+    })
+  });
+
   // Manejar errores de validación
   if (err.name === 'ValidationError') {
     return res.status(400).json({
       error: 'Error de validación',
-      details: err.message,
-      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+      message: err.message,
+      details: process.env.NODE_ENV !== 'production' ? err.details : undefined
     });
   }
-  
+
   // Manejar errores de autenticación
   if (err.name === 'UnauthorizedError') {
     return res.status(401).json({
       error: 'No autorizado',
-      message: err.message || 'Token inválido o expirado',
-      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+      message: err.message || 'Token inválido o expirado'
     });
   }
-  
+
   // Manejar errores de base de datos
   if (err.code === '23505') { // Violación de restricción única en PostgreSQL
     return res.status(409).json({
       error: 'Conflicto',
       message: 'El recurso ya existe',
-      details: err.detail,
-      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+      details: process.env.NODE_ENV !== 'production' ? err.detail : undefined
     });
   }
-  
+
   // Error genérico del servidor
-  res.status(err.status || 500).json({
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode).json({
     error: 'Error interno del servidor',
-    message: process.env.NODE_ENV === 'development' ? err.message : 'Algo salió mal',
-    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    message: process.env.NODE_ENV !== 'production' ? err.message : 'Algo salió mal',
+    ...(process.env.NODE_ENV !== 'production' && { stack: err.stack })
+  });
+});
+
+// Middleware para manejo de rutas no encontradas
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Ruta no encontrada',
+    message: `La ruta ${req.originalUrl} no existe`,
+    method: req.method
   });
 });
 
