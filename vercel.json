@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "public/**/*",
+      "src": "public/**",
       "use": "@vercel/static"
     }
   ],
@@ -16,21 +16,27 @@
       "dest": "/server.js"
     },
     {
-      "src": "/admin/(.*)",
+      "src": "/admin",
       "dest": "/public/admin/index.html"
     },
     {
-      "src": "/menu/platos/([^/]+)\\.html$",
+      "src": "/menu/platos/(.*)",
       "dest": "/public/menu/platos/$1.html"
     },
     {
       "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|json|html))$",
-      "headers": { "cache-control": "public, max-age=31536000, immutable" },
+      "headers": { 
+        "cache-control": "public, max-age=31536000, immutable",
+        "Access-Control-Allow-Origin": "*"
+      },
       "dest": "/public/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/public/$1"
+      "dest": "/public/index.html"
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
