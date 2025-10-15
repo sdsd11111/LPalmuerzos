@@ -41,20 +41,18 @@ try {
 }
 
 // Configuración de CORS
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:9000',
+  'https://lp-almuerzos.vercel.app',
+  'https://sartenes.vercel.app',
+  'https://l-palmuerzos.vercel.app',
+  'https://www.l-palmuerzos.vercel.app',
+  'https://almuerzos.paginasweb.cr'
+];
+
 const corsOptions = {
   origin: function (origin, callback) {
-    // Lista de orígenes permitidos
-    const allowedOrigins = [
-      'http://localhost:3000',
-      'http://localhost:9000',
-      'https://lp-almuerzos.vercel.app',
-      'https://sartenes.vercel.app',
-      'https://l-palmuerzos.vercel.app',
-      'http://l-palmuerzos.vercel.app',
-      'https://l-palmuerzos.vercel.app',
-      'https://www.l-palmuerzos.vercel.app'
-    ];
-    
     // En desarrollo, permitir cualquier origen
     if (process.env.NODE_ENV === 'development') {
       return callback(null, true);
