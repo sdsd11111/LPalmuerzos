@@ -53,21 +53,25 @@ function formatImageUrl(url, plato) {
     return supabaseUrl;
 }
 
-// Función para mostrar imágenes sin overlay oscuro
+// Función para mostrar imágenes con un overlay sutil
 function mostrarImagenClara(imageUrl) {
     if (!heroSection) {
         console.error('❌ Elemento hero no encontrado');
         return false;
     }
 
-    console.log('🖼️ Aplicando imagen sin overlay:', imageUrl);
+    console.log('🖼️ Aplicando imagen con overlay sutil:', imageUrl);
 
-    // 1. Eliminar cualquier estilo en línea que pueda contener gradientes
-    heroSection.removeAttribute('style');
+    // 1. Aplicar la imagen de fondo
+    heroSection.style.backgroundImage = `url('${imageUrl}')`;
+    heroSection.style.backgroundSize = 'cover';
+    heroSection.style.backgroundPosition = 'center';
+    heroSection.style.backgroundRepeat = 'no-repeat';
     
-    // 2. Eliminar cualquier overlay existente
-    const existingOverlays = document.querySelectorAll('.hero-overlay, #hero-background');
-    existingOverlays.forEach(el => el.remove());
+    // 2. Asegurar que el overlay sutil esté presente
+    if (!heroSection.classList.contains('has-subtle-overlay')) {
+        heroSection.classList.add('has-subtle-overlay');
+    }
 
     // 3. Aplicar la imagen directamente al heroSection
     heroSection.style.backgroundImage = `url('${imageUrl}')`;
@@ -696,92 +700,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para monitorear cambios en tiempo real del elemento hero
     window.startHeroMonitoring = function() {
-        if (heroSection) {
-            console.log('🔍 Iniciando monitoreo del elemento hero...');
+        if (!heroSection) {
+            console.error('❌ No se puede iniciar monitoreo: elemento heroSection no encontrado');
+            return null;
+        }
 
-            // Monitorear cambios en el elemento
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                        console.warn('🚨 ¡CAMBIO DETECTADO! El estilo del hero fue modificado:');
-                        console.log('  - Antes:', mutation.oldValue);
-                        console.log('  - Ahora:', heroSection.getAttribute('style'));
-                        console.log('  - Elemento completo:', heroSection);
+        console.log('🔍 Iniciando monitoreo del elemento hero...');
+        let checkInterval = null;
 
-                        // Si se detecta un overlay oscuro, limpiarlo inmediatamente
-                        const currentStyle = heroSection.getAttribute('style');
-                        if (currentStyle && currentStyle.includes('linear-gradient(rgba(0, 0, 0, 0.7)') || currentStyle.includes('rgba(0, 0, 0, 0.7)')) {
-                            console.warn('🚨 ¡OVERLAY OSCURO DETECTADO! Limpiando inmediatamente...');
-                            const cleanBackground = currentStyle.replace(/linear-gradient\(rgba\(0, 0, 0, 0\.7\), rgba\(0, 0, 0, 0\.75\)\),?\s*/g, '');
-                            heroSection.setAttribute('style', cleanBackground);
-                            console.log('✅ Overlay oscuro eliminado automáticamente');
-                        }
+        // Configuración del observador
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    // Prevenir la aplicación de estilos no deseados
+                    if (heroSection && 
+                        heroSection.style && 
+                        heroSection.style.backgroundImage && 
+                        typeof heroSection.style.backgroundImage.includes === 'function' &&
+                        heroSection.style.backgroundImage.includes('gradient')) {
+                        
+                        console.warn('🚨 ¡OVERLAY OSCURO DETECTADO! Limpiando inmediatamente...');
+                        const cleanImage = heroSection.style.backgroundImage
+                            .replace(/linear-gradient\(rgba\(\d+\s*,\s*\d+\s*,\s*\d+\s*,\s*[\d.]*\),?\s*/, '');
+                        heroSection.style.backgroundImage = cleanImage;
+                        console.log('✅ Overlay oscuro eliminado automáticamente');
                     }
-                });
+                }
             });
+        });
 
+        try {
             observer.observe(heroSection, {
                 attributes: true,
                 attributeOldValue: true,
-                attributeFilter: ['style']
+                attributeFilter: ['style'],
+                childList: false,
+                subtree: false
             });
 
-            console.log('✅ Monitoreo iniciado. Se detectará cualquier cambio en el estilo del hero.');
-            return observer;
-        } else {
-            console.error('❌ No se puede iniciar monitoreo: elemento heroSection no encontrado');
-    };
-    img.src = imageUrl;
-    // Forzar la actualización del fondo inmediatamente
-    heroSection.style.backgroundImage = `url('${imageUrl}')`;
-    heroSection.style.backgroundSize = 'cover';
-    heroSection.style.backgroundPosition = 'center';
-    heroSection.style.backgroundRepeat = 'no-repeat';
-    // Eliminar el overlay oscuro
-    heroSection.style.backgroundImage = `url('${imageUrl}')`;
-    heroSection.style.backgroundSize = 'cover';
-    heroSection.style.backgroundPosition = 'center';
-    heroSection.style.backgroundRepeat = 'no-repeat';
-}
-
-            // Configuración del observador
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                        // Prevenir la aplicación de estilos no deseados
-                        if (heroSection && 
-                            heroSection.style && 
-                            heroSection.style.backgroundImage && 
-                            typeof heroSection.style.backgroundImage.includes === 'function' &&
-                            heroSection.style.backgroundImage.includes('gradient')) {
-                            
-                            const cleanImage = heroSection.style.backgroundImage
-                                .replace(/linear-gradient\(rgba\(\d+\s*,\s*\d+\s*,\s*\d+\s*,\s*[\d.]*\),?\s*/, '');
-                            heroSection.style.backgroundImage = cleanImage;
-                        }
-                    }
-                });
-            });
-
-            try {
-                observer.observe(heroSection, {
-                    attributes: true,
-                    attributeFilter: ['style'],
-                    childList: false,
-                    subtree: false
-                });
-
-                console.log('✅ Protección del elemento hero activada');
-                return { 
-                    observer: observer, 
-                    checkInterval: checkInterval 
-                };
-            } catch (error) {
-                console.error('❌ Error al configurar el observador:', error);
-                return null;
-            }
-        } else {
-            console.error('❌ No se puede proteger: elemento heroSection no encontrado');
+            console.log('✅ Protección del elemento hero activada');
+            return {
+                observer: observer,
+                checkInterval: checkInterval
+            };
+        } catch (error) {
+            console.error('❌ Error al configurar el observador:', error);
             return null;
         }
     };
@@ -903,12 +866,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Inicialización segura de las funciones globales
 if (typeof window !== 'undefined') {
-    window.emergencyHeroClean = window.emergencyHeroClean || function() {
-        console.warn('Función emergencyHeroClean no está implementada');
-    };
+    // Verificar si la función ya existe antes de sobrescribirla
+    if (!window.emergencyHeroClean) {
+        window.emergencyHeroClean = function() {
+            console.warn('Función emergencyHeroClean no está implementada');
+        };
+    }
     
-    window.initHeroProtection = window.initHeroProtection || function() {
-        console.warn('Función initHeroProtection no está implementada');
-        return { monitoring: null, protection: null, autoCorrection: null, diagnosis: null };
-    };
+    if (!window.initHeroProtection) {
+        window.initHeroProtection = function() {
+            console.warn('Función initHeroProtection no está implementada');
+            return { 
+                monitoring: null, 
+                protection: null, 
+                autoCorrection: null, 
+                diagnosis: null 
+            };
+        };
+    }
 }
