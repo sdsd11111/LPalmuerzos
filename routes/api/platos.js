@@ -19,7 +19,7 @@ router.get('/test', (req, res) => {
 
 // Obtener todos los platos
 // RUTA: GET /api/platos
-router.get('/platos', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   console.log('📥 Petición GET a /api/platos');
   try {
     const platos = await PlatoDelDia.findAll();
@@ -37,7 +37,7 @@ router.get('/platos', async (req, res, next) => {
 
 // Obtener platos activos
 // RUTA: GET /api/platos/activos
-router.get('/platos/activos', async (req, res, next) => {
+router.get('/activos', async (req, res, next) => {
   console.log('📥 Petición GET a /api/platos/activos');
   try {
     const platos = await PlatoDelDia.findActive();
@@ -55,7 +55,7 @@ router.get('/platos/activos', async (req, res, next) => {
 
 // Obtener un plato por ID
 // RUTA: GET /api/platos/:id
-router.get('/platos/:id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
   console.log(`📥 Petición GET a /api/platos/${id}`);
   
@@ -83,7 +83,7 @@ router.get('/platos/:id', async (req, res, next) => {
 
 // Crear un nuevo plato
 // RUTA: POST /api/platos
-router.post('/platos', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   console.log('📥 Petición POST a /api/platos');
   console.log('📦 Datos recibidos:', req.body);
   
@@ -125,7 +125,7 @@ router.post('/platos', async (req, res, next) => {
 
 // Actualizar un plato existente
 // RUTA: PUT /api/platos/:id
-router.put('/platos/:id', async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   const { id } = req.params;
   console.log(`📥 Petición PUT a /api/platos/${id}`);
   console.log('📦 Datos recibidos:', req.body);
@@ -162,8 +162,8 @@ router.put('/platos/:id', async (req, res, next) => {
 });
 
 // Eliminar un plato
-// RUTA: DELETE /api/platos/:id
-router.delete('/platos/:id', async (req, res, next) => {
+// RUTEA: DELETE /api/platos/:id
+router.delete('/:id', async (req, res, next) => {
   const { id } = req.params;
   console.log(`📥 Petición DELETE a /api/platos/${id}`);
   
@@ -191,10 +191,11 @@ router.delete('/platos/:id', async (req, res, next) => {
 });
 
 // Cambiar estado de un plato (activar/desactivar)
-// RUTA: POST /api/platos/:id/toggle
-router.post('/platos/:id/toggle', async (req, res, next) => {
+// RUTA: PUT /api/platos/:id/estado
+router.put('/:id/estado', async (req, res, next) => {
   const { id } = req.params;
-  console.log(`📥 Petición POST a /api/platos/${id}/toggle`);
+  const { activo } = req.body;
+  console.log(`📥 Petición PUT a /api/platos/${id}/estado`, { activo });
   
   try {
     const plato = await PlatoDelDia.toggleStatus(id);

@@ -1,18 +1,46 @@
-/* Ensure text is readable on hero section */
-#hero-plato-del-dia h1,
-#hero-plato-del-dia h2,
-#hero-plato-del-dia h3,
-#hero-plato-del-dia p,
-#hero-plato-del-dia .text-content {
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 
-                 0 0 25px rgba(0, 0, 0, 0.5) !important;
+/* Estilos base del hero */
+#hero-plato-del-dia {
+    position: relative;
+    background-color: transparent !important;
 }
 
-/* Remove any potential overlay */
-#hero-plato-del-dia::before,
+/* Overlay sutil */
 #hero-plato-del-dia::after {
-    content: none !important;
-    display: none !important;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Overlay negro al 40% de opacidad */
+    pointer-events: none; /* Permite hacer clic a través del overlay */
+    z-index: 1;
+    transition: background-color 0.3s ease; /* Suaviza la transición del hover */
+}
+
+/* Contenido del hero (debe estar sobre el overlay) */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Mejorar la legibilidad del texto */
+.hero-content h1,
+.hero-content p {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Efecto hover sutil */
+#hero-plato-del-dia:hover::after {
+    background-color: rgba(0, 0, 0, 0.25); /* Un poco más oscuro al pasar el mouse */
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    #hero-plato-del-dia::after {
+        background: rgba(0, 0, 0, 0.2); /* Un poco más oscuro en móviles para mejor legibilidad */
+    }
 }
 
 /* Ensure background image displays properly */
